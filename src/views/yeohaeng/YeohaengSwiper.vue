@@ -168,91 +168,52 @@ h4 {
 .autoplay-progress {
   display: none;
 }
-:deep(.swiper-pagination) {
+::v-deep(.swiper-pagination) {
   display: none !important ;
 }
-:deep(.swiper-slide > img) {
+::v-deep(.swiper-slide > img) {
   margin: 0 !important;
 }
-:deep(.swiper-button-prev) {
+::v-deep(.swiper-button-prev) {
   color: #ee2b2b;
   left: var(--swiper-navigation-sides-offset, 180px);
 }
 
-:deep(.swiper-button-prev::after) {
+::v-deep(.swiper-button-prev::after) {
   font-size: 25px;
 }
-:deep(.swiper-button-next) {
+::v-deep(.swiper-button-next) {
   color: #ee2b2b;
   right: var(--swiper-navigation-sides-offset, 190px);
 }
-:deep(.swiper-button-next::after) {
+::v-deep(.swiper-button-next::after) {
   font-size: 25px;
 }
-:deep(.swiper-scrollbar-drag) {
+::v-deep(.swiper-scrollbar-drag) {
   background-color: #ee2b2b !important;
 }
 @media screen and (max-width: 1280px) {
-  :deep(.swiper-button-prev) {
+  ::v-deep(.swiper-button-prev) {
     left: var(--swiper-navigation-sides-offset, 50px);
   }
-  :deep(.swiper-button-next) {
+  ::v-deep(.swiper-button-next) {
     right: var(--swiper-navigation-sides-offset, 50px);
   }
 }
 @media screen and (max-width: 890px) {
-  :deep(.swiper-button-prev) {
+  ::v-deep(.swiper-button-prev) {
     left: var(--swiper-navigation-sides-offset, 0px);
   }
-  :deep(.swiper-button-next) {
+  ::v-deep(.swiper-button-next) {
     right: var(--swiper-navigation-sides-offset, 0px);
   }
 }
 @media screen and (max-width: 760px) {
-  :deep(.swiper-button-prev) {
+  ::v-deep(.swiper-button-prev) {
     display: none;
   }
-  :deep(.swiper-button-next) {
+  ::v-deep(.swiper-button-next) {
     display: none;
-  }
-}
-/* 태블릿 반응형: max-width 768px */
-@media screen and (max-width: 768px) {
-  h4 {
-    font-size: 20px !important;
-    margin: 8px 0 !important;
-  }
-
-  .swiper-slide {
-    padding: 0 10px;
-  }
-
-  .swiper-slide img {
-    margin: 10px 0 !important;
-    border-radius: 12px;
-  }
-
-  /* 좌우 네비 버튼 숨기고 페이징만 (이미 max-760px 에서 숨김 처리 중) */
-  :deep(.swiper-button-prev),
-  :deep(.swiper-button-next) {
-    display: none !important;
-  }
-}
-
-/* 모바일 반응형: max-width 390px */
-@media screen and (max-width: 390px) {
-  h4 {
-    font-size: 16px !important;
-    margin: 6px 0 !important;
-  }
-
-  .swiper-slide {
-    padding: 0 5px;
-  }
-
-  .swiper-slide img {
-    margin: 6px 0 !important;
-    border-radius: 8px;
   }
 }
 </style>

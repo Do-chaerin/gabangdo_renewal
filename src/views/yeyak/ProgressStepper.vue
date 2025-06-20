@@ -128,7 +128,6 @@ function goTo(idx) {
   align-items: center;
   justify-content: center;
   overflow: visible;
-  cursor: pointer;
 }
 .step:not(:last-child) .circle::after {
   top: 50%;

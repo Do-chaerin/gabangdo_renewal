@@ -441,9 +441,7 @@ onUnmounted(() => {
           </div>
         </div>
         <div class="bb_container4Bg">
-          <div
-            class="bb_inner"
-            style="max-width: none; width: 100%; margin: 0; padding: 0 20px">
+          <div class="bb_inner">
             <!-- 타이틀3 -->
 
             <!-- 유의사항 긴글 -->
@@ -485,6 +483,7 @@ onUnmounted(() => {
 @use "sass:color";
 @use "/src/assets/Main.scss" as *;
 @use "/src/assets/Variables.scss" as *;
+
 // 스텝퍼
 :deep(.stepper) {
   display: flex;
@@ -505,19 +504,19 @@ onUnmounted(() => {
   color: #555;
   &.custom-stepper {
     // only on your custom one
-    left: calc(45% - 600px);
+    left: calc(47.5% - 600px);
     width: 120px;
 
     &.hide-controls {
       // hide the nav & circles only when .hide-controls is present
-      :deep(.step-nav),
-      :deep(.circle) {
+      ::v-deep .step-nav,
+      ::v-deep .circle {
         display: none !important;
       }
     }
 
     // style all your labels
-    :deep(.label) {
+    ::v-deep .label {
       margin-top: 6px;
       font-size: 17px;
       cursor: pointer;
@@ -532,7 +531,7 @@ onUnmounted(() => {
     }
 
     // active-step styles
-    :deep(.step.active .label) {
+    ::v-deep .step.active .label {
       border-bottom: 2px solid rgba($sub-color, 0.3);
       color: #555;
       font-weight: bold;
@@ -980,10 +979,28 @@ onUnmounted(() => {
 }
 // 유의사항2
 /* Step 4 전용 래퍼를 기존 .bb_inner 처럼 동작하게 만들기 */
+::v-deep(.bb_container5 .bb_innerBottom) {
+  max-width: 1100px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+}
+
+/* 그 안의 notice 컨텐츠도 100% 폭으로 */
+::v-deep(.bb_container5 .bb_container4Bg .bb_inner .bb_notice) {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  padding: 20px 40px !important;
+  color: #5a5a5a !important;
+}
 .bb_container5 {
   background-color: #fff;
   padding-bottom: 60px;
+  max-width: 1100px !important;
+  width: 100% !important;
   .bb_innerBottom {
+    max-width: 1100px !important;
+    width: 100% !important;
+    margin: 0 auto;
     .bb_title3 {
       display: flex;
       justify-content: center;
@@ -1005,36 +1022,298 @@ onUnmounted(() => {
     }
   }
   .bb_container4Bg {
+    max-width: 1100px !important;
+    width: 100% !important;
     background-color: #ffffff;
-    width: 100%;
   }
   .bb_inner {
     background-color: rgba(65, 182, 232, 0.09);
     border-radius: $radius;
-    .bb_notice {
-      width: 1000px;
-      box-sizing: border-box;
-      color: #5a5a5a;
-      padding: 20px 40px;
-      margin: 0;
-      h3 {
-        font-size: 22px;
-        padding-bottom: 12px;
-        font-weight: bold;
-        color: #000;
-      }
-      p {
-        padding-bottom: 20px;
-        font-size: 17.5px;
-      }
-      li {
-        padding-bottom: 15px;
-        font-size: 17.5px;
-      }
-      ._bbTum {
-        padding-top: 10px;
-      }
+    width: 100% !important;
+    max-width: 1100px !important;
+  }
+}
+.bb_notice {
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: 1100px !important;
+  color: #5a5a5a;
+  padding: 20px 40px;
+  h3 {
+    font-size: 22px;
+    padding-bottom: 12px;
+    font-weight: bold;
+    color: #000;
+  }
+  p {
+    padding-bottom: 20px;
+    font-size: 17.5px;
+  }
+  li {
+    padding-bottom: 15px;
+    font-size: 17.5px;
+  }
+  ._bbTum {
+    padding-top: 10px;
+  }
+}
+
+// 태블릿 : 768px
+@media screen and (max-width: 768px) {
+  // .bb_inner {
+  //   width: 80% !important;
+  // }
+  // 컨테이너1
+
+  .bb_span {
+    font-size: 15px !important;
+  }
+  .arrow {
+    position: relative;
+    padding: 50px 0 70px 0 !important;
+    width: 5% !important;
+    img {
+      width: 100%;
+      height: 100%;
     }
+  }
+  // 컨테이너2
+  .bb_container2,
+  .bb_container3,
+  .bb_title2,
+  .bb_notice,
+  .bb_StoreTabs {
+    margin: auto;
+    width: 90%;
+  }
+  .bb_luggageImgNotice {
+    margin: auto;
+    width: 60%;
+  }
+  // 타이틀
+  .bb_title_txt2 h1 {
+    font-size: 25px !important;
+    font-weight: bold;
+  }
+  .bb_title_txt2 p {
+    font-size: 18px !important;
+  }
+  // 수화물 그림안내
+  .bb_luggage {
+    width: calc((100% - 2%) / 2) !important;
+    padding: 5.5% !important;
+    margin-bottom: 2%;
+  }
+  .bb_luggageTitleM {
+    font-size: 20px !important;
+  }
+  .bb_luggageTitle {
+    font-size: 12px !important;
+  }
+  .bb_luggagedetail {
+    font-size: 9px !important;
+  }
+  .bb_luggagepriceInfo {
+    margin: auto;
+    width: 90% !important;
+  }
+  // 수화물 표안내
+  .bb_priceInfoTime p {
+    font-size: 15px !important;
+  }
+  .bb_priceInfoTime {
+    width: 25% !important;
+  }
+  .bb_priceInfoDetail li {
+    font-size: 13px !important;
+  }
+  .bb_priceInfoMenu li {
+    font-size: 18px !important;
+  }
+  .bb_priceInfoMenuDetail ul {
+    border-bottom: 1.5px solid #ccc;
+  }
+  // 안내사항 수달
+  .bb_yongdal {
+    display: none;
+  }
+  .bb_container4 {
+    padding-left: 2% !important;
+  }
+  .bb_centerLine {
+    flex-direction: column;
+    text-align: left;
+  }
+  .bb_contain3Left p {
+    align-self: flex-start;
+    padding-bottom: 3%;
+  }
+  .bb_notice {
+    padding-top: 30px !important;
+  }
+  .bb_noticeButton button {
+    font-size: 12px !important;
+  }
+  .bb_noteDown1 {
+    width: 100% !important;
+  }
+  .bb_noteDown2 {
+    width: 100% !important;
+  }
+  // 맨아래 안내사항
+  .bb_container5 {
+    padding: 0 !important;
+    margin-bottom: 30px;
+  }
+}
+
+// 모바일 : 390px
+@media screen and (max-width: 390px) {
+  // 컨테이너1
+  .bb_span {
+    font-size: 15px !important;
+  }
+  .title_txt1 h1 {
+    font-size: 25px !important;
+  }
+  .bb_title1 {
+    padding-bottom: 30px !important;
+  }
+
+  .arrow {
+    display: none;
+  }
+  .bb_plusMinar {
+    display: none !important;
+  }
+  .bb_orderProcess.bb_plus {
+    display: flex !important;
+    justify-content: space-evenly !important;
+    flex-wrap: wrap;
+    gap: 10px; /* 간격 */
+  }
+
+  .bb_processIcon1 {
+    width: 35%;
+    justify-content: space-around !important;
+    flex-wrap: wrap;
+  }
+  .bb_plus {
+    display: block !important;
+  }
+  .bb_plus span {
+    font-size: 15px !important;
+  }
+  // 컨테이너2
+  // 타이틀
+  .bb_title_txt2 h1 {
+    font-size: 20px !important;
+    font-weight: bold;
+    line-height: 20px !important;
+  }
+  .bb_title_txt2 p {
+    font-size: 14px !important;
+  }
+  // 수화물 그림안내
+  .bb_luggageImgNotice {
+    margin: auto;
+    width: 90%;
+  }
+
+  .bb_luggage {
+    width: 48% !important;
+    padding: 3% !important;
+    margin-bottom: 2%;
+  }
+  .bb_luggageTitleM {
+    font-size: 18px !important;
+  }
+  .bb_luggageTitle p {
+    font-size: 11px !important;
+  }
+  .bb_luggagedetail p {
+    font-size: 8px !important;
+  }
+
+  // 수화물 표안내
+  .bb_luggagePlusMinus {
+    display: none !important;
+  }
+  .bb_luggagePlus {
+    display: block !important;
+  }
+  .bb_priceInfoTime p {
+    font-size: 12px !important;
+  }
+  .bb_priceInfoTime {
+    width: 40% !important;
+  }
+  .bb_priceInfoDetail ul {
+    font-size: 10px !important;
+    padding-top: 3px !important;
+    padding-bottom: 9px !important;
+  }
+  .bb_priceInfoDetail li {
+    font-size: 12px !important;
+  }
+  .bb_priceInfoMenu ul {
+    justify-content: space-around !important;
+    padding-right: 6%;
+  }
+  .bb_priceInfoMenu li {
+    font-size: 18px !important;
+    text-align: center;
+  }
+  .bb_priceInfoMenuDetail ul {
+    border: none;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+  .bb_priceInfoMenuDetail li {
+    font-size: 18px !important;
+  }
+  // 분류별 색깔주기
+  .bb_red {
+    color: #000000;
+  }
+  .bb_blue {
+    color: #000000;
+  }
+  .bb_green {
+    color: #000000;
+  }
+  .bb_purple {
+    color: #000000;
+  }
+  .bb_someMore {
+    padding-left: 8px !important;
+  }
+  .bb_sizeControll {
+    font-size: 20px !important;
+  }
+
+  .bb_container4 li {
+    font-size: 14px !important;
+  }
+
+  .bb_container5 {
+    margin-bottom: 30px;
+  }
+  .bb_container5 .bb_title3 h1 {
+    padding-bottom: 5px !important;
+  }
+  .bb_container5 .bb_title3 {
+    padding-bottom: 5px !important;
+  }
+  .bb_container5 h3 {
+    font-size: 18px !important;
+  }
+  .bb_container5 li,
+  p {
+    font-size: 14px !important;
+  }
+  .bb_notice {
+    padding-top: 20px !important;
   }
 }
 </style>

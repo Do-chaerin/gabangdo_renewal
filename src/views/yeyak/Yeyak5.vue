@@ -182,7 +182,9 @@ function goToNextStep() {
           </div>
           <!-- 버튼 -->
           <div class="button">
-            <button class="st_reser" @click="goToNextStep">처음으로</button>
+            <button class="my-button st_reser" @click="goToNextStep">
+              처음으로
+            </button>
           </div>
         </div>
       </div>
@@ -335,110 +337,8 @@ function goToNextStep() {
   }
 }
 
-/* 반응형 조정 */
-
-/* 태블릿 (화면 너비 768px 이하) */
-@media (max-width: 768px) {
-  /* 전체 래퍼 여백 */
-  .wrap_total,
-  .st_wrap {
-    padding: 0 16px;
-  }
-
-  /* 타이틀 크기 축소 */
-  .yy_title1 .title_txt1 h1 {
-    font-size: 32px;
-  }
-
-  /* 본문 박스 너비 및 패딩 조정 */
-  .st_line {
-    max-width: 100%;
-    padding: 20px;
-  }
-
-  /* 텍스트 박스 정렬 */
-  .text-box,
-  .info-box {
-    padding: 0;
-    margin-bottom: 20px;
-  }
-
-  /* 정보 행 1열 스택 */
-  .info-row {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 8px 0;
-  }
-  .info-row .label,
-  .info-row .value,
-  .info-row .summary-item {
-    width: 100%;
-    text-align: left;
-    margin: 0;
-  }
-
-  /* 구분선 너비 조정 */
-  .divider.extended {
-    width: 100%;
-  }
-
-  /* 취소 안내문구 세로 정렬 */
-  .cancletxt {
-    flex-direction: column;
-    gap: 8px;
-  }
-  .cancletxt span {
-    flex-direction: column;
-  }
-
-  /* 버튼 전체 너비 */
-  .button .st_reser {
-    width: 100%;
-    margin: 10px 0;
-  }
-}
-
-/* 모바일 (화면 너비 390px 이하) */
-@media (max-width: 390px) {
-  /* 타이틀 더 축소 */
-  .yy_title1 .title_txt1 h1 {
-    font-size: 28px;
-  }
-
-  /* 본문 박스 패딩 축소 */
-  .st_line {
-    padding: 16px;
-  }
-
-  /* 정보 행 패딩/폰트 축소 */
-  .info-row {
-    padding: 4px 0;
-    font-size: 14px;
-  }
-
-  /* 요약 아이템 폰트 축소 */
-  .summary-item,
-  .bag-label,
-  .bag-tag,
-  .bag-count {
-    font-size: 14px;
-  }
-
-  /* 취소 안내 폰트 축소 */
-  .cancletxt i {
-    font-size: 18px;
-  }
-  .cancletxt span {
-    font-size: 14px;
-  }
-  .cancletxt .page {
-    font-size: 14px;
-  }
-
-  /* 버튼 크기 축소 */
-  .button .st_reser {
-    height: 36px;
-    font-size: 14px;
-  }
+.my-button {
+  position: relative;
+  z-index: 4000; /* fixed-buttons(1000)보다 높게 */
 }
 </style>

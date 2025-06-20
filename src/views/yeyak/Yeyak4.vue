@@ -321,33 +321,35 @@ function submitReservation() {
                   <label
                     v-for="(val, key) in paymentTexts"
                     :key="key"
-                    class="payment-option"
+                    class="payment-option my-button"
                     :class="{ active: selectedPayment === key }">
                     <input
                       type="radio"
                       v-model="selectedPayment"
                       :value="key"
-                      name="payment" />
+                      name="payment"
+                      class="my-button" />
                     {{ val }}
                   </label>
                   <!-- 간편결제 -->
                   <div class="payment-icons-wrapper payment-icons-inline">
                     <span class="payment-label">간편결제</span>
-                    <div class="payment-radio">
+                    <div class="payment-radio my-button">
                       <label
                         v-for="(src, key) in paymentIcons"
                         :key="key"
-                        class="payment-image"
+                        class="payment-image my-button"
                         :class="{ active: selectedPayment === key }">
                         <input
                           type="radio"
                           v-model="selectedPayment"
                           :value="key"
-                          name="payment" />
+                          name="payment"
+                          class="my-button" />
                         <img
                           :src="src"
                           :alt="`${key} 아이콘`"
-                          class="payment-icon" />
+                          class="payment-icon my-button" />
                       </label>
                     </div>
                   </div>
@@ -358,7 +360,7 @@ function submitReservation() {
           <!-- 버튼  -->
           <div class="button">
             <button
-              class="st_reser"
+              class="my-button st_reser"
               @click="submitReservation"
               :disabled="!selectedPayment">
               결제하기
@@ -705,167 +707,8 @@ span.value.editing {
     background-color: color.adjust($sub-color, $lightness: 20%) !important;
   }
 }
-
-/* 반응형 조정 */
-
-/* 태블릿 (화면 너비 768px 이하) */
-@media (max-width: 768px) {
-  /* 공통 래퍼 여백 */
-  .st_wrap,
-  .yh_wrap,
-  .wrap_total {
-    padding: 0 16px;
-  }
-
-  /* 제목 크기 축소 */
-  .yy_title1 .title_txt1 h1,
-  .bb_title1 .title_txt1 h1 {
-    font-size: 32px;
-  }
-
-  /* 스텝퍼 숨김/가로 스크롤 */
-  .sticky-stepper {
-    display: none;
-  }
-
-  /* 폼/결제 박스 전체 너비 및 패딩 조정 */
-  .form-section,
-  .st_line,
-  .payment-page,
-  .inner {
-    max-width: 100%;
-    padding: 20px;
-  }
-
-  /* 날짜/시간 1열 레이아웃 */
-  .reservation-form .date-time,
-  .reservation-form .date-info {
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 10px;
-  }
-
-  /* 정보 행 세로 스택 */
-  .info-row,
-  .info-row.editing {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    padding: 8px 0;
-  }
-  .info-row .label {
-    width: 100%;
-    text-align: left;
-    margin: 0;
-  }
-  .info-row .value {
-    width: 100%;
-    text-align: left;
-  }
-  .tab-button.small {
-    width: auto;
-    margin-top: 4px;
-  }
-
-  /* 장소 선택/맞춤 입력 세로 스택 */
-  .button-group .start-btn,
-  .button-group .stop-btn,
-  .custom-start-input,
-  .custom-stop-input {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-  }
-
-  /* 가방 리스트 1열 */
-  .bag-list .bag-item,
-  .bags-section.bags-editing {
-    grid-template-columns: 1fr;
-  }
-
-  /* 합계 영역 세로 스택 */
-  .st_summary {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  /* 결제 수단 그리드 2열 */
-  .payment-methods {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-  .payment-icons-wrapper {
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  /* 제출 버튼 전체 너비 */
-  .button .st_reser {
-    width: 100%;
-    margin: 10px 0;
-  }
-
-  /* 모달 너비 조정 */
-  .modal-content {
-    width: 90%;
-  }
-}
-
-/* 모바일 (화면 너비 390px 이하) */
-@media (max-width: 390px) {
-  /* 제목 더욱 축소 */
-  .yy_title1 .title_txt1 h1,
-  .bb_title1 .title_txt1 h1 {
-    font-size: 28px;
-  }
-
-  /* 입력, 버튼, 라디오 크기 축소 */
-  input,
-  select,
-  .payment-option,
-  .payment-icons-wrapper {
-    height: 36px;
-    font-size: 14px;
-  }
-
-  /* 정보 행 패딩 및 글자 크기 */
-  .info-row {
-    padding: 4px 0;
-    font-size: 14px;
-  }
-
-  /* 날짜/시간 라벨 글자 크기 */
-  .reservation-form .st_section-title {
-    font-size: 14px;
-  }
-
-  /* 가방 항목 버튼 크기 */
-  .bag-controls .ctrl-btn {
-    width: 24px;
-    height: 24px;
-    font-size: 13px;
-  }
-
-  /* 결제 수단 1열 */
-  .payment-methods {
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
-  .payment-image {
-    padding: 6px;
-  }
-
-  /* 제출 버튼 폰트 크기 */
-  .button .st_reser {
-    font-size: 14px;
-    height: 36px;
-  }
-
-  /* 모달 패딩 및 너비 */
-  .modal-content {
-    padding: 20px;
-    width: 300px;
-  }
+.my-button {
+  position: relative;
+  z-index: 4000; /* fixed-buttons(1000)보다 높게 */
 }
 </style>

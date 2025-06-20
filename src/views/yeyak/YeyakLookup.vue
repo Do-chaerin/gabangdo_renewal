@@ -47,7 +47,7 @@ function goToLookup() {
           </div>
           <!-- 연락처 입력 -->
           <div class="info-row">
-            <div class="phone-input">
+            <div class="phone-input my-button">
               <CustomSelect v-model="telPrefix" />
               <input
                 v-model="formattedNumber"
@@ -68,7 +68,9 @@ function goToLookup() {
         </div>
         <!-- 조회 버튼 -->
         <div class="button">
-          <button class="st_reser" @click="goToLookup">조회하기</button>
+          <button class="my-button st_reser" @click="goToLookup">
+            조회하기
+          </button>
         </div>
       </div>
     </div>
@@ -241,101 +243,8 @@ p {
   }
 }
 
-/* 반응형 조정 */
-
-/* 태블릿 (화면 너비 768px 이하) */
-@media (max-width: 768px) {
-  /* 전체 래퍼 여백 */
-  .wrap_total,
-  .st_wrap,
-  .container {
-    padding: 0 16px;
-  }
-
-  /* 타이틀 크기 축소 */
-  .yy_title1 .title_txt1 h1 {
-    font-size: 32px;
-  }
-
-  /* 본문 박스 너비 및 패딩 조정 */
-  .st_line {
-    max-width: 100%;
-    padding: 20px;
-  }
-
-  /* 입력 필드 컨테이너 정렬 */
-  .container,
-  .info-row {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-    padding: 8px 0;
-  }
-  .info-row .name-input,
-  .info-row .phone-input,
-  .info-row .lookup-input {
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  /* 입력 필드 높이/폰트 조정 */
-  input,
-  select {
-    height: 36px;
-    font-size: 14px;
-  }
-
-  /* 안내문구 줄간격 */
-  .container p {
-    font-size: 14px;
-    margin-top: 8px;
-  }
-
-  /* 버튼 전체 너비 */
-  .button .st_reser {
-    width: 100%;
-    height: 40px;
-    font-size: 14px;
-    margin: 10px 0;
-  }
-}
-
-/* 모바일 (화면 너비 390px 이하) */
-@media (max-width: 390px) {
-  /* 타이틀 더 축소 */
-  .yy_title1 .title_txt1 h1 {
-    font-size: 28px;
-  }
-
-  /* 본문 박스 패딩 축소 */
-  .st_line {
-    padding: 16px;
-  }
-
-  /* 입력 필드 폰트/높이 축소 */
-  input,
-  select {
-    height: 32px;
-    font-size: 13px;
-  }
-
-  /* 컨테이너 및 행 패딩/간격 축소 */
-  .container,
-  .info-row {
-    gap: 6px;
-    padding: 4px 0;
-  }
-
-  /* 안내문구 폰트 축소 */
-  .container p {
-    font-size: 13px;
-  }
-
-  /* 버튼 크기 축소 */
-  .button .st_reser {
-    height: 36px;
-    font-size: 13px;
-  }
+.my-button {
+  position: relative;
+  z-index: 4000; /* fixed-buttons(1000)보다 높게 */
 }
 </style>

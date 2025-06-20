@@ -166,19 +166,19 @@ onBeforeUnmount(() => {
   color: #555;
   &.custom-stepper {
     // only on your custom one
-    left: calc(45% - 600px);
+    left: calc(47.5% - 600px);
     width: 120px;
 
     &.hide-controls {
       // hide the nav & circles only when .hide-controls is present
-      :deep(.step-nav),
-      :deep(.circle) {
+      ::v-deep .step-nav,
+      ::v-deep .circle {
         display: none !important;
       }
     }
 
     // style all your labels
-    :deep(.label) {
+    ::v-deep .label {
       margin-top: 6px;
       font-size: 17px;
       cursor: pointer;
@@ -193,7 +193,7 @@ onBeforeUnmount(() => {
     }
 
     // active-step styles
-    :deep(.step.active .label) {
+    ::v-deep .step.active .label {
       border-bottom: 2px solid rgba($sub-color, 0.3);
       color: #555;
       font-weight: bold;

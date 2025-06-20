@@ -259,12 +259,14 @@ function goToNextPage() {
           <!-- 버튼 -->
           <div class="st_button">
             <div class="button">
-              <button class="st_cancle" @click="openCancelModal">
+              <button class="st_cancle my-button" @click="openCancelModal">
                 취소하기
               </button>
             </div>
             <div class="button">
-              <button class="st_reser" @click="goToNextPage">처음으로</button>
+              <button class="my-button st_reser" @click="goToNextPage">
+                처음으로
+              </button>
             </div>
           </div>
         </div>
@@ -419,7 +421,7 @@ function goToNextPage() {
     display: block;
   }
   .st_cancle:hover {
-    background-color: #ff848f;
+    background-color: #a80311;
     color: #fff;
   }
   .st_reser {
@@ -440,6 +442,10 @@ function goToNextPage() {
   }
 }
 
+.my-button {
+  position: relative;
+  z-index: 4000; /* fixed-buttons(1000)보다 높게 */
+}
 // 모달 배경
 .modal-overlay {
   position: fixed;
@@ -486,124 +492,16 @@ function goToNextPage() {
     color: #fff;
   }
   .btn-cancel {
-    background-color: color.adjust($main-color, $lightness: 30%);
-    color: #fff;
+    background-color: $gray-past;
+    color: #333;
   }
   .btn-confirm:hover {
-    background-color: #ff848f;
+    background-color: #a80311;
     color: #fff;
   }
   .btn-cancel:hover {
-    background-color: color.adjust($sub-color, $lightness: 20%);
+    background-color: #505050;
     color: #fff;
-  }
-}
-/* 반응형 조정 */
-
-/* 태블릿 (화면 너비 768px 이하) */
-@media (max-width: 768px) {
-  /* 래퍼 여백 조정 */
-  .wrap_total,
-  .st_wrap {
-    padding: 0 16px;
-  }
-
-  /* 제목 크기 축소 */
-  .yy_title1 .title_txt1 h1 {
-    font-size: 32px;
-  }
-
-  /* 본문 박스 너비 및 패딩 변경 */
-  .st_line {
-    max-width: 100%;
-    padding: 20px;
-  }
-
-  /* 텍스트 박스 정렬 및 여백 */
-  .text-box,
-  .info-box {
-    padding: 0;
-    margin-bottom: 20px;
-  }
-
-  /* 정보 행 세로 스택 */
-  .info-row {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 8px 0;
-    gap: 6px;
-  }
-  .info-row .label,
-  .info-row .value {
-    width: 100%;
-    text-align: left;
-    margin: 0;
-  }
-
-  /* 버튼 그룹 세로 정렬 */
-  .st_button {
-    flex-direction: column;
-    gap: 12px;
-  }
-  .button .st_cancle,
-  .button .st_reser {
-    width: 100%;
-    margin: 8px 0;
-  }
-
-  /* 구분선 너비 확대 */
-  .divider.extended {
-    width: 100%;
-  }
-
-  /* 모달 박스 크기 조정 */
-  .modal-box {
-    width: 90%;
-    padding: 20px;
-  }
-}
-
-/* 모바일 (화면 너비 390px 이하) */
-@media (max-width: 390px) {
-  /* 제목 더 축소 */
-  .yy_title1 .title_txt1 h1 {
-    font-size: 28px;
-  }
-
-  /* 본문 박스 패딩 축소 */
-  .st_line {
-    padding: 16px;
-  }
-
-  /* 정보 행 폰트 및 패딩 축소 */
-  .info-row {
-    padding: 4px 0;
-    gap: 4px;
-    font-size: 14px;
-  }
-
-  /* 요약 항목 폰트 축소 */
-  .value .bag-label,
-  .value .bag-tag,
-  .value .bag-count {
-    font-size: 14px;
-  }
-
-  /* 버튼 크기 축소 */
-  .button .st_cancle,
-  .button .st_reser {
-    height: 36px;
-    font-size: 14px;
-  }
-
-  /* 모달 버튼 및 텍스트 축소 */
-  .modal-box p {
-    font-size: 15px;
-    margin-bottom: 20px;
-  }
-  .modal-buttons button {
-    padding: 6px 12px;
-    font-size: 14px;
   }
 }
 </style>

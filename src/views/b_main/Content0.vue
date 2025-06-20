@@ -7,8 +7,7 @@
         :key="index"
         class="slide"
         :class="{ active: index === currentIndex }"
-        :style="{ backgroundImage: `url(${img})` }"
-      ></div>
+        :style="{ backgroundImage: `url(${img})` }"></div>
 
       <!-- 배경 위 글씨 -->
       <div class="inner">
@@ -33,6 +32,7 @@
             <router-link to="/yeyak">
               <button class="btn1">
                 <p>예약하기</p>
+                <!-- <img src="/public/images/yr/mainImg/arrowW.png" alt="" /> -->
               </button>
             </router-link>
             <router-link to="/bangbeob2">
@@ -43,14 +43,12 @@
         <div class="contain5 flex gap-[50px] mt-[70px]">
           <div class="flex items-center space-x-4">
             <div
-              class="w-[60px] h-[60px] bg-blue-600 rounded-full flex flex-1 items-center justify-center"
-            >
+              class="w-[60px] h-[60px] bg-blue-600 rounded-full flex flex-1 items-center justify-center">
               <MapPin class="w-[35px] h-[35px] text-white" />
             </div>
             <div>
               <h4
-                class="text-white font-semibold text-base text-[22px] pb-[5px]"
-              >
+                class="text-white font-semibold text-base text-[22px] pb-[5px]">
                 어디든 픽업
               </h4>
               <p class="text-m text-white">지하철, 기차, 공항 어디든지</p>
@@ -58,14 +56,12 @@
           </div>
           <div class="flex items-center space-x-4">
             <div
-              class="w-[60px] h-[60px] bg-blue-600 rounded-full flex flex-1 items-center justify-center"
-            >
+              class="w-[60px] h-[60px] bg-blue-600 rounded-full flex flex-1 items-center justify-center">
               <Clock4 class="w-[35px] h-[35px] text-white" />
             </div>
             <div>
               <h4
-                class="text-white font-semibold text-base text-[22px] pb-[5px]"
-              >
+                class="text-white font-semibold text-base text-[22px] pb-[5px]">
                 실시간 추적
               </h4>
               <p class="text-m text-white">짐의 위치를 실시간으로 확인</p>
@@ -73,14 +69,12 @@
           </div>
           <div class="flex items-center space-x-4">
             <div
-              class="w-[60px] h-[60px] bg-blue-600 rounded-full flex flex-1 items-center justify-center"
-            >
+              class="w-[60px] h-[60px] bg-blue-600 rounded-full flex flex-1 items-center justify-center">
               <Shield class="w-[35px] h-[35px] text-white" />
             </div>
             <div>
               <h4
-                class="text-white font-semibold text-base text-[22px] pb-[5px]"
-              >
+                class="text-white font-semibold text-base text-[22px] pb-[5px]">
                 안전보장
               </h4>
               <p class="text-m text-white">보험가입으로 안전하게 보관</p>
@@ -149,8 +143,7 @@
           <img
             :src="images1[currentIndex1]"
             alt="가방도 배너"
-            class="fade-image"
-          />
+            class="fade-image" />
         </div>
 
         <!-- 오른쪽 메뉴 이동 및 예약 버튼 -->
@@ -204,6 +197,7 @@ const showModal = ref(false);
 const images = [
   "/images/yr/mainImg/attraction1.png",
   "/images/yr/mainImg/attraction2.jpg",
+  // "/images/yr/mainImg/attraction3.jpg",
   "/images/yr/mainImg/attraction4.jpg",
   "/images/yr/mainImg/attraction5.jpg",
   "/images/yr/mainImg/attraction6.jpg",
@@ -244,572 +238,590 @@ onBeforeUnmount(() => {
 .wrap {
   margin-top: 70px;
 
+  @media screen and (max-width: 635px) {
+    margin-top: 50px;
+  }
+
   .slider {
     position: relative;
     width: 100%;
     height: 93vh;
     overflow: hidden;
-  }
-  .slide {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-  }
 
-  .slide.active {
-    opacity: 1;
-    z-index: 1;
-  }
+    @media screen and (max-width: 635px) {
+      height: 100vh;
+    }
 
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.3)
-    );
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  .inner {
-    position: relative;
-    z-index: 2;
-    max-width: 1200px;
-    margin: 160px auto;
-    padding: 0 20px;
-
-    .container1 {
-      position: relative;
+    .slide {
+      position: absolute;
       width: 100%;
-      display: flex;
-      flex-direction: column;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
 
-      .contain1 {
+    .slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.3)
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 160px auto;
+      padding: 0 20px;
+
+      @media screen and (max-width: 1024px) {
+        margin: 120px auto;
+      }
+
+      @media screen and (max-width: 635px) {
+        margin: 80px auto;
+        padding: 0 15px;
+      }
+
+      .container1 {
+        position: relative;
+        width: 100%;
         display: flex;
-        gap: 15px;
-        align-items: center;
+        flex-direction: column;
+
+        .contain1 {
+          display: flex;
+          gap: 15px;
+          align-items: center;
+
+          @media screen and (max-width: 768px) {
+            gap: 10px;
+          }
+
+          @media screen and (max-width: 635px) {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+          }
+
+          img {
+            width: 80px;
+            height: 80px;
+            transition: transform 0.3s ease;
+
+            @media screen and (max-width: 768px) {
+              width: 70px;
+              height: 70px;
+            }
+
+            @media screen and (max-width: 635px) {
+              width: 60px;
+              height: 60px;
+            }
+
+            &:hover {
+              transform: scale(1.05);
+            }
+          }
+
+          .sLetter {
+            p {
+              color: #fff;
+              font-size: 35px;
+              line-height: 1.25;
+              text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
+              @media screen and (max-width: 768px) {
+                font-size: 28px;
+              }
+
+              @media screen and (max-width: 635px) {
+                font-size: 24px;
+              }
+            }
+          }
+        }
+
+        .contain2 {
+          p {
+            color: #279bf3;
+            font-size: 110px;
+            font-weight: 700;
+            padding-bottom: 30px;
+            line-height: 1;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+
+            @media screen and (max-width: 1024px) {
+              font-size: 80px;
+            }
+
+            @media screen and (max-width: 768px) {
+              font-size: 70px;
+            }
+
+            @media screen and (max-width: 635px) {
+              font-size: 50px;
+              padding-bottom: 20px;
+              margin-top: 10px;
+            }
+
+            &:hover {
+              transform: scale(1.02);
+            }
+          }
+        }
+
+        .contain3 {
+          color: #fff;
+          font-size: 32px;
+          padding-bottom: 18px;
+          line-height: 1.25;
+          text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+
+          @media screen and (max-width: 768px) {
+            font-size: 26px;
+          }
+
+          @media screen and (max-width: 635px) {
+            font-size: 20px;
+            padding-bottom: 12px;
+          }
+        }
+
+        .contain4 {
+          color: #fff;
+          font-size: 30px;
+          display: flex;
+          gap: 15px;
+
+          @media screen and (max-width: 768px) {
+            gap: 12px;
+            font-size: 24px;
+          }
+
+          @media screen and (max-width: 635px) {
+            flex-direction: column;
+            gap: 10px;
+            font-size: 18px;
+          }
+
+          .btn1,
+          .btn2 {
+            margin-top: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            padding: 12px 42px;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 22px;
+            cursor: pointer;
+            width: auto;
+            transition: all 0.3s ease;
+
+            @media screen and (max-width: 768px) {
+              padding: 10px 35px;
+              font-size: 20px;
+            }
+
+            @media screen and (max-width: 635px) {
+              padding: 10px 25px;
+              font-size: 18px;
+              width: 100%;
+              text-align: center;
+            }
+
+            &:hover {
+              transform: translateY(-2px);
+              background-color: #fff;
+              color: #279bf3;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            }
+
+            &:active {
+              transform: translateY(0);
+            }
+          }
+        }
+      }
+
+      .contain5 {
+        @media screen and (max-width: 1024px) {
+          gap: 30px;
+        }
 
         @media screen and (max-width: 768px) {
-          gap: 10px;
+          gap: 25px;
+          margin-top: 50px;
         }
 
         @media screen and (max-width: 635px) {
           flex-direction: column;
-          align-items: flex-start;
-          gap: 8px;
+          gap: 20px;
+          margin-top: 40px;
         }
 
-        img {
-          width: 80px;
-          height: 80px;
+        .flex {
+          @media screen and (max-width: 635px) {
+            width: 100%;
+          }
+
+          .w-\[60px\] {
+            @media screen and (max-width: 768px) {
+              width: 50px;
+              height: 50px;
+            }
+
+            @media screen and (max-width: 635px) {
+              width: 45px;
+              height: 45px;
+            }
+          }
+
+          .w-\[35px\] {
+            @media screen and (max-width: 768px) {
+              width: 28px;
+              height: 28px;
+            }
+
+            @media screen and (max-width: 635px) {
+              width: 25px;
+              height: 25px;
+            }
+          }
+
+          .text-\[22px\] {
+            @media screen and (max-width: 768px) {
+              font-size: 20px;
+            }
+
+            @media screen and (max-width: 635px) {
+              font-size: 18px;
+            }
+          }
+
+          .text-m {
+            @media screen and (max-width: 768px) {
+              font-size: 14px;
+            }
+
+            @media screen and (max-width: 635px) {
+              font-size: 13px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 컨텐츠 섹션 공통 스타일
+  .container2,
+  .container3,
+  .container4 {
+    .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+
+      @media screen and (max-width: 635px) {
+        padding: 0 15px;
+      }
+
+      .section1,
+      .section3,
+      .section4 {
+        padding: 80px 0;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+
+        @media screen and (max-width: 1024px) {
+          padding: 60px 0;
+          gap: 30px;
+        }
+
+        @media screen and (max-width: 768px) {
+          padding: 40px 0;
+          flex-direction: column;
+          text-align: center;
+          gap: 25px;
+        }
+
+        @media screen and (max-width: 635px) {
+          padding: 30px 0;
+          gap: 20px;
+        }
+
+        .section1-1,
+        .section3-2,
+        .section4-1 {
+          background-color: #f0f0f0;
+          width: 20%;
+          border-radius: 300px;
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
           transition: transform 0.3s ease;
 
           @media screen and (max-width: 768px) {
-            width: 70px;
-            height: 70px;
+            width: 40%;
           }
 
           @media screen and (max-width: 635px) {
-            width: 60px;
-            height: 60px;
+            width: 50%;
           }
 
           &:hover {
             transform: scale(1.05);
           }
+
+          img {
+            width: 70%;
+            transition: transform 0.3s ease;
+
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
         }
 
-        .sLetter {
+        .section1-2,
+        .section3-1,
+        .section4-2 {
+          flex: 1;
+          padding: 0 5%;
+
+          @media screen and (max-width: 768px) {
+            padding: 0;
+          }
+
           p {
-            color: #fff;
-            font-size: 35px;
-            line-height: 1.25;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: #279bf3;
+            font-size: 45px;
+            padding-bottom: 3%;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+
+            @media screen and (max-width: 1024px) {
+              font-size: 38px;
+            }
 
             @media screen and (max-width: 768px) {
-              font-size: 28px;
+              font-size: 32px;
             }
 
             @media screen and (max-width: 635px) {
-              font-size: 24px;
+              font-size: 28px;
+            }
+
+            &:hover {
+              transform: translateX(5px);
+            }
+          }
+
+          span {
+            color: #6f6f6f;
+            font-size: 25px;
+            line-height: 1.4;
+
+            @media screen and (max-width: 1024px) {
+              font-size: 22px;
+            }
+
+            @media screen and (max-width: 768px) {
+              font-size: 20px;
+            }
+
+            @media screen and (max-width: 635px) {
+              font-size: 18px;
             }
           }
         }
       }
-
-      .contain2 {
-        p {
-          color: #279bf3;
-          font-size: 110px;
-          font-weight: 700;
-          padding-bottom: 30px;
-          line-height: 1;
-          margin-top: 20px;
-          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-          transition: transform 0.3s ease;
-
-          @media screen and (max-width: 1024px) {
-            font-size: 80px;
-          }
-
-          @media screen and (max-width: 768px) {
-            font-size: 70px;
-          }
-
-          @media screen and (max-width: 635px) {
-            font-size: 50px;
-            padding-bottom: 20px;
-            margin-top: 10px;
-          }
-
-          &:hover {
-            transform: scale(1.02);
-          }
-        }
-      }
-
-      .contain3 {
-        color: #fff;
-        font-size: 32px;
-        padding-bottom: 18px;
-        line-height: 1.25;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-
-        @media screen and (max-width: 768px) {
-          font-size: 26px;
-        }
-
-        @media screen and (max-width: 635px) {
-          font-size: 20px;
-          padding-bottom: 12px;
-        }
-      }
-
-      .contain4 {
-        color: #fff;
-        font-size: 30px;
-        display: flex;
-        gap: 15px;
-
-        @media screen and (max-width: 768px) {
-          gap: 12px;
-          font-size: 24px;
-        }
-
-        @media screen and (max-width: 635px) {
-          flex-direction: column;
-          gap: 10px;
-          font-size: 18px;
-        }
-
-        .btn1,
-        .btn2 {
-          margin-top: 15px;
-          background: rgba(255, 255, 255, 0.1);
-          backdrop-filter: blur(5px);
-          border: 1px solid rgba(255, 255, 255, 0.8);
-          padding: 12px 42px;
-          border-radius: 8px;
-          color: #fff;
-          font-size: 22px;
-          cursor: pointer;
-          width: auto;
-          transition: all 0.3s ease;
-
-          @media screen and (max-width: 768px) {
-            padding: 10px 35px;
-            font-size: 20px;
-          }
-
-          @media screen and (max-width: 635px) {
-            padding: 10px 25px;
-            font-size: 18px;
-            width: 100%;
-            text-align: center;
-          }
-
-          &:hover {
-            transform: translateY(-2px);
-            background-color: #fff;
-            color: #279bf3;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-          }
-
-          &:active {
-            transform: translateY(0);
-          }
-        }
-      }
-    }
-
-    .contain5 {
-      @media screen and (max-width: 1024px) {
-        gap: 30px;
-      }
-
-      @media screen and (max-width: 768px) {
-        gap: 25px;
-        margin-top: 50px;
-      }
-
-      @media screen and (max-width: 635px) {
-        flex-direction: column;
-        gap: 20px;
-        margin-top: 40px;
-      }
-
-      .flex {
-        @media screen and (max-width: 635px) {
-          width: 100%;
-        }
-
-        .w-\[60px\] {
-          @media screen and (max-width: 768px) {
-            width: 50px;
-            height: 50px;
-          }
-
-          @media screen and (max-width: 635px) {
-            width: 45px;
-            height: 45px;
-          }
-        }
-
-        .w-\[35px\] {
-          @media screen and (max-width: 768px) {
-            width: 28px;
-            height: 28px;
-          }
-
-          @media screen and (max-width: 635px) {
-            width: 25px;
-            height: 25px;
-          }
-        }
-
-        .text-\[22px\] {
-          @media screen and (max-width: 768px) {
-            font-size: 20px;
-          }
-
-          @media screen and (max-width: 635px) {
-            font-size: 18px;
-          }
-        }
-
-        .text-m {
-          @media screen and (max-width: 768px) {
-            font-size: 14px;
-          }
-
-          @media screen and (max-width: 635px) {
-            font-size: 13px;
-          }
-        }
-      }
     }
   }
-}
 
-// 컨텐츠 섹션 공통 스타일
-.container2,
-.container3,
-.container4 {
-  .inner {
+  // 배너 및 메뉴 섹션
+  .banner-section {
+    background-color: #ffffff;
+    width: 100%;
+    padding: 40px 0;
+
+    @media screen and (max-width: 768px) {
+      padding: 30px 0;
+    }
+
+    @media screen and (max-width: 635px) {
+      padding: 20px 0;
+    }
+  }
+
+  .inner-container {
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    gap: 30px;
     padding: 0 20px;
+
+    @media screen and (max-width: 1024px) {
+      gap: 20px;
+    }
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      gap: 25px;
+    }
 
     @media screen and (max-width: 635px) {
       padding: 0 15px;
-    }
-
-    .section1,
-    .section3,
-    .section4 {
-      padding: 80px 0;
-      display: flex;
-      align-items: center;
-      gap: 40px;
-
-      @media screen and (max-width: 1024px) {
-        padding: 60px 0;
-        gap: 30px;
-      }
-
-      @media screen and (max-width: 768px) {
-        padding: 40px 0;
-        flex-direction: column;
-        text-align: center;
-        gap: 25px;
-      }
-
-      @media screen and (max-width: 635px) {
-        padding: 30px 0;
-        gap: 20px;
-      }
-
-      .section1-1,
-      .section3-2,
-      .section4-1 {
-        background-color: #f0f0f0;
-        width: 20%;
-        border-radius: 300px;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        transition: transform 0.3s ease;
-
-        @media screen and (max-width: 768px) {
-          width: 40%;
-        }
-
-        @media screen and (max-width: 635px) {
-          width: 50%;
-        }
-
-        &:hover {
-          transform: scale(1.05);
-        }
-
-        img {
-          width: 70%;
-          transition: transform 0.3s ease;
-
-          &:hover {
-            transform: scale(1.1);
-          }
-        }
-      }
-
-      .section1-2,
-      .section3-1,
-      .section4-2 {
-        flex: 1;
-        padding: 0 5%;
-
-        @media screen and (max-width: 768px) {
-          padding: 0;
-        }
-
-        p {
-          color: #279bf3;
-          font-size: 45px;
-          padding-bottom: 3%;
-          font-weight: 500;
-          transition: transform 0.3s ease;
-
-          @media screen and (max-width: 1024px) {
-            font-size: 38px;
-          }
-
-          @media screen and (max-width: 768px) {
-            font-size: 32px;
-          }
-
-          @media screen and (max-width: 635px) {
-            font-size: 28px;
-          }
-
-          &:hover {
-            transform: translateX(5px);
-          }
-        }
-
-        span {
-          color: #6f6f6f;
-          font-size: 25px;
-          line-height: 1.4;
-
-          @media screen and (max-width: 1024px) {
-            font-size: 22px;
-          }
-
-          @media screen and (max-width: 768px) {
-            font-size: 20px;
-          }
-
-          @media screen and (max-width: 635px) {
-            font-size: 18px;
-          }
-        }
-      }
+      gap: 20px;
     }
   }
-}
 
-// 배너 및 메뉴 섹션
-.banner-section {
-  background-color: #ffffff;
-  width: 100%;
-  padding: 40px 0;
-
-  @media screen and (max-width: 768px) {
-    padding: 30px 0;
-  }
-
-  @media screen and (max-width: 635px) {
-    padding: 20px 0;
-  }
-}
-
-.inner-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  gap: 30px;
-  padding: 0 20px;
-
-  @media screen and (max-width: 1024px) {
-    gap: 20px;
-  }
-
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
-    gap: 25px;
-  }
-
-  @media screen and (max-width: 635px) {
-    padding: 0 15px;
-    gap: 20px;
-  }
-}
-
-.banner-image {
-  flex: 1;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-  }
-
-  img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+  .banner-image {
+    flex: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 
     &:hover {
-      transform: scale(1.05);
+      transform: translateY(-5px);
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
     }
   }
-}
 
-.menu-box {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-
-  @media screen and (max-width: 768px) {
-    gap: 15px;
-  }
-}
-
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-
-  @media screen and (max-width: 635px) {
-    gap: 10px;
-  }
-}
-
-.menu-item {
-  background-color: #f8f8f8;
-  border-radius: 12px;
-  padding: 25px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-  cursor: pointer;
-
-  @media screen and (max-width: 768px) {
-    padding: 20px;
-  }
-
-  @media screen and (max-width: 635px) {
-    padding: 15px;
-  }
-
-  &:hover {
-    transform: translateY(-3px);
-    background-color: #f0f0f0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-
-  .menu-title {
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: #222;
-    font-size: 25px;
+  .menu-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 
     @media screen and (max-width: 768px) {
+      gap: 15px;
+    }
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+
+    @media screen and (max-width: 635px) {
+      gap: 10px;
+    }
+  }
+
+  .menu-item {
+    background-color: #f8f8f8;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    @media screen and (max-width: 768px) {
+      padding: 20px;
+    }
+
+    @media screen and (max-width: 635px) {
+      padding: 15px;
+    }
+
+    &:hover {
+      transform: translateY(-3px);
+      background-color: #f0f0f0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #222;
+      font-size: 25px;
+
+      @media screen and (max-width: 768px) {
+        font-size: 22px;
+      }
+
+      @media screen and (max-width: 635px) {
+        font-size: 20px;
+        margin-bottom: 6px;
+      }
+    }
+
+    .menu-desc {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.4;
+
+      @media screen and (max-width: 635px) {
+        font-size: 13px;
+      }
+    }
+  }
+
+  .reserve-button {
+    background-color: #279bf3;
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 25px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(39, 155, 243, 0.2);
+    border: none;
+
+    @media screen and (max-width: 768px) {
+      font-size: 26px;
+      padding: 20px;
+    }
+
+    @media screen and (max-width: 635px) {
       font-size: 22px;
+      padding: 18px;
     }
 
-    @media screen and (max-width: 635px) {
-      font-size: 20px;
-      margin-bottom: 6px;
+    &:hover {
+      background-color: #357acc;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(39, 155, 243, 0.3);
     }
-  }
 
-  .menu-desc {
-    font-size: 14px;
-    color: #666;
-    line-height: 1.4;
-
-    @media screen and (max-width: 635px) {
-      font-size: 13px;
+    &:active {
+      transform: translateY(-1px);
     }
-  }
-}
-
-.reserve-button {
-  background-color: #279bf3;
-  color: #ffffff;
-  font-size: 30px;
-  font-weight: bold;
-  padding: 25px;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 100%;
-  box-shadow: 0 4px 12px rgba(39, 155, 243, 0.2);
-  border: none;
-
-  @media screen and (max-width: 768px) {
-    font-size: 26px;
-    padding: 20px;
-  }
-
-  @media screen and (max-width: 635px) {
-    font-size: 22px;
-    padding: 18px;
-  }
-
-  &:hover {
-    background-color: #357acc;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(39, 155, 243, 0.3);
-  }
-
-  &:active {
-    transform: translateY(-1px);
   }
 }
 </style>

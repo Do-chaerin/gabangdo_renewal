@@ -1,84 +1,3 @@
-<script setup>
-import { ref, onMounted, onUnmounted } from "vue";
-import Content1 from "../b_main/Content1.vue";
-import Homeswiper1 from "../b_main/Homeswiper1.vue";
-import ProgressStepper from "../yeyak/ProgressStepper.vue";
-const showStepper = ref(true);
-const stepIndex = ref(1);
-
-//스텝퍼
-const headerHeight = document.querySelector(".header")?.offsetHeight || 0;
-const offset = 100;
-const selectors = ["#step1", "#step2", "#step3"];
-
-function scrollToSection(idx) {
-  stepIndex.value = idx;
-  const sel = selectors[idx - 1];
-  const el = document.querySelector(sel);
-  if (!el) return;
-  const top =
-    el.getBoundingClientRect().top + window.scrollY - headerHeight - offset;
-  window.scrollTo({ top, behavior: "smooth" });
-}
-// 스크롤할 때 현재 위치에 맞는 인덱스 계산
-function updateActiveOnScroll() {
-  const scrollY = window.scrollY + headerHeight + offset + 1;
-  let current = 1;
-
-  for (let i = 0; i < selectors.length; i++) {
-    const el = document.querySelector(selectors[i]);
-    if (!el) continue;
-    // 섹션의 실제 문서 상단 위치
-    const sectionTop = el.offsetTop;
-    if (scrollY >= sectionTop) {
-      current = i + 1;
-    } else {
-      break;
-    }
-  }
-
-  // 맨 아래에 도달하면 마지막
-  if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 5) {
-    current = selectors.length;
-  }
-
-  stepIndex.value = current;
-}
-
-onMounted(() => {
-  // 초기값 세팅
-  updateActiveOnScroll();
-  // 스크롤 리스너 등록
-  window.addEventListener("scroll", updateActiveOnScroll, { passive: true });
-});
-
-onUnmounted(() => {
-  window.removeEventListener("scroll", updateActiveOnScroll);
-});
-//  반응형 관련 상태
-// - isMobile: 현재 화면이 모바일인지 여부 (true: 모바일 화면)
-// - isMenuOpen: 현재 메뉴가 열려 있는지 여부 (여기선 모바일에서 true)
-const isMobile = ref(window.innerWidth < 635);
-//  창 크기 변경 시 실행되는 함수
-const handleResize = () => {
-  const width = window.innerWidth;
-
-  // 화면 너비에 따라 모바일 여부와 메뉴 오픈 여부 업데이트
-  isMobile.value = width < 635;
-};
-
-//  컴포넌트가 마운트될 때: 이벤트 등록 + 최초 한 번 실행
-onMounted(() => {
-  window.addEventListener("resize", handleResize);
-  handleResize(); // 초기 실행
-});
-
-//  컴포넌트가 언마운트될 때: 이벤트 제거 (메모리 누수 방지)
-onUnmounted(() => {
-  window.removeEventListener("resize", handleResize);
-});
-</script>
-
 <template>
   <div class="wrap_total">
     <div class="yg_container">
@@ -178,6 +97,87 @@ onUnmounted(() => {
   </div>
 </template>
 
+<script setup>
+import { ref, onMounted, onUnmounted } from "vue";
+import Content1 from "../b_main/Content1.vue";
+import Homeswiper1 from "../b_main/Homeswiper1.vue";
+import ProgressStepper from "../yeyak/ProgressStepper.vue";
+const showStepper = ref(true);
+const stepIndex = ref(1);
+
+//스텝퍼
+const headerHeight = document.querySelector(".header")?.offsetHeight || 0;
+const offset = 100;
+const selectors = ["#step1", "#step2", "#step3"];
+
+function scrollToSection(idx) {
+  stepIndex.value = idx;
+  const sel = selectors[idx - 1];
+  const el = document.querySelector(sel);
+  if (!el) return;
+  const top =
+    el.getBoundingClientRect().top + window.scrollY - headerHeight - offset;
+  window.scrollTo({ top, behavior: "smooth" });
+}
+// 스크롤할 때 현재 위치에 맞는 인덱스 계산
+function updateActiveOnScroll() {
+  const scrollY = window.scrollY + headerHeight + offset + 1;
+  let current = 1;
+
+  for (let i = 0; i < selectors.length; i++) {
+    const el = document.querySelector(selectors[i]);
+    if (!el) continue;
+    // 섹션의 실제 문서 상단 위치
+    const sectionTop = el.offsetTop;
+    if (scrollY >= sectionTop) {
+      current = i + 1;
+    } else {
+      break;
+    }
+  }
+
+  // 맨 아래에 도달하면 마지막
+  if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 5) {
+    current = selectors.length;
+  }
+
+  stepIndex.value = current;
+}
+
+onMounted(() => {
+  // 초기값 세팅
+  updateActiveOnScroll();
+  // 스크롤 리스너 등록
+  window.addEventListener("scroll", updateActiveOnScroll, { passive: true });
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", updateActiveOnScroll);
+});
+//  반응형 관련 상태
+// - isMobile: 현재 화면이 모바일인지 여부 (true: 모바일 화면)
+// - isMenuOpen: 현재 메뉴가 열려 있는지 여부 (여기선 모바일에서 true)
+const isMobile = ref(window.innerWidth < 635);
+//  창 크기 변경 시 실행되는 함수
+const handleResize = () => {
+  const width = window.innerWidth;
+
+  // 화면 너비에 따라 모바일 여부와 메뉴 오픈 여부 업데이트
+  isMobile.value = width < 635;
+};
+
+//  컴포넌트가 마운트될 때: 이벤트 등록 + 최초 한 번 실행
+onMounted(() => {
+  window.addEventListener("resize", handleResize);
+  handleResize(); // 초기 실행
+});
+
+//  컴포넌트가 언마운트될 때: 이벤트 제거 (메모리 누수 방지)
+onUnmounted(() => {
+  window.removeEventListener("resize", handleResize);
+});
+</script>
+
 <style lang="scss" scoped>
 @use "sass:color";
 @use "@/assets/Main.scss" as *;
@@ -211,10 +211,10 @@ onUnmounted(() => {
   }
 }
 //    요금안내
-:deep(.macontent1_wrap) {
+::v-deep(.macontent1_wrap) {
   background-color: transparent !important;
 }
-:deep(.masize, .masize1) {
+::v-deep(.masize, .masize1) {
   border: 2px solid #e5e7eb !important;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
@@ -263,7 +263,7 @@ onUnmounted(() => {
 
 // 다른 클라스 네임 bb_title1  display:flex 해놓음
 // 타이틀
-:deep(.bb_title1) {
+::v-deep(.bb_title1) {
   padding: 0 !important;
   gap: 10px !important;
 }
@@ -287,35 +287,65 @@ onUnmounted(() => {
     align-items: center;
     margin: 0;
     padding: 0;
-  }
-  a {
-    width: 50%;
-    display: block;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    border-radius: 30px;
-    border: 2px solid $sub-color;
-  }
-  span {
-    width: 150px;
-    font-size: 30px;
-    text-align: center;
-    color: $sub-color;
+    @media screen and (max-width: 620px) {
+      justify-content: space-between;
+    }
+
+    li {
+      display: flex;
+      @media screen and (max-width: 470px) {
+        display: block;
+      }
+      img {
+        width: 60%;
+        @media screen and (max-width: 620px) {
+          width: 70%;
+        }
+      }
+      a {
+        width: 50%;
+        display: block;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        border-radius: 30px;
+        border: 2px solid $sub-color;
+      }
+      span {
+        width: 150px;
+        font-size: 30px;
+        text-align: center;
+        color: $sub-color;
+      }
+    }
   }
 }
-
 // 환불내용
 .yg_refunddLi1 {
   width: 20%;
   margin: 0;
   padding: 0;
 }
+@media screen and (max-width: 470px) {
+  ::v-deep(.yg_refunddLi1) {
+    display: none !important;
+  }
+  ::v-deep(.yg_refunddLi2) {
+    width: 100% !important;
+    display: flex !important;
+  }
+}
 
 .yg_refunddLi2 {
   width: 68%;
   font-size: 1.2rem;
+  @media screen and (max-width: 620px) {
+    width: 78%;
+  }
+  a {
+    width: 200px;
+  }
 }
 .yg_accoutNrefundexplain {
   width: 100%;
@@ -362,19 +392,19 @@ onUnmounted(() => {
   color: #555;
   &.custom-stepper {
     // only on your custom one
-    left: calc(45% - 600px);
+    left: calc(47.5% - 600px);
     width: 120px;
 
     &.hide-controls {
       // hide the nav & circles only when .hide-controls is present
-      :deep(.step-nav),
-      :deep(.circle) {
+      ::v-deep .step-nav,
+      ::v-deep .circle {
         display: none !important;
       }
     }
 
     // style all your labels
-    :deep(.label) {
+    ::v-deep .label {
       margin-top: 6px;
       font-size: 17px;
       cursor: pointer;
@@ -389,11 +419,86 @@ onUnmounted(() => {
     }
 
     // active-step styles
-    :deep(.step.active .label) {
+    ::v-deep .step.active .label {
       border-bottom: 2px solid rgba($sub-color, 0.3);
       color: #555;
       font-weight: bold;
     }
+  }
+}
+@media screen and (max-width: 1170px) {
+  .macontent1_wrap {
+    width: 100%;
+    max-width: 80% !important;
+  }
+}
+@media screen and (max-width: 974px) {
+  ::v-deep(.macontent1_wrap) {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: auto;
+  }
+  .macontent1_down {
+    width: 200% !important;
+  }
+  ::v-deep(.macontent1_wrap) {
+    width: 93%;
+  }
+  ::v-deep(.macontent1_wrap1) {
+    display: block;
+    background-color: transparent !important;
+  }
+  ::v-deep(.masize1) {
+    max-width: 250px !important;
+    border: 2px solid #e5e7eb !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  .yg_leftInfo {
+    font-size: 0.8rem;
+  }
+  .yg_rightInfocaution a {
+    font-size: 14px !important;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .yg_accoutNrefundexplain p {
+    padding: 30px 50px !important;
+  }
+  .yg_accoutNrefundexplain {
+    p {
+      font-size: 15px;
+      line-height: 35px;
+      strong {
+        font-size: 22px;
+        line-height: 50px;
+      }
+      span {
+        line-height: 40px;
+        font-size: 20px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 570px) {
+  ::v-deep(.yg_infoWrapper) {
+    width: 100%;
+    height: 150px;
+    padding: 16px;
+    flex-direction: column;
+    text-align: center !important;
+  }
+  ::v-deep(.yg_rightInfocaution a) {
+    text-align: center;
+  }
+  ::v-deep(.yg_rightInfocaution p) {
+    justify-content: center;
+  }
+  .yg_accoutNrefundexplain p {
+    padding: 30px !important;
+  }
+  .accCard {
+    font-size: 17px !important;
   }
 }
 </style>

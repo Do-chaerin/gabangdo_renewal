@@ -596,7 +596,9 @@ const closeModal = () => {
               class="st_search"
               type="text"
               placeholder="검색어를 입력하세요" />
-            <button class="st_search-btn" @click="onSearch">검색</button>
+            <button class="st_search-btn my-button" @click="onSearch">
+              검색
+            </button>
           </div>
           <!-- 카테고리버튼 -->
           <div class="st_category-buttons">
@@ -605,7 +607,7 @@ const closeModal = () => {
               :key="cat"
               @click="setCategory(cat)"
               :class="{ active: selectedCategory === cat }"
-              class="st_category-btn">
+              class="st_category-btn my-button">
               {{ cat }}
             </button>
           </div>
@@ -613,12 +615,12 @@ const closeModal = () => {
           <table class="st_notice-table">
             <tbody class="st_scrollable-body">
               <template v-for="(notice, idx) in paginatedNotices" :key="idx">
-                <tr class="notice-row" @click="toggleNotice(idx)">
+                <tr class="notice-row my-button" @click="toggleNotice(idx)">
                   <td>
                     <div class="notice-row_title">
                       {{ notice.title }}
                       <img
-                        class="st_toggle-icon"
+                        class="st_toggle-icon my-button"
                         :src="
                           activeIndex === idx
                             ? '/images/cr/up.png'
@@ -629,7 +631,7 @@ const closeModal = () => {
                   </td>
                 </tr>
                 <tr v-if="activeIndex === idx">
-                  <td class="notice-row_content">
+                  <td class="notice-row_content my-button">
                     <div class="notice_content">
                       {{ notice.content }}
                     </div>
@@ -639,12 +641,16 @@ const closeModal = () => {
             </tbody>
           </table>
           <!-- 페이지네이션 -->
-          <div class="st_pagination">
-            <button @click="prevNoticePage" :disabled="noticeCurrentPage === 1">
+          <div class="st_pagination my-button">
+            <button
+              class="my-button"
+              @click="prevNoticePage"
+              :disabled="noticeCurrentPage === 1">
               이전
             </button>
             <span>{{ noticeCurrentPage }} / {{ noticeTotalPages }}</span>
             <button
+              class="my-button"
               @click="nextNoticePage"
               :disabled="noticeCurrentPage === noticeTotalPages">
               다음
@@ -667,7 +673,7 @@ const closeModal = () => {
           <div class="st_bottom">
             <div class="st_card-container">
               <div
-                class="st_card"
+                class="st_card my-button"
                 v-for="product in paginatedProducts"
                 :key="product.image"
                 @click="openModal(product)">
@@ -692,7 +698,7 @@ const closeModal = () => {
             <!-- 리뷰작성 -->
             <div class="write-btn-wrapper">
               <!-- 글쓰기 폼 오픈 버튼 -->
-              <button @click="showForm = !showForm" class="write-btn">
+              <button @click="showForm = !showForm" class="write-btn my-button">
                 {{ showForm ? "취소" : "글쓰기" }}
               </button>
               <!-- 글쓰기 폼 -->
@@ -710,15 +716,15 @@ const closeModal = () => {
                   accept="image/*" />
                 <img v-if="previewImage" :src="previewImage" width="120" />
                 <!-- 후기 등록·취소버튼 -->
-                <div class="form-buttons">
+                <div class="form-buttons my-button">
                   <button
-                    class="form-buttons2"
+                    class="form-buttons2 my-button"
                     type="button"
                     @click="cancelForm">
                     취소
                   </button>
                   <button
-                    class="form-buttons1"
+                    class="form-buttons1 my-button"
                     type="button"
                     @click="addReview">
                     등록
@@ -727,14 +733,16 @@ const closeModal = () => {
               </form>
             </div>
             <!-- 페이지네이션 -->
-            <div class="st_pagination">
+            <div class="st_pagination my-button">
               <button
+                class="my-button"
                 @click="prevReviewPage"
                 :disabled="reviewCurrentPage === 1">
                 이전
               </button>
               <span>{{ reviewCurrentPage }} / {{ reviewTotalPages }}</span>
               <button
+                class="my-button"
                 @click="nextReviewPage"
                 :disabled="reviewCurrentPage === reviewTotalPages">
                 다음
@@ -745,12 +753,15 @@ const closeModal = () => {
       </div>
       <!-- 모달창 내용 -->
       <div class="st_modal">
-        <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
+        <div
+          v-if="showModal"
+          class="modal-overlay my-button"
+          @click.self="closeModal">
           <div class="modal-content">
             <h3>✨{{ maskedName(selectedReview.name) }}님의 이용후기✨</h3>
             <img :src="selectedReview.image" alt="후기 이미지" />
             <p>{{ selectedReview.content || "내용 없음" }}</p>
-            <button @click="closeModal">닫기</button>
+            <button class="my-button" @click="closeModal">닫기</button>
           </div>
         </div>
       </div>
@@ -809,19 +820,19 @@ const closeModal = () => {
   color: #555;
   &.custom-stepper {
     // only on your custom one
-    left: calc(45% - 600px);
+    left: calc(47.5% - 600px);
     width: 120px;
 
     &.hide-controls {
       // hide the nav & circles only when .hide-controls is present
-      :deep(.step-nav),
-      :deep(.circle) {
+      ::v-deep .step-nav,
+      ::v-deep .circle {
         display: none !important;
       }
     }
 
     // style all your labels
-    :deep(.label) {
+    ::v-deep .label {
       margin-top: 6px;
       font-size: 17px;
       cursor: pointer;
@@ -836,7 +847,7 @@ const closeModal = () => {
     }
 
     // active-step styles
-    :deep(.step.active .label) {
+    ::v-deep .step.active .label {
       border-bottom: 2px solid rgba($sub-color, 0.3);
       color: #555;
       font-weight: bold;
@@ -1289,5 +1300,10 @@ button {
       background-color: color.adjust($sub-color, $lightness: 20%) !important;
     }
   }
+}
+
+.my-button {
+  position: relative;
+  z-index: 4000; /* fixed-buttons(1000)보다 높게 */
 }
 </style>

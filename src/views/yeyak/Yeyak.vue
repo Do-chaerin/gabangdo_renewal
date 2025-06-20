@@ -428,7 +428,7 @@ watch(selectedDate, (val) => {
                 <input v-model="name" placeholder="이름을 입력하세요." />
               </div>
               <!-- 연락처 입력 -->
-              <div class="phone-input">
+              <div class="phone-input my-button">
                 <CustomSelect v-model="telPrefix" />
                 <input
                   v-model="formattedNumber"
@@ -446,14 +446,14 @@ watch(selectedDate, (val) => {
                 <div class="date">
                   <p class="st_section-title">이용날짜</p>
 
-                  <div>
+                  <div class="my-button">
                     <CalendarPicker class="wrapper" v-model="selectedDate" />
                   </div>
                 </div>
                 <!-- 시간 -->
                 <div class="time">
                   <p class="st_section-title">이용시간</p>
-                  <div>
+                  <div class="my-button">
                     <TimePicker
                       class="wrapper"
                       v-model="selectedTime"
@@ -484,8 +484,9 @@ watch(selectedDate, (val) => {
           <div ref="step3" id="step3" class="step-container">
             <div class="button-group">
               <p class="st_section-title">출발지</p>
-              <div class="start-btn">
+              <div class="start-btn my-button">
                 <button
+                  class="my-button"
                   v-for="place in startPlaces"
                   :key="place"
                   type="button"
@@ -498,14 +499,16 @@ watch(selectedDate, (val) => {
               </div>
             </div>
             <!-- 숙소명 직접 입력 -->
-            <div v-if="selectedStart === '숙소'" class="custom-start-input">
+            <div
+              v-if="selectedStart === '숙소'"
+              class="custom-start-input my-button">
               <input
                 type="text"
                 v-model="customStartInput"
                 placeholder="목적지의 주소를 입력하세요."
                 @focus="isStartConfirmed = false" />
               <button
-                class="custom-start"
+                class="custom-start my-button"
                 type="button"
                 @click="confirmCustomStart"
                 :disabled="!customStartInput.trim()"
@@ -517,8 +520,9 @@ watch(selectedDate, (val) => {
             <!-- 도착지 선택 -->
             <div class="button-group">
               <p class="st_section-title">도착지</p>
-              <div class="stop-btn">
+              <div class="stop-btn my-button">
                 <button
+                  class="my-button"
                   v-for="place in stopPlaces"
                   :key="place"
                   type="button"
@@ -531,14 +535,16 @@ watch(selectedDate, (val) => {
               </div>
             </div>
             <!-- 숙소명 직접 입력 -->
-            <div v-if="selectedStop === '숙소'" class="custom-stop-input">
+            <div
+              v-if="selectedStop === '숙소'"
+              class="custom-stop-input my-button">
               <input
                 type="text"
                 v-model="customStopInput"
                 placeholder="목적지의 주소를 입력하세요."
                 @focus="isStopConfirmed = false" />
               <button
-                class="custom-stop"
+                class="custom-stop my-button"
                 type="button"
                 @click="confirmCustomStop"
                 :disabled="!customStopInput.trim()"
@@ -572,15 +578,17 @@ watch(selectedDate, (val) => {
                     </p>
                   </div>
                   <div class="bag-controls-wrap">
-                    <div class="bag-controls">
+                    <div class="bag-controls my-button">
                       <button
                         @click="item.count > 0 && item.count--"
-                        class="ctrl-btn"
+                        class="ctrl-btn my-button"
                         :disabled="item.count === 0">
                         -
                       </button>
                       <span>{{ item.count }}</span>
-                      <button @click="item.count++" class="ctrl-btn">+</button>
+                      <button @click="item.count++" class="ctrl-btn my-button">
+                        +
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -609,7 +617,7 @@ watch(selectedDate, (val) => {
               <!-- ▶ 아이콘을 눌러 내용 열기/닫기 -->
               <button
                 type="button"
-                class="expand-btn"
+                class="expand-btn my-button"
                 @click.prevent="toggleAllContent">
                 {{ showAllContent ? "닫기" : "보기" }}
               </button>
@@ -675,7 +683,7 @@ watch(selectedDate, (val) => {
               <!-- ▶ 아이콘을 눌러 내용 열기/닫기 -->
               <button
                 type="button"
-                class="expand-btn"
+                class="expand-btn my-button"
                 @click.prevent="togglePrivacyContent">
                 {{ showPrivacyContent ? "닫기" : "보기" }}
               </button>
@@ -716,7 +724,7 @@ watch(selectedDate, (val) => {
               <!-- ▶ 아이콘을 눌러 내용 열기/닫기 -->
               <button
                 type="button"
-                class="expand-btn"
+                class="expand-btn my-button"
                 @click.prevent="toggleTermsContent">
                 {{ showTermsContent ? "닫기" : "보기" }}
               </button>
@@ -768,7 +776,7 @@ watch(selectedDate, (val) => {
           <!-- 예약하기버튼 -->
           <div ref="step5" id="step5" class="step-container">
             <div class="button">
-              <button class="st_reser" @click="submitReservation()">
+              <button class="my-button st_reser" @click="submitReservation()">
                 예약하기
               </button>
             </div>
@@ -1409,6 +1417,11 @@ select {
   }
 }
 
+.my-button {
+  position: relative;
+  z-index: 4000; /* fixed-buttons(1000)보다 높게 */
+}
+
 /* 모달 스타일 */
 .modal-backdrop {
   position: fixed;
@@ -1456,131 +1469,5 @@ select {
 }
 .modal-button:hover {
   background-color: #1e82d0;
-}
-/* 반응형 조정 */
-
-/* 태블릿 (화면 너비 768px 이하) */
-@media (max-width: 768px) {
-  /* 전체 래퍼 여백 */
-  .st_wrap {
-    padding: 0 16px;
-  }
-
-  /* 제목 크기 축소 */
-  .yy_title1 .title_txt1 h1 {
-    font-size: 32px;
-  }
-
-  /* 스텝퍼 가로 스크롤, 너비 자동 */
-  .sticky-stepper {
-    width: auto;
-    padding: 5px;
-  }
-
-  /* 폼 섹션 전체 너비 및 패딩 조정 */
-  .form-section {
-    max-width: 100%;
-    padding: 20px;
-  }
-
-  /* 날짜/시간 영역 한 컬럼으로 변경 */
-  .reservation-form .date-time {
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 10px;
-  }
-
-  /* 당일/사전 안내 문구 세로 정렬 */
-  .date-info {
-    flex-direction: column;
-    align-items: flex-start;
-    padding-left: 0;
-    gap: 4px;
-  }
-
-  /* 출발/도착 버튼 세로 스택 */
-  .button-group .start-btn,
-  .button-group .stop-btn {
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  /* 맞춤 입력 필드 세로 정렬 */
-  .custom-start-input,
-  .custom-stop-input {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-  }
-
-  /* 가방 리스트 항목 한 컬럼 */
-  .bag-list .bag-item {
-    grid-template-columns: 1fr;
-  }
-
-  /* 합계 영역 세로 스택 */
-  .st_summary {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  /* 약관 내용 스크롤 높이 확장 */
-  .terms-box {
-    max-height: 40vh;
-  }
-
-  /* 모달 너비 조정 */
-  .modal-content {
-    width: 90%;
-  }
-}
-
-/* 모바일 (화면 너비 390px 이하) */
-@media (max-width: 390px) {
-  /* 제목 더 축소 */
-  .yy_title1 .title_txt1 h1 {
-    font-size: 28px;
-  }
-
-  /* 입력, 버튼 폰트 및 높이 축소 */
-  input,
-  select {
-    font-size: 14px;
-    height: 36px;
-  }
-
-  /* 날짜/시간 라벨 크기 축소 */
-  .reservation-form .date .st_section-title,
-  .reservation-form .time .st_section-title {
-    font-size: 14px;
-  }
-
-  /* 가방 항목 패딩 및 버튼 크기 축소 */
-  .bag-list .bag-item {
-    padding: 8px;
-  }
-  .bag-controls .ctrl-btn {
-    width: 24px;
-    height: 24px;
-    font-size: 13px;
-  }
-
-  /* 합계 폰트 크기 축소 */
-  .st_summary {
-    font-size: 20px;
-  }
-
-  /* 펼침 버튼 텍스트 및 패딩 축소 */
-  .expand-btn {
-    font-size: 12px;
-    padding: 2px 6px;
-  }
-
-  /* 모달 내용 크기 축소 */
-  .modal-content {
-    padding: 20px;
-    width: 300px;
-  }
 }
 </style>
