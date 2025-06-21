@@ -226,13 +226,11 @@ function goToNextPage() {
   <!-- 전체 -->
   <div class="wrap_total">
     <!-- 이너 -->
-    <div class="st_wrap">
+    <div class="inner">
       <!-- 타이틀 -->
-      <div class="yy_title1">
-        <div class="title_txt1"><h1>예약조회</h1></div>
-      </div>
+      <div class="title_txt1"><h1>예약조회</h1></div>
       <!-- 본문 테두리 -->
-      <div class="st_line">
+      <div class="line">
         <!-- 본문 박스 -->
         <div class="text-box">
           <!-- 요약 정보 -->
@@ -257,16 +255,12 @@ function goToNextPage() {
             </template>
           </div>
           <!-- 버튼 -->
-          <div class="st_button">
+          <div class="button-group">
             <div class="button">
-              <button class="st_cancle my-button" @click="openCancelModal">
-                취소하기
-              </button>
+              <button class="cancle" @click="openCancelModal">취소하기</button>
             </div>
             <div class="button">
-              <button class="my-button st_reser" @click="goToNextPage">
-                처음으로
-              </button>
+              <button class="reser" @click="goToNextPage">처음으로</button>
             </div>
           </div>
         </div>
@@ -303,30 +297,7 @@ function goToNextPage() {
 @use "/src/assets/Main.scss" as *;
 @use "/src/assets/Variables.scss" as *;
 
-// 전체 래퍼
-.st_wrap {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  flex-direction: column;
-  font-family: $font-family;
-}
-.yy_title1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding-bottom: 30px;
-  .title_txt1 h1 {
-    font-size: 40px;
-    font-family: $font-ownglyph;
-  }
-}
-.st_line {
+.line {
   width: 100%;
   max-width: 600px;
   box-sizing: border-box;
@@ -396,7 +367,7 @@ function goToNextPage() {
   width: 90%;
   margin: 10px auto;
 }
-.st_button {
+.button-group {
   display: flex;
   gap: 20px;
 }
@@ -407,7 +378,7 @@ function goToNextPage() {
   justify-content: center;
   align-items: center;
   text-align: center;
-  .st_cancle {
+  .cancle {
     width: 120px;
     height: 40px;
     background-color: $red-holiday;
@@ -420,11 +391,11 @@ function goToNextPage() {
     margin: 15px;
     display: block;
   }
-  .st_cancle:hover {
+  .cancle:hover {
     background-color: #a80311;
     color: #fff;
   }
-  .st_reser {
+  .reser {
     width: 120px;
     height: 40px;
     background-color: color.adjust($main-color, $lightness: 30%);
@@ -437,15 +408,11 @@ function goToNextPage() {
     margin: 15px;
     display: block;
   }
-  .st_reser:hover {
+  .reser:hover {
     background-color: color.adjust($sub-color, $lightness: 20%) !important;
   }
 }
 
-.my-button {
-  position: relative;
-  z-index: 4000; /* fixed-buttons(1000)보다 높게 */
-}
 // 모달 배경
 .modal-overlay {
   position: fixed;

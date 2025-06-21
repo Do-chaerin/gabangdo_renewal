@@ -10,9 +10,10 @@
             <router-link to="/worker/ddashboard">
               <div class="logo">
                 <img
-                  src="/public/images/yr/delivery/logoL.png"
+                  src="/images/yr/delivery/logoL.png"
                   alt="로고"
-                  class="w-15 h-5" />
+                  class="w-15 h-5"
+                />
               </div>
             </router-link>
           </button>
@@ -20,16 +21,18 @@
             <router-link to="/worker/assigned-jobs">
               <button>
                 <img
-                  src="/public/images/yr/delivery/check_icon.png"
+                  src="/images/yr/delivery/check_icon.png"
                   alt="체크"
-                  class="w-[20px] h-[20px] mt-[3px]" />
+                  class="w-[20px] h-[20px] mt-[3px]"
+                />
               </button>
             </router-link>
             <router-link to="/worker/assign">
               <img
-                src="/public/images/yr/delivery/alert.png"
+                src="/images/yr/delivery/alert.png"
                 alt="알림"
-                class="w-[20px] h-[20px] mt-[3px]" />
+                class="w-[20px] h-[20px] mt-[3px]"
+              />
             </router-link>
           </div>
         </div>
@@ -38,14 +41,15 @@
         <div class="flex items-center mb-4">
           <div class="w-12 h-12 rounded-full mr-3">
             <img
-              src="/public/images/yr/delivery/profile.png"
+              src="/images/yr/delivery/profile.png"
               alt="프로필"
-              class="w-full h-full rounded-full object-cover" />
+              class="w-full h-full rounded-full object-cover"
+            />
           </div>
           <div>
             <router-link to="/worker/profile">
               <p class="text-lg font-semibold underline underline-offset-4">
-                이준호 기사님
+                홍길동 기사님
               </p>
             </router-link>
             <p class="text-sm text-gray-300">오늘도 안전 운행 하세요!</p>
@@ -81,9 +85,10 @@
             showMap
               ? 'bg-green-500 hover:bg-green-600'
               : 'bg-blue-500 hover:bg-blue-600',
-          ]">
+          ]"
+        >
           <!-- <img
-            src="/public/images/yr/delivery/map_icon.png"
+            src="/images/yr/delivery/map_icon.png"
             alt="지도 아이콘"
             class="w-4 h-4" /> -->
           {{ showMap ? "지도 닫기" : "지도 보기" }}
@@ -100,7 +105,8 @@
         <!-- 상단 상태 탭 -->
         <!-- 상태 탭 -->
         <div
-          class="flex justify-between text-sm font-semibold text-gray-400 mb-4">
+          class="flex justify-between text-sm font-semibold text-gray-400 mb-4"
+        >
           <button
             v-for="status in statusTabs"
             :key="status"
@@ -110,7 +116,8 @@
               selectedStatus === status
                 ? 'text-blue-500 border-b-2 border-blue-500'
                 : 'border-b-2 border-gray-900 mt-1',
-            ]">
+            ]"
+          >
             {{ status }}
           </button>
         </div>
@@ -136,7 +143,8 @@
                   : selectedLocation === location
                   ? 'border-green-400 text-green-500 bg-white'
                   : 'border-gray-300 text-gray-500 bg-white',
-              ]">
+              ]"
+            >
               {{ location }}
             </button>
           </div>
@@ -147,17 +155,20 @@
               <!-- 시계 아이콘 버튼 -->
               <button
                 class="w-8 h-8 rounded-lg bg-green-500 text-sm flex items-center justify-center"
-                @click="showPopup = !showPopup">
+                @click="showPopup = !showPopup"
+              >
                 <img
-                  src="/public/images/yr/delivery/clock_icon.png"
+                  src="/images/yr/delivery/clock_icon.png"
                   alt="clock"
-                  class="p-1" />
+                  class="p-1"
+                />
               </button>
 
               <!-- 팝업 메뉴 -->
               <div
                 v-if="showPopup"
-                class="absolute top-full left-0 mt-1 w-[60px] bg-white border rounded shadow z-10 text-center text-black">
+                class="absolute top-full left-0 mt-1 w-[60px] bg-white border rounded shadow z-10 text-center text-black"
+              >
                 <button
                   v-for="(time, index) in timeOptions"
                   :key="index"
@@ -167,21 +178,24 @@
                     selectedTime === time
                       ? 'bg-blue-100 font-semibold text-blue-600'
                       : '',
-                  ]">
+                  ]"
+                >
                   {{ time }}
                 </button>
               </div>
             </div>
             <button
               @click="isAsc = !isAsc"
-              class="w-8 h-8 rounded-lg bg-blue-500 text-sm flex items-center justify-center p-0.5">
+              class="w-8 h-8 rounded-lg bg-blue-500 text-sm flex items-center justify-center p-0.5"
+            >
               <img
                 :src="
                   isAsc
-                    ? '/public/images/yr/delivery/asc_icon.png'
-                    : '/public/images/yr/delivery/desc_icon.png'
+                    ? '/images/yr/delivery/asc_icon.png'
+                    : '/images/yr/delivery/desc_icon.png'
                 "
-                alt="정렬 아이콘" />
+                alt="정렬 아이콘"
+              />
             </button>
           </div>
         </div>
@@ -196,7 +210,7 @@
         <!-- 내부 콘텐츠 wrapper (350px 고정) -->
         <div class="w-[350px] mx-auto py-4">
           <!-- 1번째줄 탭버튼만 눌렀을때 -->
-          <CardAll v-if="selectedStatus === '전체'" />
+          <CardWaiting v-if="selectedStatus === '전체'" />
           <CardWaiting v-if="selectedStatus === '대기중'" />
           <CardProceed v-if="selectedStatus === '진행중'" />
           <CardComplete v-if="selectedStatus === '완료'" />
@@ -204,39 +218,47 @@
           <!-- 1번째 2번째줄 혼합 -->
           <!-- 전체 -->
           <LocationAirportWaiting
-            v-if="selectedStatus === '전체' && selectedLocation === '공항'" />
+            v-if="selectedStatus === '전체' && selectedLocation === '공항'"
+          />
           <LocationSubwayWaiting
-            v-if="selectedStatus === '전체' && selectedLocation === '기차역'" />
+            v-if="selectedStatus === '전체' && selectedLocation === '기차역'"
+          />
           <LocationHomeWaiting
-            v-if="selectedStatus === '전체' && selectedLocation === '숙소'" />
+            v-if="selectedStatus === '전체' && selectedLocation === '숙소'"
+          />
 
           <!-- 대기중 -->
           <LocationAirportWaiting
-            v-if="selectedStatus === '대기중' && selectedLocation === '공항'" />
+            v-if="selectedStatus === '대기중' && selectedLocation === '공항'"
+          />
           <LocationSubwayWaiting
-            v-if="
-              selectedStatus === '대기중' && selectedLocation === '기차역'
-            " />
+            v-if="selectedStatus === '대기중' && selectedLocation === '기차역'"
+          />
           <LocationHomeWaiting
-            v-if="selectedStatus === '대기중' && selectedLocation === '숙소'" />
+            v-if="selectedStatus === '대기중' && selectedLocation === '숙소'"
+          />
 
           <!-- 진행중 -->
           <LocationAirportProceed
-            v-if="selectedStatus === '진행중' && selectedLocation === '공항'" />
+            v-if="selectedStatus === '진행중' && selectedLocation === '공항'"
+          />
           <LocationSubwayProceed
-            v-if="
-              selectedStatus === '진행중' && selectedLocation === '기차역'
-            " />
+            v-if="selectedStatus === '진행중' && selectedLocation === '기차역'"
+          />
           <LocationHomeProceed
-            v-if="selectedStatus === '진행중' && selectedLocation === '숙소'" />
+            v-if="selectedStatus === '진행중' && selectedLocation === '숙소'"
+          />
 
           <!-- 완료 -->
           <LocationAirportComplete
-            v-if="selectedStatus === '완료' && selectedLocation === '공항'" />
+            v-if="selectedStatus === '완료' && selectedLocation === '공항'"
+          />
           <LocationSubwayComplete
-            v-if="selectedStatus === '완료' && selectedLocation === '기차역'" />
+            v-if="selectedStatus === '완료' && selectedLocation === '기차역'"
+          />
           <LocationHomeComplete
-            v-if="selectedStatus === '완료' && selectedLocation === '숙소'" />
+            v-if="selectedStatus === '완료' && selectedLocation === '숙소'"
+          />
         </div>
       </div>
     </div>
@@ -247,8 +269,6 @@ import KakaoMap from "@/components/KakaoMap.vue";
 import { ref, computed } from "vue";
 
 // 카드컴포넌트
-// 전체
-import CardAll from "@/src/components/Cards/CardAll/CardAll.vue";
 // 대기중
 import CardWaiting from "@/components/CardWaiting.vue";
 
@@ -257,8 +277,6 @@ import CardProceed from "@/components/CardProceed.vue";
 
 // 완료
 import CardComplete from "@/components/CardComplete.vue";
-
-
 
 // 2번째줄 포함
 // 대기중

@@ -34,15 +34,14 @@
           <div class="flex items-center space-x-3">
             <img src="/images/yr/delivery/profile.png" alt="" />
             <div>
-              <p class="font-semibold">이준호 기사님</p>
+              <p class="font-semibold">홍길동 기사님</p>
             </div>
             <div
-              class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs mt-[1px]">
-              <img src="/images/yr/delivery/level2.png" alt="" />
+              class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs">
+              <img src="/images/yr/delivery/grade1.png" alt="" />
             </div>
           </div>
           <button
-            onclick="document.getElementById('modal').style.display='flex'"
             class="text-[13px] text-[#279BF3] border border-[#279BF3] bg-white px-2 py-1 rounded-2xl font-semibold">
             등급확인
           </button>
@@ -61,117 +60,85 @@
 
       <!-- 운반 가능 수화물 -->
       <div class="bg-white rounded-lg shadow">
-        <div class="bg-white pr-4 pl-4 pb-[0.1px] pt-[11px] rounded-t-2xl rounded-b-none">
-          <div class="flex justify-between items-center mb-3 border-b-[2px] border-gray-700">
+        <div
+          class="bg-white pr-4 pl-4 pb-[0.1px] pt-[11px] rounded-t-2xl rounded-b-none">
+          <div
+            class="flex justify-between items-center mb-3 border-b-[2px] border-gray-700">
             <p class="font-medium">운반 가능 수화물</p>
             <button>
               <div class="w-4 h-4">
-                <!-- <img src="/images/yr/delivery/arrowL.png" alt="" /> -->
+                <img src="/images/yr/delivery/arrowL.png" alt="" />
               </div>
             </button>
           </div>
         </div>
-
         <div class="flex flex-wrap gap-2 pl-4 pr-4 pb-4 pt-2 mb-2">
           <button
-            @click="toggleLuggage('소형')"
-            :class="['luggage-btn flex items-center px-3 py-1 rounded-lg text-[15px]', isActive('소형') ? 'bg-green-500 text-white' : 'bg-gray-300 text-white']"
-          >
+            class="bg-green-500 text-white px-3 py-1 rounded-lg text-[15px] flex">
             <img
-              :src="isActive('소형') ? '/images/yr/delivery/check_white.png' : '/images/yr/delivery/cancel_white.png'"
-              :class="['icon w-4', isActive('소형') ? 'h-5 mr-1' : 'h-4 mr-1 mt-[2.2px]']"
-              alt="아이콘"
-            />
+              src="/images/yr/delivery/check_white.png"
+              alt=""
+              class="w-4 h-5 mr-1" />
             <span>소형</span>
           </button>
-
           <button
-            @click="toggleLuggage('중형')"
-            :class="['luggage-btn flex items-center px-3 py-1 rounded-lg text-[15px]', isActive('중형') ? 'bg-green-500 text-white' : 'bg-gray-300 text-white']"
-          >
+            class="bg-green-500 text-white px-3 py-1 rounded-lg text-[15px] flex">
             <img
-              :src="isActive('중형') ? '/images/yr/delivery/check_white.png' : '/images/yr/delivery/cancel_white.png'"
-              :class="['icon w-4', isActive('중형') ? 'h-5 mr-1' : 'h-4 mr-1 mt-[2.2px]']"
-              alt="아이콘"
-            />
-            <span>중형</span>
-          </button>
-
-          <button
-            @click="toggleLuggage('대형')"
-            :class="['luggage-btn flex items-center px-3 py-1 rounded-lg text-[15px]', isActive('대형') ? 'bg-green-500 text-white' : 'bg-gray-300 text-white']"
-          >
-            <img
-              :src="isActive('대형') ? '/images/yr/delivery/check_white.png' : '/images/yr/delivery/cancel_white.png'"
-              :class="['icon w-4', isActive('대형') ? 'h-5 mr-1' : 'h-4 mr-1 mt-[2.2px]']"
-              alt="아이콘"
-            />
+              src="/images/yr/delivery/check_white.png"
+              alt=""
+              class="w-4 h-5 mr-1" />
             <span>대형</span>
           </button>
-
           <button
-            @click="toggleLuggage('특대형')"
-            :class="['luggage-btn flex items-center px-3 py-1 rounded-lg text-[15px]', isActive('특대형') ? 'bg-green-500 text-white' : 'bg-gray-300 text-white']"
-          >
+            class="bg-gray-300 text-white px-3 py-1 rounded-lg text-[15px] flex">
             <img
-              :src="isActive('특대형') ? '/images/yr/delivery/check_white.png' : '/images/yr/delivery/cancel_white.png'"
-              :class="['icon w-4', isActive('특대형') ? 'h-5 mr-1' : 'h-4 mr-1 mt-[2.2px]']"
-              alt="아이콘"
-            />
+              src="/images/yr/delivery/cancel_white.png"
+              alt=""
+              class="w-4 h-4 mr-1 mt-[2.2px]" />
+            <span>대형</span>
+          </button>
+          <button
+            class="bg-gray-300 text-white px-3 py-1 rounded-lg text-[15px] flex">
+            <img
+              src="/images/yr/delivery/cancel_white.png"
+              alt=""
+              class="w-4 h-4 mr-1 mt-[2.2px]" />
             <span>특대형</span>
           </button>
         </div>
       </div>
-
 
       <!-- 선호 지역 -->
       <div class="bg-white rounded-lg shadow px-4 py-3 mb-2">
         <div class="flex justify-between">
           <p class="font-medium mb-2">나의 선호 지역</p>
           <button>
-            <!-- <img
+            <img
               src="/images/yr/delivery/arrowL.png"
               class="w-4 h-4"
-              alt="" /> -->
+              alt="" />
           </button>
         </div>
-      <div class="flex gap-2 items-end justify-center">
-        <button 
-          @click="togglePreference('공항')"
-          :class="[
-            'rounded-lg px-[20px] py-[10px] text-sm font-semibold shadow border',
-            preferenceState['공항']
-              ? 'border-gray-400 text-gray-500 bg-white'
-              : 'border-blue-400 text-blue-500 bg-white',
-          ]"
-        >
-          공항
-        </button>
-
-        <button
-          @click="togglePreference('기차역')"
-          :class="[
-            'rounded-lg px-[15px] py-[10px] text-sm font-semibold shadow border',
-            preferenceState['기차역']
-              ? 'border-gray-400 text-gray-500 bg-white'
-              : 'border-orange-300 text-orange-500 bg-white',
-          ]"
-        >
-          기차역
-        </button>
-
-        <button
-          @click="togglePreference('숙소')"
-          :class="[
-            'rounded-lg px-[20px] py-[10px] text-sm font-semibold shadow border mr-[15px]',
-            preferenceState['숙소']
-              ? 'border-gray-400 text-gray-500 bg-white'
-              : 'border-green-300 text-green-500 bg-white',
-          ]"
-        >
-          숙소
-        </button>
-      </div>
+        <div class="flex justify-between gap-5">
+          <p
+            class="text-sm text-gray-600 mb-2 pl-[15px] pt-[8px] font-semibold">
+            출발지
+          </p>
+          <div class="flex gap-2">
+            <button
+              class="border border-blue-400 text-blue-500 bg-white rounded-lg px-[20px] py-[10px] text-sm font-semibold shadow">
+              공항
+            </button>
+            <button
+              class="border border-orange-300 text-orange-500 bg-white rounded-lg px-[15px] py-[10px] text-sm font-semibold shadow">
+              기차역
+            </button>
+            <button
+              class="border border-gray-300 text-gray-500 bg-white rounded-lg px-[20px] py-[10px] text-sm font-semibold shadow mr-[15px]">
+              숙소
+            </button>
+          </div>
+        </div>
       </div>
 
       <!-- 교육 이수 내역 -->
@@ -221,117 +188,4 @@
       </div>
     </div>
   </div>
-
-<!-- 모달 배경 -->
-<div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50" style="display: none;">
-  <div class="w-[250px] bg-white rounded-xl shadow-lg overflow-hidden">
-    <!-- 상단 헤더 -->
-    <div class="bg-blue-500 text-white text-center py-2 text-sm font-semibold text-[18px]">
-      등급별 분류
-    </div>
-
-    <!-- 등급 내용 -->
-    <div class="w-[230px] mx-auto mt-4 space-y-4 text-[11px] text-gray-700 pl-[8px]">
-      <!-- 등급 1 -->
-      <div class="flex items-start gap-2">
-        <img src="/images/yr/delivery/level1.png" alt="씨앗" class="w-12 h-10" />
-        <div>
-          <p class="font-semibold text-black text-[13px]">씨앗등급</p>
-          <p>기사님들 중 상위 75 - 100% 이내</p>
-        </div>
-      </div>
-      <!-- 등급 2 -->
-      <div class="flex items-start gap-2">
-        <img src="/images/yr/delivery/level2.png" alt="새싹" class="w-12 h-10" />
-        <div>
-          <p class="font-bold text-black text-[13px]">새싹등급</p>
-          <p>기사님들 중 상위 50 - 80% 이내</p>
-        </div>
-      </div>
-      <!-- 등급 3 -->
-      <div class="flex items-start gap-2">
-        <img src="/images/yr/delivery/level3.png" alt="꽃" class="w-12 h-10" />
-        <div>
-          <p class="font-bold text-black text-[13px]">새싹등급</p>
-          <p>기사님들 중 상위 25 - 60% 이내</p>
-        </div>
-      </div>
-      <!-- 등급 4 -->
-      <div class="flex items-start gap-2">
-        <img src="/images/yr/delivery/level4.png" alt="토마토" class="w-12 h-10" />
-        <div>
-          <p class="font-bold text-black text-[13px]">새싹등급</p>
-          <p>기사님들 중 상위 0 - 25% 이내</p>
-        </div>
-      </div>
-          <!-- 닫기 버튼 -->
-    <div class="flex my-4 pl-[145px] pb-[10px]">
-      <button
-        onclick="document.getElementById('modal').style.display='none'"
-        class="bg-gray-500 text-white text-sm px-6 py-1.5 rounded hover:bg-gray-600">
-        닫기
-      </button>
-    </div>
-    </div>
-
-
-  </div>
-</div>
-
-
 </template>
-
-<script>
-  function toggleLuggage(btn) {
-    const img = btn.querySelector('.icon');
-    const isActive = btn.classList.contains('bg-green-500');
-
-    if (isActive) {
-      // 초록 ➜ 회색 + 엑스 아이콘
-      btn.classList.remove('bg-green-500');
-      btn.classList.add('bg-gray-300');
-      img.src = '/images/yr/delivery/cancel_white.png';
-      img.classList.remove('w-4', 'h-5');
-      img.classList.add('w-4', 'h-4', 'mt-[2.2px]');
-    } else {
-      // 회색 ➜ 초록 + 체크 아이콘
-      btn.classList.remove('bg-gray-300');
-      btn.classList.add('bg-green-500');
-      img.src = '/images/yr/delivery/check_white.png';
-      img.classList.remove('h-4', 'mt-[2.2px]');
-      img.classList.add('h-5');
-    }
-  }
-export default {
-  data() {
-    return {
-      selectedLuggage: [
-
-      ],
-      preferenceState: {
-        공항: false,
-        기차역: false,
-        숙소: true,
-      },
-    };
-  },
-  methods: {
-    toggleLuggage(size) {
-      const idx = this.selectedLuggage.indexOf(size);
-      if (idx === -1) {
-        this.selectedLuggage.push(size);
-      } else {
-        this.selectedLuggage.splice(idx, 1);
-      }
-    },
-    isActive(size) {
-      return this.selectedLuggage.includes(size);
-    },
-    togglePreference(location) {
-      this.preferenceState[location] = !this.preferenceState[location];
-    },
-  },
-};
-
-
-</script>

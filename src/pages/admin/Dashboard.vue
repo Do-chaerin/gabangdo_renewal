@@ -17,7 +17,7 @@
           <div class="ml-0 min-[900px]:ml-4">
             <h3
               class="block max-[510px]:hidden text-sm font-medium text-ray-500 dark:text-white">
-              오늘예약<span class="text-xs text-gray-500 dark:text-white">
+              전체예약<span class="text-xs text-gray-500 dark:text-white">
                 / 매출현황</span
               >
             </h3>
@@ -29,7 +29,7 @@
             </h3>
             <p
               class="text-2xl max-[510px]:text-lg leading-9 font-semibold text-gray-800 dark:text-white">
-              50<span
+              120<span
                 class="text-lg max-[510px]:text-sm font-semibold text-gray-800 dark:text-white"
                 >/+20%</span
               >
@@ -54,7 +54,7 @@
             </h3>
             <p
               class="text-2xl max-[510px]:text-lg font-semibold text-gray-800 dark:text-white">
-              7<span class="man dark:text-white">/{{ totalWorkers }}</span>
+              12<span class="man dark:text-white">/{{ totalWorkers }}</span>
             </p>
             <span class="span text-sm text-green-600 dark:text-green-300"
               >+2명</span

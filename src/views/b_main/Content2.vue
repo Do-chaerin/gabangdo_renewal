@@ -30,13 +30,14 @@
             spaceBetween: 30,
           },
         }"
-        class="mySwiper">
+        class="mySwiper"
+      >
         <!-- 리뷰카드1 -->
         <swiper-slide>
           <div class="Reviews">
             <!-- 사진 -->
             <div class="cardImg">
-              <img src="/public/images/carrier2.png" alt="" />
+              <img src="/images/carrier2.png" alt="" />
             </div>
             <!-- 이름 -->
             <div class="name">
@@ -54,7 +55,7 @@
           <div class="Reviews">
             <!-- 사진 -->
             <div class="cardImg">
-              <img src="/public/images/carrier3.png" alt="" />
+              <img src="/images/carrier3.png" alt="" />
             </div>
             <!-- 이름 -->
             <div class="name">
@@ -72,7 +73,7 @@
           <div class="Reviews">
             <!-- 사진 -->
             <div class="cardImg">
-              <img src="/public/images/carrier5.png" alt="" />
+              <img src="/images/carrier5.png" alt="" />
             </div>
             <!-- 이름 -->
             <div class="name">
@@ -93,7 +94,7 @@
           <div class="Reviews">
             <!-- 사진 -->
             <div class="cardImg">
-              <img src="/public/images/carrier6.png" alt="" />
+              <img src="/images/carrier6.png" alt="" />
             </div>
             <!-- 이름 -->
             <div class="name">
@@ -111,7 +112,7 @@
           <div class="Reviews">
             <!-- 사진 -->
             <div class="cardImg">
-              <img src="/public/images/carrier4.png" alt="" />
+              <img src="/images/carrier4.png" alt="" />
             </div>
             <!-- 이름 -->
             <div class="name">
@@ -129,7 +130,7 @@
           <div class="Reviews">
             <!-- 사진 -->
             <div class="cardImg">
-              <img src="/public/images/carrier1.png" alt="" />
+              <img src="/images/carrier1.png" alt="" />
             </div>
             <!-- 이름 -->
             <div class="name">

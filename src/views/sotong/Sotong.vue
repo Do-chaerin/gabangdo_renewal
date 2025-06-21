@@ -332,7 +332,7 @@ const nextNoticePage = () => {
 // 카테고리 선택
 function setCategory(cat) {
   selectedCategory.value = cat;
-  currentPage.value = 1;
+  noticeCurrentPage.value = 1;
   activeIndex.value = null;
 }
 //이용후기
@@ -468,7 +468,7 @@ const maskedName = (name) => name.charAt(0) + "*".repeat(name.length - 1);
 
 // 페이지네이션 상태
 const reviewCurrentPage = ref(1);
-const reviewItemsPerPage = 8; // 한 페이지당 8개 상품 표시
+const reviewItemsPerPage = 6; // 한 페이지당 8개 상품 표시
 
 // 총 페이지 수 계산
 const reviewTotalPages = computed(() =>
@@ -547,7 +547,7 @@ const closeModal = () => {
 
 <template>
   <div class="wrap_total">
-    <div class="st_wrap">
+    <div class="inner">
       <!-- 스텝퍼 네비바 -->
       <ProgressStepper
         v-show="showStepper"
@@ -555,21 +555,20 @@ const closeModal = () => {
         :selectors="['#step1', '#step2', '#step3']"
         :stepIndex="stepIndex"
         @go="scrollToSection"
-        class="sticky-stepper hide-controls custom-stepper" />
+        class="sticky-stepper hide-controls custom-stepper"
+      />
       <!-- 고객센터 섹션 -->
-      <div class="st_customer">
+      <div class="customer">
         <div ref="step1" id="step1" class="step-container">
           <!-- 타이틀 -->
-          <div class="st_title1">
-            <div class="title_txt1">
-              <h1>고객센터</h1>
-            </div>
+          <div class="title_txt">
+            <h1>고객센터</h1>
           </div>
-          <div class="st_info">
-            <img src="/images/cr/st_notice.png" alt="상담원" class="st_image" />
-            <div class="st_details">
-              <p class="st_phone">053-123-1234</p>
-              <ul class="st_hours">
+          <div class="info">
+            <img src="/images/cr/st_notice.png" alt="상담원" class="image" />
+            <div class="details">
+              <p class="phone">053-123-1234</p>
+              <ul class="hours">
                 <li>평일 : 09:00 – 18:00</li>
                 <li>토요일 : 09:00 – 13:00</li>
                 <li>일요일 : 휴무 (예약일정에 따라 변동)</li>
@@ -579,59 +578,58 @@ const closeModal = () => {
         </div>
       </div>
       <!-- 구분선 -->
-      <div class="line"></div>
+      <div class="divider"></div>
       <!-- 공지사항 섹션 -->
-      <div class="st_notice">
+      <div class="notice">
         <div ref="step2" id="step2" class="step-container">
           <!-- 타이틀 -->
-          <div class="st_title1">
-            <div class="title_txt1">
-              <h1>FAQ</h1>
-            </div>
+          <div class="title_txt">
+            <h1>FAQ</h1>
           </div>
           <!-- 검색어입력 -->
-          <div class="st_search-wrapper">
+          <div class="search-wrapper">
             <input
               v-model="searchQuery"
-              class="st_search"
+              class="search"
               type="text"
-              placeholder="검색어를 입력하세요" />
-            <button class="st_search-btn my-button" @click="onSearch">
-              검색
-            </button>
+              placeholder="검색어를 입력하세요"
+            />
+            <button class="search-btn" @click="onSearch">검색</button>
           </div>
           <!-- 카테고리버튼 -->
-          <div class="st_category-buttons">
+          <div class="category-buttons">
             <button
               v-for="cat in categories"
               :key="cat"
               @click="setCategory(cat)"
               :class="{ active: selectedCategory === cat }"
-              class="st_category-btn my-button">
+              class="category-btn"
+            >
               {{ cat }}
             </button>
           </div>
           <!-- 공지사항 출력 -->
-          <table class="st_notice-table">
-            <tbody class="st_scrollable-body">
+          <table class="notice-table">
+            <tbody class="scrollable-body">
               <template v-for="(notice, idx) in paginatedNotices" :key="idx">
-                <tr class="notice-row my-button" @click="toggleNotice(idx)">
+                <tr class="notice-row" @click="toggleNotice(idx)">
                   <td>
                     <div class="notice-row_title">
                       {{ notice.title }}
                       <img
-                        class="st_toggle-icon my-button"
+                        class="toggle-icon"
                         :src="
                           activeIndex === idx
                             ? '/images/cr/up.png'
                             : '/images/cr/down.png'
                         "
-                        alt="토글 아이콘" />
+                        alt="토글 아이콘"
+                      />
                     </div>
                   </td>
                 </tr>
                 <tr v-if="activeIndex === idx">
-                  <td class="notice-row_content my-button">
+                  <td class="notice-row_content">
                     <div class="notice_content">
                       {{ notice.content }}
                     </div>
@@ -641,53 +639,49 @@ const closeModal = () => {
             </tbody>
           </table>
           <!-- 페이지네이션 -->
-          <div class="st_pagination my-button">
-            <button
-              class="my-button"
-              @click="prevNoticePage"
-              :disabled="noticeCurrentPage === 1">
+          <div class="pagination">
+            <button @click="prevNoticePage" :disabled="noticeCurrentPage === 1">
               이전
             </button>
             <span>{{ noticeCurrentPage }} / {{ noticeTotalPages }}</span>
             <button
-              class="my-button"
               @click="nextNoticePage"
-              :disabled="noticeCurrentPage === noticeTotalPages">
+              :disabled="noticeCurrentPage === noticeTotalPages"
+            >
               다음
             </button>
           </div>
         </div>
       </div>
       <!-- 구분선 -->
-      <div class="line"></div>
+      <div class="divider"></div>
       <!-- 이용후기 섹션 -->
-      <div class="st_review">
+      <div class="review">
         <div ref="step3" id="step3" class="step-container">
           <!-- 타이틀 -->
-          <div class="st_title1">
-            <div class="title_txt1">
-              <h1>이용후기</h1>
-            </div>
+          <div class="title_txt">
+            <h1>이용후기</h1>
           </div>
           <!-- 카드이용후기 -->
-          <div class="st_bottom">
-            <div class="st_card-container">
+          <div class="bottom">
+            <div class="card-container">
               <div
-                class="st_card my-button"
+                class="card"
                 v-for="product in paginatedProducts"
                 :key="product.image"
-                @click="openModal(product)">
-                <div class="st_img-product">
+                @click="openModal(product)"
+              >
+                <div class="img-product">
                   <img :src="product.image" alt="Product" />
                 </div>
-                <div class="st_detail">
-                  <div class="st_title">
-                    <div class="st_tag">
+                <div class="detail">
+                  <div class="title">
+                    <div class="tag">
                       <a v-for="tag in tags" :href="tag.link" :key="tag.name">
                         <span>{{ tag.tag }}</span>
                       </a>
                     </div>
-                    <div class="st_text">
+                    <div class="text">
                       <h6>{{ maskedName(product.name) }}님의 이용후기입니다</h6>
                       <span>{{ product.content }}</span>
                     </div>
@@ -698,7 +692,7 @@ const closeModal = () => {
             <!-- 리뷰작성 -->
             <div class="write-btn-wrapper">
               <!-- 글쓰기 폼 오픈 버튼 -->
-              <button @click="showForm = !showForm" class="write-btn my-button">
+              <button @click="showForm = !showForm" class="write-btn">
                 {{ showForm ? "취소" : "글쓰기" }}
               </button>
               <!-- 글쓰기 폼 -->
@@ -706,45 +700,50 @@ const closeModal = () => {
                 <input
                   type="text"
                   v-model="newReview.name"
-                  placeholder="이름" />
+                  placeholder="이름"
+                />
                 <textarea
                   v-model="newReview.content"
-                  placeholder="후기내용"></textarea>
+                  placeholder="후기내용"
+                ></textarea>
                 <input
                   type="file"
                   @change="handleImageUpload"
-                  accept="image/*" />
+                  accept="image/*"
+                />
                 <img v-if="previewImage" :src="previewImage" width="120" />
                 <!-- 후기 등록·취소버튼 -->
-                <div class="form-buttons my-button">
+                <div class="form-buttons">
                   <button
-                    class="form-buttons2 my-button"
+                    class="form-buttons2"
                     type="button"
-                    @click="cancelForm">
+                    @click="cancelForm"
+                  >
                     취소
                   </button>
                   <button
-                    class="form-buttons1 my-button"
+                    class="form-buttons1"
                     type="button"
-                    @click="addReview">
+                    @click="addReview"
+                  >
                     등록
                   </button>
                 </div>
               </form>
             </div>
             <!-- 페이지네이션 -->
-            <div class="st_pagination my-button">
+            <div class="pagination">
               <button
-                class="my-button"
                 @click="prevReviewPage"
-                :disabled="reviewCurrentPage === 1">
+                :disabled="reviewCurrentPage === 1"
+              >
                 이전
               </button>
               <span>{{ reviewCurrentPage }} / {{ reviewTotalPages }}</span>
               <button
-                class="my-button"
                 @click="nextReviewPage"
-                :disabled="reviewCurrentPage === reviewTotalPages">
+                :disabled="reviewCurrentPage === reviewTotalPages"
+              >
                 다음
               </button>
             </div>
@@ -752,61 +751,30 @@ const closeModal = () => {
         </div>
       </div>
       <!-- 모달창 내용 -->
-      <div class="st_modal">
-        <div
-          v-if="showModal"
-          class="modal-overlay my-button"
-          @click.self="closeModal">
+      <div class="modal">
+        <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
           <div class="modal-content">
             <h3>✨{{ maskedName(selectedReview.name) }}님의 이용후기✨</h3>
             <img :src="selectedReview.image" alt="후기 이미지" />
             <p>{{ selectedReview.content || "내용 없음" }}</p>
-            <button class="my-button" @click="closeModal">닫기</button>
+            <button @click="closeModal">닫기</button>
           </div>
         </div>
       </div>
     </div>
-    <!-- /.st_wrap -->
   </div>
-  <!-- /.wrap_total -->
 </template>
 
 <style lang="scss" scoped>
 @use "sass:color";
 @use "/src/assets/Main.scss" as *;
 @use "/src/assets/Variables.scss" as *;
-
-// 전체 래퍼
-.st_wrap {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  flex-direction: column;
-  font-family: $font-family;
-}
-
-// 타이틀
-.st_title1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding-bottom: 30px;
-  .title_txt1 h1 {
-    font-size: 40px;
-    font-family: $font-ownglyph;
-  }
-}
 // 스텝퍼
 :deep(.stepper) {
   display: flex;
   flex-direction: column;
   z-index: 6500;
 }
-
 .sticky-stepper {
   position: fixed;
   top: 120px;
@@ -819,35 +787,31 @@ const closeModal = () => {
   padding: 10px;
   color: #555;
   &.custom-stepper {
-    // only on your custom one
+    // 커스텀스텝퍼적용
     left: calc(47.5% - 600px);
     width: 120px;
-
     &.hide-controls {
-      // hide the nav & circles only when .hide-controls is present
-      ::v-deep .step-nav,
-      ::v-deep .circle {
+      // 써클숨김
+      :deep(.step-nav),
+      :deep(.circle) {
         display: none !important;
       }
     }
-
-    // style all your labels
-    ::v-deep .label {
+    // 모든라벨에 적용
+    :deep(.label) {
       margin-top: 6px;
       font-size: 17px;
       cursor: pointer;
       padding: 5px 10px;
       transition: background 0.2s;
-
       &:hover {
         border-bottom: 2px solid rgba($sub-color, 0.3);
         color: #555;
         font-weight: bold;
       }
     }
-
-    // active-step styles
-    ::v-deep .step.active .label {
+    // 활성단계스타일
+    :deep(.step.active .label) {
       border-bottom: 2px solid rgba($sub-color, 0.3);
       color: #555;
       font-weight: bold;
@@ -855,37 +819,37 @@ const closeModal = () => {
   }
 }
 // 고객센터섹션
-.st_customer {
+.customer {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-.st_info {
+.info {
   display: flex;
 }
-.st_image {
+.image {
   width: 200px;
   height: auto;
   object-fit: cover;
   margin-right: 10px;
 }
 
-.st_details {
+.details {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: left;
 }
 
-.st_phone {
+.phone {
   font-size: 30px;
   font-weight: bold;
   color: $dark-gray;
   margin-bottom: 20px;
 }
 
-.st_hours {
+.hours {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -893,21 +857,21 @@ const closeModal = () => {
   gap: 20px;
 }
 
-.st_hours li {
+.hours li {
   font-weight: bold;
   margin-bottom: 15px;
   font-size: 20px;
 }
 
 // 공지사항섹션
-.st_notice {
+.notice {
   width: 90%;
   max-width: 100%;
   text-align: center;
 }
 
 // 검색어
-.st_search-wrapper {
+.search-wrapper {
   width: 70%;
   max-width: 100%;
   display: flex;
@@ -917,7 +881,7 @@ const closeModal = () => {
   margin: 0 auto;
   margin-bottom: 15px;
 
-  .st_search {
+  .search {
     flex: 1;
     height: 44px;
     padding: 10px;
@@ -933,7 +897,7 @@ const closeModal = () => {
       outline-offset: -2px;
     }
   }
-  .st_search-btn {
+  .search-btn {
     height: 44px;
     width: 60px;
     padding: 10px;
@@ -950,7 +914,7 @@ const closeModal = () => {
   }
 }
 // 카테고리 버튼
-.st_category-buttons {
+.category-buttons {
   width: 80%;
   display: flex;
   gap: 10px;
@@ -961,7 +925,7 @@ const closeModal = () => {
   margin-bottom: 50px;
 }
 
-.st_category-btn {
+.category-btn {
   font-size: 15px;
   display: flex;
   justify-content: center;
@@ -989,20 +953,20 @@ const closeModal = () => {
 }
 
 //공지사항
-.st_scrollable-body {
+.scrollable-body {
   background-color: #ffffff;
   display: block;
   max-height: auto; // 리스트 최대 높이(화면 높이의 60%)
   overflow-y: auto; // 내부에서만 스크롤
   scrollbar-gutter: stable; // 스크롤바 공간 항상 확보
 }
-.st_scrollable-body tr {
+.scrollable-body tr {
   display: table;
   width: 100%;
   table-layout: fixed;
 }
 
-.st_notice-table {
+.notice-table {
   width: 90%;
   max-width: 100%;
   border-collapse: collapse;
@@ -1010,14 +974,14 @@ const closeModal = () => {
   color: $dark-gray;
 }
 
-.st_notice-table td {
+.notice-table td {
   border: none;
   border-top: 1px solid $border-gray;
   padding: 13px;
   box-sizing: border-box;
 }
 
-.st_notice-table tr:last-child td {
+.notice-table tr:last-child td {
   border-bottom: 1px solid $border-gray;
 }
 
@@ -1038,7 +1002,7 @@ const closeModal = () => {
   color: $dark-gray;
   line-height: 1.5;
 }
-.st_toggle-icon {
+.toggle-icon {
   width: 13px;
   height: 13px;
   margin-left: 8px;
@@ -1046,14 +1010,14 @@ const closeModal = () => {
 }
 
 // 페이지네이션 스타일
-.st_pagination {
+.pagination {
   margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
 }
-.st_pagination button {
+.pagination button {
   padding: 5px 10px;
   margin: 0 5px;
   cursor: pointer;
@@ -1065,26 +1029,26 @@ const closeModal = () => {
     background-color: color.adjust($sub-color, $lightness: 20%) !important;
   }
 }
-.st_pagination button:disabled {
+.pagination button:disabled {
   background: #d4d4d4;
   cursor: not-allowed;
   opacity: 0.6;
 }
 
-.st_number {
+.number {
   background-color: #fff;
   color: $dark-gray;
 }
 
 // 이용후기섹션
-.st_view {
+.view {
   width: 70%;
   max-width: 100%;
   text-align: center;
 }
 
 // 리뷰 카드
-.st_card-container {
+.card-container {
   display: flex;
   justify-content: center;
   gap: 15px;
@@ -1093,7 +1057,7 @@ const closeModal = () => {
   margin-bottom: 30px;
 }
 
-.st_card {
+.card {
   width: 250px;
   height: 450px;
   background-color: $background-maincolor;
@@ -1103,41 +1067,41 @@ const closeModal = () => {
   cursor: pointer;
 }
 
-.st_card:hover {
+.card:hover {
   transform: scale(1.02);
 }
 
-.st_card .st_img-product {
+.card .img-product {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 80%;
 }
 
-.st_card .st_img-product img {
+.card .img-product img {
   height: 100%;
   width: 100%;
   padding: 10px;
   border-radius: $radius;
 }
 
-.st_detail {
+.detail {
   height: 20%;
   padding: 0 10px;
 }
-.st_title {
+.title {
   display: flex;
   flex-wrap: wrap;
   text-align: left;
   flex-direction: column;
   gap: 5px;
 }
-.st_text {
+.text {
   display: flex;
   flex-direction: column;
   align-items: baseline;
 }
-.st_tag span {
+.tag span {
   font-size: 14px;
 }
 h6 {
@@ -1158,14 +1122,14 @@ button {
   background-color: #a80311;
 }
 // 페이지네이션 스타일
-.st_pagination {
+.pagination {
   margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
 }
-.st_pagination button {
+.pagination button {
   padding: 5px 10px;
   margin: 0 5px;
   cursor: pointer;
@@ -1177,7 +1141,7 @@ button {
     background-color: color.adjust($sub-color, $lightness: 20%) !important;
   }
 }
-.st_pagination button:disabled {
+.pagination button:disabled {
   background: #d4d4d4;
   cursor: not-allowed;
   opacity: 0.6;
@@ -1250,7 +1214,7 @@ button {
   gap: 10px;
   justify-content: center;
 }
-.st_modal {
+.modal {
   .modal-overlay {
     position: fixed;
     top: 0;
@@ -1300,10 +1264,5 @@ button {
       background-color: color.adjust($sub-color, $lightness: 20%) !important;
     }
   }
-}
-
-.my-button {
-  position: relative;
-  z-index: 4000; /* fixed-buttons(1000)보다 높게 */
 }
 </style>

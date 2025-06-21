@@ -1,3 +1,5 @@
+<script setup></script>
+
 <template>
   <div class="ft_footer">
     <div class="inner">
@@ -6,8 +8,16 @@
         <!-- 풋터 상단 왼쪽 : 회사정보 -->
         <div class="ft_topLeft">
           <div class="ft_serviceInfo">
-            <a href="https://www.kakao.com/policy/privacy?lang=ko" target="_blank">개인정보취급방침</a>|
-            <a href="https://www.kakao.com/policy/terms?type=a&lang=ko" target="_blank">이용약관</a>
+            <a
+              href="https://www.kakao.com/policy/privacy?lang=ko"
+              target="_blank"
+              >개인정보취급방침</a
+            >|
+            <a
+              href="https://www.kakao.com/policy/terms?type=a&lang=ko"
+              target="_blank"
+              >이용약관</a
+            >
           </div>
           <div class="ft_accountAddress">
             <p>
@@ -42,17 +52,7 @@
       </div>
     </div>
   </div>
-  <!-- 용달씨 머리(예약할래?)이미지 고정 버튼 -->
-  <!-- <div
-    class="fixed-buttons">
-    <button class="inquiry-btn" @click="openReservation">
-      <span>예약 할래?</span>
-      <router-link to="/yeyak"><img class="fas fa-calendar-check" src="/images/gh/1/head.png" alt="예약할래이미지" /></router-link>
-    </button>
-  </div> -->
 </template>
-
-<script setup></script>
 
 <style lang="scss" scoped>
 .ft_footer {
@@ -104,7 +104,7 @@
     color: #666;
     line-height: 1.6;
     font-size: 14px;
-    margin-bottom: 16px;    
+    margin-bottom: 16px;
   }
 }
 
@@ -130,60 +130,12 @@
     color: #666;
     line-height: 1.5;
     font-size: 13px;
-    strong{
+    strong {
       font-size: 15px;
     }
   }
 }
-// 고정버튼들
-.fixed-buttons {
-  position: fixed;
-  bottom: 80px;
-  transform: translateX(43%);
-  width: 100%;
-  max-width: 1000px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  z-index: 1000;
-}
-.contactUs {
-  display: flex;
-  flex-direction: column;
-}
-.inquiry-btn {
-  all: unset; /* 버튼 기본 스타일 제거 */
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  i {
-    font-size: 14px;
-  }
-  span {
-    display: none;
-  }
-  &:hover {
-    transform: translateY(-3px);
-    span {
-      width: 120px;
-      line-height: 45px;
-      text-align: center;
-      display: block;
-      font-size: 16px;
-      border-radius: 30px;
-      background-color: #fff;
-      box-shadow: 0 4px 10px rgba(212, 141, 77, 0.3),
-        0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-  }
-  img {
-    width: 80px;
-  }
-}
+
 @media screen and (max-width: 1024px) {
   .ft_footerTop {
     flex-direction: column;
@@ -208,21 +160,7 @@
   .inner {
     padding: 0 15px;
   }
-
-  .fixed-buttons {
-    right: 15px;
-    bottom: 15px;
-  }
-
-  .inquiry-btn {
-    padding: 8px 15px;
-    font-size: 12px;
-    span{
-      width: 80px !important;
-      line-height: 35px !important;
-    }   
-  }
-  .fas{
+  .fas {
     width: 50px !important;
   }
   .ft_contactUs {
@@ -257,19 +195,6 @@
   .ft_contactUs {
     padding-top: 15px;
   }
-
-  .fixed-buttons {
-    right: 10px;
-    bottom: 10px;
-  }
-
-  .inquiry-btn {
-    padding: 6px 12px;
-    font-size: 11px;
-    i {
-      font-size: 11px;
-    }
-  }  
   .ft_contactUs {
     h1 {
       font-size: 15px;

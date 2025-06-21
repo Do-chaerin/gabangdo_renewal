@@ -1,137 +1,3 @@
-<template>
-  <header>
-    <div class="header">
-      <div class="inner">
-        <!-- 데스크탑 메뉴 -->
-        <div class="hd_wideMenu">
-          <!-- 로고 :좌영역 -->
-          <router-link to="/" class="hd_logo">
-            <img src="/images/logo_new.png" alt="로고" />
-          </router-link>
-          <!-- 메인탭메뉴(방법도/요금도/예약도/소통도/여행도) :중간영역 -->
-          <nav v-if="!isMobile" class="hd_menu">
-            <!-- 메인메뉴  -->
-            <ul
-              @mouseenter="showAllSubMenu = true"
-              @mouseleave="showAllSubMenu = false">
-              <li
-                v-for="(item, index) in menuItems"
-                :key="index"
-                @click="handleMenuClick(item)">
-                <router-link
-                  v-if="!item.sub"
-                  :to="item.to"
-                  :class="{ mainMenu: item.label === '예약도' }">
-                  <span class="menu-label">{{ item.label }}</span>
-                </router-link>
-                <a
-                  v-else
-                  href="#"
-                  :class="{ mainMenu: item.label === '예약도' }">
-                  {{ item.label }}
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <!--  가방조회/로그인: 오른쪽 영역-->
-          <!-- 가방/로그인 아이콘 -->
-          <div class="hd_mobileRight">
-            <router-link to="/delivery">
-              <img
-                src="/images/cr/delivery.png"
-                alt="가방조회이미지"
-                class="icon-square" />
-            </router-link>
-            <router-link to="/yeyaklookup">
-              <img
-                src="/images/cr/lookup.png"
-                alt="예약조회이미지"
-                class="icon-square" />
-            </router-link>
-            <router-link to="/login">
-              <img
-                src="/images/cr/login.png"
-                alt="로그인이미지"
-                class="icon-square" />
-            </router-link>
-          </div>
-        </div>
-
-        <!--1230px 및 모바일 메뉴 -->
-        <div class="hd_mobileMenu">
-          <!-- 헤더 아이콘 영역 -->
-          <nav class="hd_hambar1 hd_extra1">
-            <!-- 햄버거바 -->
-            <a href="#" class="hd_hambar" @click.prevent="toggleShortMenu">
-              <img src="/images/geen/bar_humburger_icon.png" alt="햄버거메뉴" />
-            </a>
-            <!-- 로고 -->
-            <router-link to="/" class="hd_logo">
-              <img src="/images/logo_new.png" alt="로고" />
-            </router-link>
-            <!-- 가방/로그인 아이콘 -->
-            <div class="hd_mobileRight">
-              <router-link to="/delivery">
-                <img
-                  src="/images/cr/delivery.png"
-                  alt="가방조회이미지"
-                  class="icon-square" />
-              </router-link>
-              <router-link to="/yeyaklookup">
-                <img
-                  src="/images/cr/lookup.png"
-                  alt="예약조회이미지"
-                  class="icon-square" />
-              </router-link>
-              <router-link to="/login">
-                <img
-                  src="/images/cr/login.png"
-                  alt="로그인이미지"
-                  class="icon-square" />
-              </router-link>
-            </div>
-            <!-- 1230px 및 모바일에서 열리는 메뉴 파랑바탕-->
-            <div
-              class="hd_menu1"
-              :class="{ show: shortMenu, leave: isLeaving }"
-              v-show="shortMenu"
-              @mouseleave="handleMouseLeave"
-              @mouseenter="clearLeave">
-              <span @click.prevent="closeMobileMenu" role="button">X</span>
-              <ul>
-                <li v-for="(item, index) in menuItems" :key="index">
-                  <router-link
-                    v-if="!item.sub"
-                    :to="item.to"
-                    @click="handleMenuClick(item)">
-                    <span>{{ item.label }}</span>
-                  </router-link>
-                  <div v-else>
-                    <a href="#" @click.prevent="toggleMobileSub(index)">
-                      {{ item.label }}
-                    </a>
-                    <ul v-if="openedMobileMenu === index" class="subMenu show">
-                      <li v-for="(sub, idx) in item.sub" :key="idx">
-                        <router-link
-                          :to="sub.to"
-                          @click="handleMenuClick(item)"
-                          >{{ sub.label }}</router-link
-                        >
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-      </div>
-    </div>
-    <!-- 전체 서브메뉴 바탕 -->
-    <div :class="{ show: showAllSubMenu }" class="hd_subMenubg"></div>
-  </header>
-</template>
-
 <script setup>
 import { ref, onMounted, onUnmounted, watch, onBeforeUnmount } from "vue";
 import { useRouter } from "vue-router";
@@ -196,7 +62,7 @@ const showAllSubMenu = ref(false); // 현재 열린 서브메뉴 li의 index
 const menuItems = [
   {
     label: "방법도",
-    to: "/bangbeob2",
+    to: "/bangbeob1",
   },
   {
     label: "요금도",
@@ -204,7 +70,7 @@ const menuItems = [
   },
   {
     label: "예약도",
-    to: "/yeyak",
+    to: "/yeyak1",
   },
   {
     label: "소통도",
@@ -250,6 +116,152 @@ onUnmounted(() => {
   window.removeEventListener("resize", updateScreenSize);
 });
 </script>
+
+<template>
+  <header>
+    <div class="header">
+      <div class="inner">
+        <!-- 데스크탑 메뉴 -->
+        <div class="hd_wideMenu">
+          <!-- 로고 :좌영역 -->
+          <router-link to="/" class="hd_logo">
+            <img src="/images/logo_new.png" alt="로고" />
+          </router-link>
+          <!-- 메인탭메뉴(방법도/요금도/예약도/소통도/여행도) :중간영역 -->
+          <nav v-if="!isMobile" class="hd_menu">
+            <!-- 메인메뉴  -->
+            <ul
+              @mouseenter="showAllSubMenu = true"
+              @mouseleave="showAllSubMenu = false"
+            >
+              <li
+                v-for="(item, index) in menuItems"
+                :key="index"
+                @click="handleMenuClick(item)"
+              >
+                <router-link
+                  v-if="!item.sub"
+                  :to="item.to"
+                  :class="{ mainMenu: item.label === '예약도' }"
+                >
+                  <span class="menu-label">{{ item.label }}</span>
+                </router-link>
+                <a
+                  v-else
+                  href="#"
+                  :class="{ mainMenu: item.label === '예약도' }"
+                >
+                  {{ item.label }}
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!--  가방조회/로그인: 오른쪽 영역-->
+          <!-- 가방/로그인 아이콘 -->
+          <div class="hd_mobileRight">
+            <router-link to="/delivery">
+              <img
+                src="/images/cr/delivery.png"
+                alt="가방조회이미지"
+                class="icon-square"
+              />
+            </router-link>
+            <router-link to="/yeyaklookup1">
+              <img
+                src="/images/cr/lookup.png"
+                alt="예약조회이미지"
+                class="icon-square"
+              />
+            </router-link>
+            <router-link to="/login">
+              <img
+                src="/images/cr/login.png"
+                alt="로그인이미지"
+                class="icon-square"
+              />
+            </router-link>
+          </div>
+        </div>
+
+        <!--1230px 및 모바일 메뉴 -->
+        <div class="hd_mobileMenu">
+          <!-- 헤더 아이콘 영역 -->
+          <nav class="hd_hambar1 hd_extra1">
+            <!-- 햄버거바 -->
+            <a href="#" class="hd_hambar" @click.prevent="toggleShortMenu">
+              <img src="/images/geen/bar_humburger_icon.png" alt="햄버거메뉴" />
+            </a>
+            <!-- 로고 -->
+            <router-link to="/" class="hd_logo">
+              <img src="/images/logo_new.png" alt="로고" />
+            </router-link>
+            <!-- 가방/로그인 아이콘 -->
+            <div class="hd_mobileRight">
+              <router-link to="/delivery">
+                <img
+                  src="/images/cr/delivery.png"
+                  alt="가방조회이미지"
+                  class="icon-square"
+                />
+              </router-link>
+              <router-link to="/yeyaklookup1">
+                <img
+                  src="/images/cr/lookup.png"
+                  alt="예약조회이미지"
+                  class="icon-square"
+                />
+              </router-link>
+              <router-link to="/login">
+                <img
+                  src="/images/cr/login.png"
+                  alt="로그인이미지"
+                  class="icon-square"
+                />
+              </router-link>
+            </div>
+            <!-- 1230px 및 모바일에서 열리는 메뉴 파랑바탕-->
+            <div
+              class="hd_menu1"
+              :class="{ show: shortMenu, leave: isLeaving }"
+              v-show="shortMenu"
+              @mouseleave="handleMouseLeave"
+              @mouseenter="clearLeave"
+            >
+              <span @click.prevent="closeMobileMenu" role="button">X</span>
+              <ul>
+                <li v-for="(item, index) in menuItems" :key="index">
+                  <router-link
+                    v-if="!item.sub"
+                    :to="item.to"
+                    @click="handleMenuClick(item)"
+                  >
+                    <span>{{ item.label }}</span>
+                  </router-link>
+                  <div v-else>
+                    <a href="#" @click.prevent="toggleMobileSub(index)">
+                      {{ item.label }}
+                    </a>
+                    <ul v-if="openedMobileMenu === index" class="subMenu show">
+                      <li v-for="(sub, idx) in item.sub" :key="idx">
+                        <router-link
+                          :to="sub.to"
+                          @click="handleMenuClick(item)"
+                          >{{ sub.label }}</router-link
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <!-- 전체 서브메뉴 바탕 -->
+    <div :class="{ show: showAllSubMenu }" class="hd_subMenubg"></div>
+  </header>
+</template>
 
 <style lang="scss" scoped>
 @use "/src/assets/Variables" as *;
@@ -331,7 +343,7 @@ body.modal-open {
         display: inline-block;
         padding: 5px 15px;
         transition: all 0.3s ease;
-        border-radius: 5px;
+        border-radius: $radius;
         font-weight: normal;
       }
       a:hover {
@@ -384,7 +396,7 @@ body.modal-open {
   flex-direction: column;
   gap: 5px;
   font-size: 20px;
-  border-radius: 10px;
+  border-radius: $radius;
   transition: all 0.3s ease;
   color: #fff;
   z-index: 9;
@@ -421,13 +433,13 @@ body.modal-open {
       color: #fff;
       text-align: center;
       box-sizing: border-box;
-      border-radius: 10px;
+      border-radius: $radius;
       border: 2.5px solid #0066b333;
     }
     a:hover {
       border: 2.5px solid $sub-color;
       font-weight: bold;
-      border-radius: 10px;
+      border-radius: $radius;
     }
   }
   .subMenu {
@@ -485,7 +497,7 @@ body.modal-open {
   background-color: #fff;
   min-width: 160px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
+  border-radius: $radius;
   padding: 0.5rem 0;
 }
 

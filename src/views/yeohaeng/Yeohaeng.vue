@@ -1,7 +1,7 @@
 <script setup>
-import Yh_Festival from "./Yh_Festival.vue";
-import YeohaengSwiper from "./YeohaengSwiper.vue";
-import { ref, onMounted, onUnmounted, onBeforeUnmount } from "vue";
+import Festival from "./Festival.vue";
+import Citytour from "./Citytour.vue";
+import { ref, onMounted, onBeforeUnmount } from "vue";
 import ProgressStepper from "../yeyak/ProgressStepper.vue";
 const showStepper = ref(true);
 const stepIndex = ref(1);
@@ -76,7 +76,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="wrap_total">
-    <div class="yh_wrap">
+    <div class="inner">
       <!-- 스텝퍼 네비바 -->
       <ProgressStepper
         v-show="showStepper"
@@ -84,51 +84,47 @@ onBeforeUnmount(() => {
         :selectors="['#step1', '#step2', '#step3']"
         :stepIndex="stepIndex"
         @go="scrollToSection"
-        class="sticky-stepper hide-controls custom-stepper" />
-      <!-- 여행도 전체영역 -->
-      <div class="inner">
+        class="sticky-stepper hide-controls custom-stepper"
+      />
+      <div class="festival">
         <div ref="step1" id="step1" class="step-container">
           <transition name="fade">
-            <!-- 대구축제 전체영역  -->
-            <Yh_Festival />
+            <!-- 대구축제  -->
+            <Festival />
           </transition>
         </div>
       </div>
       <!-- 구분선 -->
-      <div class="line"></div>
-      <!-- 시티투어버스 전체영역 -->
+      <div class="divider"></div>
       <!-- 순환버스 -->
-      <div class="yh_roundBus">
+      <div class="roundBus">
         <div ref="step2" id="step2" class="step-container">
           <!-- 순환버스 제목 -->
-          <div class="bb_title1">
-            <div class="title_txt1">
-              <h1>순환버스</h1>
-            </div>
+          <div class="title_txt">
+            <h1>순환버스</h1>
           </div>
           <!-- 순환버스 이미지 -->
-          <div class="yh_content-box">
+          <div class="content-box">
             <a
               href="https://www.daegucitytour.com/bbs/page.php?hid=guide_1"
-              target="_blank">
+              target="_blank"
+            >
               <img v-if="imgSrc" :src="imgSrc" alt="순환버스지도" />
             </a>
           </div>
         </div>
       </div>
       <!-- 구분선 -->
-      <div class="line"></div>
+      <div class="divider"></div>
       <!-- 테마버스 -->
-      <div class="yh_themaBus">
+      <div class="themaBus">
         <div ref="step3" id="step3" class="step-container">
           <!-- 테마버스 제목 -->
-          <div class="bb_title1">
-            <div class="title_txt1">
-              <h1>테마버스</h1>
-            </div>
+          <div class="title_txt">
+            <h1>테마버스</h1>
           </div>
           <!-- 테마버스 이미지 -->
-          <YeohaengSwiper />
+          <Citytour />
         </div>
       </div>
     </div>
@@ -139,20 +135,12 @@ onBeforeUnmount(() => {
 @use "sass:color";
 @use "/src/assets/Main.scss" as *;
 @use "/src/assets/Variables.scss" as *;
-
-// 전체
-.inner {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-}
 // 스텝퍼
 :deep(.stepper) {
   display: flex;
   flex-direction: column;
   z-index: 6500;
 }
-
 .sticky-stepper {
   position: fixed;
   top: 120px;
@@ -165,67 +153,46 @@ onBeforeUnmount(() => {
   padding: 10px;
   color: #555;
   &.custom-stepper {
-    // only on your custom one
+    // 커스텀스텝퍼적용
     left: calc(47.5% - 600px);
     width: 120px;
-
     &.hide-controls {
-      // hide the nav & circles only when .hide-controls is present
-      ::v-deep .step-nav,
-      ::v-deep .circle {
+      // 써클숨김
+      :deep(.step-nav),
+      :deep(.circle) {
         display: none !important;
       }
     }
-
-    // style all your labels
-    ::v-deep .label {
+    // 모든라벨에 적용
+    :deep(.label) {
       margin-top: 6px;
       font-size: 17px;
       cursor: pointer;
       padding: 5px 10px;
       transition: background 0.2s;
-
       &:hover {
         border-bottom: 2px solid rgba($sub-color, 0.3);
         color: #555;
         font-weight: bold;
       }
     }
-
-    // active-step styles
-    ::v-deep .step.active .label {
+    // 활성단계스타일
+    :deep(.step.active .label) {
       border-bottom: 2px solid rgba($sub-color, 0.3);
       color: #555;
       font-weight: bold;
     }
   }
 }
-// 제목
-.bb_title1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding-bottom: 30px;
-  .title_txt1 h1 {
-    font-family: $font-ownglyph;
-    font-size: 40px;
-  }
-}
 // 대구축제 탭
-.yh_tab-container {
+.tab-container {
   width: 100%;
   height: 100%;
 }
-.yh_tab-container .inner {
+.tab-container .inner {
   padding: 20px;
 }
-@media (max-width: 1170px) {
-  .yh_tab-container .inner {
-    padding: 40px 0 0;
-  }
-}
-.yh_tab {
+.tab {
   flex: 1;
   text-align: center;
   padding: 18px 0;
@@ -247,20 +214,7 @@ onBeforeUnmount(() => {
     color: white;
   }
 }
-@media (max-width: 600px) {
-  .yh_tab {
-    flex-direction: column;
-    padding: 14px 0;
-    font-size: 16px;
-  }
-}
-@media (max-width: 376px) {
-  .yh_tab {
-    padding: 12px 0;
-    font-size: 15px;
-  }
-}
-.yh_tab-bar {
+.tab-bar {
   display: flex;
   justify-content: space-around;
   margin-bottom: 20px;
@@ -268,20 +222,14 @@ onBeforeUnmount(() => {
   overflow: hidden;
 }
 // 시티투어
-// 시티투어 전체 영역
-@media screen and (max-width: 760px) {
-  .yh_cititourBus {
-    margin: 0 20px;
-  }
-}
-.yh_content-box {
+.content-box {
   width: 100%;
   max-width: 900px;
   margin: 40px auto 0;
   border-radius: $radius;
 }
 
-.yh_content-box img {
+.content-box img {
   width: 100%;
   height: auto;
   max-width: 100%;
@@ -298,7 +246,7 @@ onBeforeUnmount(() => {
   opacity: 0;
 }
 // 시티투어버스
-.yh_themaBus {
+.themaBus {
   margin: 0 auto;
   margin-bottom: 50px;
 }

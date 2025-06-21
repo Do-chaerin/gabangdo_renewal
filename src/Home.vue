@@ -1,27 +1,10 @@
-<template>
-  <div class="wrap">
-    <!-- <Header /> -->
-    <main class="main">
-      <!-- PC 전용 콘텐츠 -->
-      <!-- <Content1 v-if="!isMobile" /> -->
-      <!-- 635이하 전용 콘텐츠 -->
-      <!-- <Homeswiper1 v-if="isMobile"/> -->
-      <Content0 />
-      <Content2 />
-      <Homeswiper2 />
-      <Modal />
-    </main>
-    <!-- <Footer /> -->
-  </div>
-</template>
-
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 
 //  각종 컴포넌트 import
-import Content0 from "@/views/b_main/Content0.vue";
+import Content1 from "@/views/b_main/Content1.vue";
 import Content2 from "@/views/b_main/Content2.vue";
-import Homeswiper2 from "./views/b_main/Homeswiper2.vue";
+import Homeswiper1 from "./views/b_main/Homeswiper1.vue";
 import Modal from "@/views/b_main/Modal.vue";
 
 //  반응형 관련 상태
@@ -46,8 +29,24 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener("resize", handleResize);
 });
-
 </script>
+
+<template>
+  <div class="wrap">
+    <!-- <Header /> -->
+    <main class="main">
+      <!-- PC 전용 콘텐츠 -->
+      <!-- <Content1 v-if="!isMobile" /> -->
+      <!-- 635이하 전용 콘텐츠 -->
+      <!-- <Homeswiper1 v-if="isMobile"/> -->
+      <Content1 />
+      <Content2 />
+      <Homeswiper1 />
+      <Modal />
+    </main>
+    <!-- <Footer /> -->
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .main {

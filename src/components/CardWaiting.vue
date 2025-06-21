@@ -11,8 +11,8 @@
 
 <script setup>
 // 대기중
-import CardWaiting1 from "@/components/Cards/CardsWaiting/CardWaiting1.vue";
-import CardWaiting2 from "@/components/Cards/CardsWaiting/CardWaiting2.vue";
+import CardWaiting1 from "@/components/Cards/CardsWaiting/CardsWaiting1.vue";
+import CardWaiting2 from "@/components/Cards/CardsWaiting/CardsWaiting2.vue";
 import CardsWaiting3 from "@/components/Cards/CardsWaiting/CardsWaiting3.vue";
 import CardsWaiting4 from "@/components/Cards/CardsWaiting/CardsWaiting4.vue";
 import CardsWaiting5 from "@/components/Cards/CardsWaiting/CardsWaiting5.vue";

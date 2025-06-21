@@ -1,6 +1,5 @@
 @use "/src/assets/Reset.scss" as *;
 @use "/src/assets/Variables" as *;
-@use "/src/assets/Home.scss" as *;
 @use "/src/assets/scroll.scss" as *;
 
 // 푸터 .fixed-buttons 영역을 클릭 투명하게
@@ -41,16 +40,154 @@ body,
   font-family: $font-family;
   box-sizing: border-box;
 }
-.line {
-  width: 80%;
-  border: 1px dashed #dcdcdc;
-  margin: 100px 0;
+.inner{
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: $font-family;
 }
-@media screen and (max-width: 390px) {
-  .title_txt1 h1 {
+.divider{
+  width: 100%;
+  border: $divider;
+}
+.title_txt {
+  h1 {
+font-size: 40px;
+font-family: $font-ownglyph;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+  }
+  span{
+    font-family: $font-ownglyph;
+      font-size: 25px;
+      color: #5a5a5a;}
+  }
+// 반응형 
+
+@media screen and (max-width: 1170px) {  
+  .title_txt {
+    h1 {
     font-size: 30px !important;
   }
-  .inquiry-btn > img {
-    width: 60px !important;
+  span{
+font-size:20px;
   }
+ }
+}
+@media screen and (max-width: 1055px)  {  
+  .title_txt {
+    h1 {
+    font-size: 30px !important;
+  }
+  span{
+font-size:20px;
+  }
+ }
+}
+@media screen and (max-width: 970px)  {  
+  .title_txt {
+    h1 {
+    font-size: 30px !important;
+  }
+  span{
+font-size:20px;
+  }
+ }
+}
+@media screen and (max-width: 896px)  {  
+  .title_txt {
+    h1 {
+    font-size: 30px !important;
+  }
+  span{
+font-size:20px;
+  }
+ }
+}
+@media screen and (max-width: 820px)  {  
+  .title_txt {
+    h1 {
+    font-size: 30px !important;
+  }
+  span{
+font-size:20px;
+  }
+ }
+}
+@media screen and (max-width: 768px) {  
+  .title_txt {
+    h1 {
+    font-size: 30px !important;
+  }
+  span{
+font-size:20px;
+  }
+ }
+}
+@media screen and (max-width: 620px) {  
+  .title_txt {
+    h1 {
+    font-size: 30px !important;
+  }
+  span{
+font-size:20px;
+  }
+ }
+}
+@media screen and (max-width: 540px)  {  
+  .title_txt {
+    h1 {
+    font-size: 30px !important;
+  }
+  span{
+font-size:20px;
+  }
+ }
+}
+@media screen and (max-width: 445px)  {  
+  .title_txt {
+    h1 {
+    font-size: 30px !important;
+  }
+  span{
+font-size:20px;
+  }
+ }
+}
+@media screen and (max-width: 400px)  {  
+  .title_txt {
+    h1 {
+    font-size: 30px !important;
+  }
+  span{
+font-size:20px;
+  }
+ }
+}
+@media screen and (max-width: 390px)  {  
+  .title_txt {
+    h1 {
+    font-size: 30px !important;
+  }
+  span{
+font-size:20px;
+  }
+ }
+}
+@media screen and (max-width: 320px)  {  
+  .title_txt {
+    h1 {
+    font-size: 30px !important;
+  }
+  span{
+font-size:20px;
+  }
+ }
 }

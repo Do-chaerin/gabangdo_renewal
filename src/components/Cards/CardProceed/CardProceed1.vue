@@ -2,7 +2,8 @@
   <div class="w-[350px] mx-auto flex flex-col gap-3 mb-2">
     <!-- 카드 1 -->
     <div
-      class="card w-[350px] bg-white rounded-lg shadow flex items-center px-2 py-1 gap-1">
+      class="card w-[350px] bg-white rounded-lg shadow flex items-center px-2 py-1 gap-1"
+    >
       <!-- 시간 -->
       <div class="time text-red-500 text-sm font-semibold w-[50px] ml-2 pr-3">
         10:30
@@ -25,9 +26,10 @@
         <div class="detail3 flex items-center text-xs text-black-700 gap-1">
           <div class="iconState">
             <img
-              src="/public/images/yr/delivery/plain_icon.png"
+              src="/images/yr/delivery/plain_icon.png"
               alt="집아이콘"
-              class="w-4 h-4 text-green-600" />
+              class="w-4 h-4 text-green-600"
+            />
           </div>
           <p class="truncate pt-1 text-[14px] text-blue-700 font-semibold">
             대구공항
@@ -40,7 +42,7 @@
         <!-- 전화버튼 -->
         <button>
           <div class="callbuttuon w-[35px] h-[90px] pt-[30px]">
-            <img src="/public/images/yr/delivery/phone_icon.png" alt="전화" />
+            <img src="/images/yr/delivery/phone_icon.png" alt="전화" />
           </div>
         </button>
 
@@ -49,7 +51,8 @@
           :disabled="isDisabled"
           @click="handleClick"
           class="w-[50px] h-[80px] rounded font-semibold flex items-center justify-center text-sm text-white"
-          :class="buttonClass">
+          :class="buttonClass"
+        >
           <p>{{ buttonText }}</p>
         </button>
       </div>

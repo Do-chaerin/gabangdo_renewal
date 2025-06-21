@@ -4,7 +4,7 @@
       <!-- 헤더 -->
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 class="text-2xl font-bold text-gray-900 dark:text-white">매출 관리</h1>
+          <h1 class="text-2xl font-bold text-gray-900 dark:text-white">매출관리</h1>
           <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">실시간 매출 현황과 수익 분석을 확인할 수 있습니다.</p>
         </div>
         <div class="flex gap-2">
@@ -122,13 +122,13 @@
       <!-- 차트 섹션 -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <!-- 매출 현황 -->
-        <MonthlySale class="!dark:bg-gray-600" />
+        <MonthlySale class="!dark:bg-gray-600"/>
 
-        <!-- 픽업지역별 매출 분포 -->
+        <!-- 서비스별 매출 분포 -->
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow">
           <div class="p-6 border-b border-gray-200 dark:border-gray-700">
             <h3 class="text-lg font-semibold text-gray-900 dark:text-white">픽업위치별 매출 분포</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">{{ getChartDescription('trend') }} (픽업위치별 매출 비중)</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400">선택된 기간 내 각 픽업위치별 매출 비중을 확인할 수 있습니다.</p>
           </div>
           <div class="p-6">
             <div style="height: 300px;">
@@ -142,7 +142,7 @@
       <div class="bg-white dark:bg-gray-800 rounded-lg shadow">
         <div class="p-6 border-b border-gray-200 dark:border-gray-700">
           <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ getChartTitle('trend') }}</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400 dark:text-white">{{ getChartDescription('trend') }}</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">{{ getChartDescription('trend') }}</p>
         </div>
         <div class="p-6">
           <div style="height: 300px;">
@@ -198,11 +198,11 @@
         <div class="p-6">
           <div class="space-y-4">
             <div v-for="transaction in paginatedTransactions" :key="transaction.id"
-              @click="openCreditedList(transaction)"
               class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-700 transition-colors">
               <div class="flex items-center space-x-4">
                 <div class="p-2 rounded-full bg-green-100 dark:bg-green-900">
-                  <i class="fas fa-dollar-sign text-green-600 dark:text-green-300"></i>
+                  <i 
+                  class="fas fa-dollar-sign text-green-600 dark:text-green-300"></i>
                 </div>
                 <div>
                   <div class="flex items-center space-x-2">
@@ -219,12 +219,11 @@
                 </div>
               </div>
               <div class="flex items-center space-x-2">
-                <span :class="getPaymentMethodClass(transaction.paymentMethod)"
-                  class="w-16 h-6 px-2 py-1 text-xs rounded-full text-center">
+                <span :class="getPaymentMethodClass(transaction.paymentMethod)" class="w-16 h-6 px-2 py-1 text-xs rounded-full text-center">
                   {{ transaction.paymentMethod }}
                 </span>
-                <span :class="getStatusClass(transaction.status)"
-                  class="w-16 h-6 px-2 py-1 text-xs rounded-full text-center">
+                <span 
+                :class="getStatusClass(transaction.status)" class="w-16 h-6 px-2 py-1 text-xs rounded-full text-center">
                   {{ transaction.status }}
                 </span>
               </div>
@@ -414,54 +413,10 @@
       </div>
     </div>
   </div>
-  <!-- 고객 결제 상세 모달 -->
-  <template v-if="isModalOpen">
-    <div class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-      <div class="bg-white dark:bg-gray-800 p-8 rounded-lg w-96">
-        <h2 class="text-lg font-semibold mb-4 dark:text-gray-300">거래 상세 정보</h2>
-
-        <div class="space-y-2 text-sm">
-          <div class="flex">
-            <strong class="w-20  text-gray-700 dark:text-gray-300">고객 이름:</strong>
-            <span class="text-left dark:text-gray-300">{{ selectedTransaction.customerName }}</span>
-          </div>
-          <div class="flex">
-            <strong class="w-20 text-gray-700 dark:text-gray-300">서비스 명:</strong>
-            <span class="text-left dark:text-gray-300">{{ selectedTransaction.service }}</span>
-          </div>
-          <div class="flex">
-            <strong class="w-20 text-gray-700 dark:text-gray-300">결제 금액:</strong>
-            <span class="text-left dark:text-gray-300">{{ formatCurrency(selectedTransaction.amount) }}</span>
-          </div>
-          <div class="flex">
-            <strong class="w-20 text-gray-700 dark:text-gray-300">거래 일시:</strong>
-            <span class="text-left dark:text-gray-300">{{ formatDateTime(selectedTransaction.date) }}</span>
-          </div>
-          <div class="flex">
-            <strong class="w-20 text-gray-700 dark:text-gray-300">결제 수단:</strong>
-            <span :class="getPaymentMethodClass(selectedTransaction.paymentMethod)" class="text-left rounded">{{
-              selectedTransaction.paymentMethod }}</span>
-          </div>
-          <div class="flex">
-            <strong class="w-20 text-gray-700 dark:text-gray-300">결재 상태:</strong>
-            <span :class="getStatusClass(selectedTransaction.status)" class="text-left rounded">{{
-              selectedTransaction.status }}</span>
-          </div>
-        </div>
-
-        <button @click="isModalOpen = false"
-          class="mt-6 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 w-full text-center">
-          닫기
-        </button>
-      </div>
-    </div>
-  </template>
-
 </template>
 
 <script setup lang="ts">
-import { useAppStore } from '../../stores/useAppStore'
-import { ref, computed, reactive, watch, nextTick, onMounted } from 'vue'
+import { ref, computed, reactive, watch } from 'vue'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 import MonthlySale from './components/MonthlySale.vue'
@@ -472,9 +427,7 @@ import {
   PointElement,
 } from 'chart.js'
 
-
 Chart.register(
-  ChartDataLabels,
   BarElement,
   LineElement,
   PointElement,
@@ -498,16 +451,6 @@ const itemsPerPage = 5
 const showDateRangeModal = ref(false)
 const showReportModal = ref(false)
 const isGeneratingReport = ref(false)
-
-// 고객 결제 상세 모달
-const isModalOpen = ref(false)
-const selectedTransaction = ref(null)
-
-function openCreditedList(transaction) {
-  selectedTransaction.value = transaction
-  isModalOpen.value = true
-}
-
 
 // 기간 설정 관련
 const selectedDateRange = ref({
@@ -1193,7 +1136,63 @@ const generateWeeklyTrend = (transactions: any[], start: Date, end: Date) => {
 
   return result
 }
+const isDarkMode = ref(false) // 실제 상태와 연동하세요
 // 차트 옵션
+const pieChartOptions = ref({
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    datalabels: {
+      color: '#6B7280',
+      font: {
+        weight: 'normal',
+        size: 10,
+      },
+      formatter: (value, context) => {
+        const label = context.chart.data.labels[context.dataIndex]
+        return [label, formatCurrency(value)]
+      },
+      anchor: 'center',
+      align: 'center',
+    },
+    legend: {
+      position: 'bottom',
+      labels: {
+        color: '#374151',
+        usePointStyle: true,
+        padding: 20,
+      },
+    },
+    tooltip: {
+      callbacks: {
+        label: function (context) {
+          return `${context.label}: ${formatCurrency(context.parsed)}`
+        }
+      }
+    }
+  },
+})
+
+watch(isDarkMode, (dark) => {
+  pieChartOptions.value = {
+    ...pieChartOptions.value,
+    plugins: {
+      ...pieChartOptions.value.plugins,
+      datalabels: {
+        ...pieChartOptions.value.plugins.datalabels,
+        color: dark ? '#ffffff' : '#000000',
+      },
+      legend: {
+        ...pieChartOptions.value.plugins.legend,
+        labels: {
+          ...pieChartOptions.value.plugins.legend.labels,
+          color: dark ? '#ffffff' : '#374151',
+        },
+      },
+    }
+  }
+}, { immediate: true })
+
 const barChartOptions = reactive({
   responsive: true,
   maintainAspectRatio: false,
@@ -1201,7 +1200,7 @@ const barChartOptions = reactive({
     legend: {
       position: 'top',
       labels: {
-        color: '#444',
+        color: '#fff',
         usePointStyle: true,
       },
     },
@@ -1223,15 +1222,15 @@ const barChartOptions = reactive({
       position: 'left',
       beginAtZero: true,
       grid: {
-        color: '#444',
+        color: '#6B7280',
       },
       ticks: {
-        color: '#444',
+        color: '#6B7280',
       },
       title: {
         display: true,
         text: '매출액',
-        color: '#444',
+        color: '#6B7280',
       },
     },
     y1: {
@@ -1242,157 +1241,24 @@ const barChartOptions = reactive({
         drawOnChartArea: false,
       },
       ticks: {
-        color: '#444',
+        color: '#6B7280',
       },
       title: {
         display: true,
         text: '주문 건수',
-        color: '#444',
+        color: '#6B7280',
       },
     },
     x: {
       grid: {
-        color: '#444',
+        color: '#6B7280',
       },
       ticks: {
-        color: '#444',
+        color: '#6B7280',
       },
     }
   }
 })
-
-const barChartData = ref({
-  labels: ['1월', '2월', '3월', '4월', '5월'],
-  datasets: [
-    {
-      label: '매출액',
-      data: [1000000, 1500000, 1200000, 1800000, 1300000],
-      backgroundColor: '#4BC0C0',
-      yAxisID: 'y',
-    },
-    {
-      label: '주문 건수',
-      data: [120, 140, 110, 160, 130],
-      backgroundColor: '#FF6384',
-      yAxisID: 'y1',
-    }
-  ]
-})
-// 도넛 차트
-const pieChartOptions = reactive({
-  responsive: true,
-  maintainAspectRatio: false,
-  plugins: {
-    datalabels: {
-      color: '#FFFFFF',
-      font: {
-        weight: 'normal',
-      },
-      formatter: (value, context) => {
-        const label = context.chart.data.labels[context.dataIndex]
-        return [label, formatCurrency(value)]
-      },
-      anchor: 'center',   // 데이터 라벨을 중간에 붙임
-      align: 'center',    // 중간 정렬
-      offset: 10       // 도넛에서 얼마나 떨어질지 (px)
-    },
-    legend: {
-      position: 'bottom',
-      labels: {
-        color: '#aaa',
-        usePointStyle: true,
-        padding: 20,
-      },
-    },
-    tooltip: {
-      callbacks: {
-        label: function (context) {
-          return `${context.label}: ${formatCurrency(context.parsed)}`
-        }
-      }
-    }
-  },
-})
-const pieChartData = reactive({
-  labels: ['A', 'B', 'C'],
-  datasets: [
-    {
-      data: [10, 20, 30],
-      backgroundColor: ['#f00', '#0f0', '#00f'],
-    }
-  ]
-})
-
-// 픽업별 도넛차트 속 글자색 다크시 흰색
-const chartInstance = ref(null)
-
-// 다크모드 당겨오기
- const appStore = useAppStore()
-const isDarkMode = computed(() => appStore.isDarkMode)
-
-// watch
-// barchart darkmode
-watch(isDarkMode, async (dark) => {
-  console.log('다크모드 변경됨:', dark)
-  const colorMain = dark ? '#aaa' : '#444'
-  const legendColor = dark ? '#fff' : '#444'
-
-  const scales = barChartOptions.scales
-  barChartOptions.plugins.legend.labels.color = legendColor
-
-  scales.x.ticks.color = colorMain
-  scales.x.grid.color = colorMain
-
-  scales.y.ticks.color = colorMain
-  scales.y.grid.color = colorMain
-  scales.y.title.color = colorMain
-
-  scales.y1.ticks.color = colorMain
-  scales.y1.title.color = colorMain
-
-  await nextTick()
-
-  if (chartInstance.value) {
-    chartInstance.value.destroy()
-  }
-
-  const ctx = document.getElementById('barChart')
-  if (!ctx) return
-
-  chartInstance.value = new Chart(ctx, {
-    type: 'bar',
-    data: barChartData,
-    options: barChartOptions,
-  })
-}, { immediate: true })
-
-// dounught darkmode
- watch(isDarkMode, async (dark) => {
-  // 픽업위치별 도넛 차트 다크 옵션 업데이트
-  pieChartOptions.plugins.datalabels.color = dark ? '#ffffff' : '#ffffff'
-  pieChartOptions.plugins.legend.labels.color = dark ? '#aaa' : '#444'
-
-
-  await nextTick()
-
-  // 기존 차트 제거
-  if (chartInstance.value) {
-    chartInstance.value.destroy()
-  }
-
-  // 새 차트 생성
- const ctx = document.getElementById('myChart')
-if (!ctx) {
-  console.warn('myChart element not found')
-  return
-}
-  chartInstance.value = new Chart(ctx, {
-    type: 'doughnut',
-    data: pieChartData,
-    options: pieChartOptions,
-    plugins: [ChartDataLabels],
-  })
-}, { immediate: true })
 
 // 기간 설정 함수들
 const setQuickDateRange = (period: string) => {
@@ -1506,7 +1372,6 @@ const formatDate = (dateString: string): string => {
 }
 
 const formatDateTime = (dateString: string): string => {
-  const date = new Date(dateString)
   return new Date(dateString).toLocaleString('ko-KR')
 }
 
@@ -1535,7 +1400,7 @@ const getStatTitle = (type: string): string => {
 
 const getChartTitle = (type: string): string => {
   if (!selectedDateRange.value.start || !selectedDateRange.value.end) {
-    return type === 'period' ? '매출 현황' : '매출 추이'
+    return type === 'period' ? '매출 현황' : '주간 매출 추이'
   }
 
   if (isAllPeriod.value) {
@@ -1545,20 +1410,18 @@ const getChartTitle = (type: string): string => {
   const days = getDaysDifference()
   if (type === 'period') {
     if (days === 1) return '일별 매출 현황'
-    if (days <= 7) return '주별 매출 현황'
-    if (days <= 31) return '월별 매출 현황'
+    if (days <= 7) return '일별 매출 현황'
+    if (days <= 31) return '주별 매출 현황'
     return '매출 현황'
   } else {
-    if (days === 1) return '일별 매출 추이'
-    if (days <= 7) return '주별 매출 추이'
-      if (days <= 31) return '월별 매출 추이'
-    return '매출 추이'
+    if (days <= 7) return '일별 매출 추이'
+    return '주별 매출 추이'
   }
 }
 
 const getChartDescription = (type: string): string => {
   if (!selectedDateRange.value.start || !selectedDateRange.value.end) {
-    return type === 'period' ? '최근 6개월간 매출 현황를 확인할 수 있습니다.' : '최근 6주간의 매출과 주문 건수 추이를 확인할 수 있습니다.'
+    return type === 'period' ? '최근 6개월간 매출 추이를 확인할 수 있습니다.' : '최근 6주간의 매출과 주문 건수 추이를 확인할 수 있습니다.'
   }
 
   if (isAllPeriod.value) {
@@ -1607,7 +1470,6 @@ const isAllPeriod = computed(() => {
 
   return selectedDateRange.value.start === oldestDate && selectedDateRange.value.end === today
 })
-
 </script>
 
 <style scoped>

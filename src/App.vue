@@ -1,13 +1,3 @@
-<template>
-  <Header_subtypeAll v-if="!isWorkerPage" />
-  <div class="wrap" :class="{ 'no-padding': isWorkerPage }">
-    <main class="main">
-      <router-view></router-view>
-    </main>
-  </div>
-  <Footer v-if="!isWorkerPage" />
-</template>
-
 <script setup>
 import { ref, onMounted, onUnmounted, computed } from "vue";
 import { useRoute } from "vue-router";
@@ -44,6 +34,16 @@ const isWorkerPage = computed(() => {
   );
 });
 </script>
+
+<template>
+  <Header_subtypeAll v-if="!isWorkerPage" />
+  <div class="wrap" :class="{ 'no-padding': isWorkerPage }">
+    <main class="main">
+      <router-view></router-view>
+    </main>
+  </div>
+  <Footer v-if="!isWorkerPage" />
+</template>
 
 <style lang="scss" scoped>
 .wrap {

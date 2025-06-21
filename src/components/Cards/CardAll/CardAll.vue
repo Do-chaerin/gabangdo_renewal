@@ -1,25 +1,24 @@
 <template>
   <CardWaiting1 />
-  <CardProceed2/>
-  <CardProceed3/>
-  <CardComplete4/>
-  <CardWaiting4/>
-  <CardWaiting5/>
-  <CardProceed6/>
-  <CardsWaiting7/>
-  <CardComplete8/>
-
+  <CardProceed2 />
+  <CardProceed3 />
+  <CardComplete3 />
+  <CardComplete4 />
+  <CardsWaiting5 />
+  <CardProceed6 />
+  <CardsWaiting7 />
+  <CardComplete8 />
 </template>
 
 <script setup>
 // 대기중
-import CardWaiting1 from "@/components/Cards/CardsWaiting/CardWaiting1.vue";
-import CardProceed2 from "@/components/CardProceed2.vue";
-import CardProceed3 from "@/components/CardProceed3.vue";
-import CardComplete4 from "@/src/components/Cards/CardsComplete/CardComplete2.vue";
-import CardWaiting4 from "@/components/Cards/CardsWaiting/CardWaiting4.vue";
-import CardWaiting5 from "@/components/Cards/CardsWaiting/CardWaiting5.vue";
-import CardProceed6 from "@/components/CardProceed6.vue";
-import CardsWaiting7 from "@/components/Cards/CardsWaiting/CardsWaiting7.vue";
-import CardComplete8 from "@/src/components/Cards/CardsComplete/CardComplete8.vue";
+import CardWaiting1 from "@/components/Cards/CardsWaiting/CardsWaiting1.vue";
+import CardProceed2 from "../CardProceed/CardProceed2.vue";
+import CardProceed3 from "../CardProceed/CardProceed3.vue";
+import CardComplete3 from "../CardsComplete/CardComplete3.vue";
+import CardComplete4 from "../CardsComplete/CardComplete4.vue";
+import CardsWaiting5 from "../CardsWaiting/CardsWaiting5.vue";
+import CardProceed6 from "../CardProceed/CardProceed6.vue";
+import CardsWaiting7 from "../CardsWaiting/CardsWaiting7.vue";
+import CardComplete8 from "../CardsComplete/CardComplete8.vue";
 </script>
