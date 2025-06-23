@@ -55,6 +55,10 @@
 </template>
 
 <style lang="scss" scoped>
+@use "sass:color";
+@use "/src/assets/Main.scss" as *;
+@use "/src/assets/Variables.scss" as *;
+
 .ft_footer {
   width: 100%;
   background-color: #f5f5f5;
@@ -134,6 +138,107 @@
       font-size: 15px;
     }
   }
+}
+/* footer 전체영역 */
+// 풋터 상단
+// 풋터 상단 왼쪽
+.ft_footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: $main-color;
+  background-color: $notice-1stcolor;
+}
+.ft_footer .inner {
+  width: 100%;
+  max-width: 1300px;
+  margin: auto;
+}
+.ft_footerTop {
+  display: flex;
+  justify-content: space-between;
+  line-height: 27px;
+  // letter-spacing: 1.1px;
+}
+.ft_serviceInfo {
+  margin-top: 5px;
+  display: flex;
+  gap: 5px;
+  font-size: 16.5px;
+}
+.ft_corpInfo {
+  margin: 5px 0;
+}
+.ft_accountAddress {
+  font-weight: bold;
+}
+
+// 풋터 하단(고정)
+.ft_footerbottomFixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 100%;
+  color: #fff;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  background-color: $main-color;
+}
+// 풋터 하단 위 간편문의
+.ft_ftbottomUp {
+  width: 100%;
+  height: 60px;
+
+  h2 {
+    width: 100px;
+    text-align: center;
+    font-size: 23px;
+  }
+  input {
+    width: 250px;
+    height: 28px;
+    margin-left: 2px;
+    font-size: 16.5px;
+    color: #333;
+    border-radius: 2px;
+    border: 0;
+    background-color: #fff;
+  }
+  img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 4px;
+    cursor: pointer;
+  }
+}
+.ft_ftbottomUp > .inner {
+  height: 110%;
+  line-height: 30px;
+  display: flex !important;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 18px;
+  padding: 10px;
+}
+.quickQuestion {
+  max-width: 52%;
+  display: flex;
+}
+// 풋터 하단 아래
+.ft_ftbottomDown {
+  display: flex;
+  background-color: #003366;
+  padding: 10px 0;
+}
+.ft_ftbottomDown .inner {
+  max-width: 900px;
+  text-align: right;
+}
+strong {
+  font-size: 16.5px;
 }
 
 @media screen and (max-width: 1024px) {

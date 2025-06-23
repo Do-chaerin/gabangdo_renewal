@@ -547,7 +547,7 @@ const closeModal = () => {
 
 <template>
   <div class="wrap_total">
-    <div class="inner">
+    <div class="inner_total">
       <!-- 스텝퍼 네비바 -->
       <ProgressStepper
         v-show="showStepper"

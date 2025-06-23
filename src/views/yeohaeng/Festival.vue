@@ -225,7 +225,7 @@ watch(activeTab, () => {
           <i class="ico_bright"></i>
           <div class="title1">
             <div class="festival-title"></div>
-            <div class="title_txt1">
+            <div class="title_txt">
               <h1>
                 대구 {{ activeTab === "CDF018.001" ? "봄" : "가을" }} 축제
               </h1>
@@ -334,18 +334,7 @@ watch(activeTab, () => {
 .yh_wrap {
   width: 1000px;
 }
-// 제목
-.title1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding-bottom: 30px;
-  .title_txt1 h1 {
-    font-family: $font-ownglyph;
-    font-size: 40px;
-  }
-}
+
 header.main {
   position: fixed;
 }
@@ -366,7 +355,9 @@ header.main.fix .hd-gnb .hd-menu > li > a {
 header.main.fix .hd-gnb .hd-menu > li:after {
   background: #000;
 }
-
+.swiper {
+  width: 1000px;
+}
 /* main-bg */
 .main-banner-bg {
   width: 100%;
@@ -581,7 +572,7 @@ header.main.fix .hd-gnb .hd-menu > li:after {
 .festival-month {
   display: flex;
   justify-content: center;
-  margin: 50px 0 70px;
+  margin-bottom: 50px;
 }
 .festival-month a {
   width: 100%;

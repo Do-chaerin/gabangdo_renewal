@@ -110,6 +110,70 @@
   border-radius: $radius;
   background-color: #fff;
 }
+/* 사이즈 섹션 */
+.masize,
+.masize1 {
+  width: 100%;
+  max-width: 250px;
+  padding: 20px;
+  border-radius: $radius;
+  background-color: #fff;
+}
+
+/* 사이즈 섹션 상단 설명  */
+.masize_txt {
+  line-height: 20px;
+  h2 {
+    font-size: $basic-font-size-L * 1.3;
+    line-height: 40px;
+    color: $main-color;
+  }
+  h4 {
+    font-size: $basic-font-size-m;
+    color: #5a5a5a;
+  }
+
+  h5 {
+    font-size: $basic-font-size-m - 4px;
+    color: #5a5a5a;
+  }
+}
+/* 아이콘 */
+.masize_icon {
+  padding: 10px 0;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.masize_icon > img {
+  margin: 10px 0;
+  width: 50%;
+}
+
+/* 사이즈 섹션 하단 설명 */
+.masize_beforecash {
+  text-align: right;
+  min-height: 20px;
+  font-size: 18px;
+  letter-spacing: -1px;
+  color: #ff6b6b;
+}
+
+.masize_aftercash {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: -1px;
+  color: #162b50;
+}
+.ma_lastH2 {
+  font-size: 18px;
+}
 
 /* 사이즈 섹션 상단 설명  */
 .masize_txt {

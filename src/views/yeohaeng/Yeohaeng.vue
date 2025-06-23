@@ -76,7 +76,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="wrap_total">
-    <div class="inner">
+    <div class="inner_total">
       <!-- 스텝퍼 네비바 -->
       <ProgressStepper
         v-show="showStepper"
@@ -97,7 +97,7 @@ onBeforeUnmount(() => {
       <!-- 구분선 -->
       <div class="divider"></div>
       <!-- 순환버스 -->
-      <div class="roundBus">
+      <div class="container2">
         <div ref="step2" id="step2" class="step-container">
           <!-- 순환버스 제목 -->
           <div class="title_txt">
@@ -203,12 +203,10 @@ onBeforeUnmount(() => {
   color: #333;
   transition: background-color 0.3s, color 0.3s;
   user-select: none;
-
   &:hover {
     background-color: #3399ff;
     color: white;
   }
-
   &.active {
     background-color: #007bff;
     color: white;
@@ -221,18 +219,13 @@ onBeforeUnmount(() => {
   border-radius: $radius;
   overflow: hidden;
 }
-// 시티투어
+// 순환버스
 .content-box {
-  width: 100%;
-  max-width: 900px;
-  margin: 40px auto 0;
   border-radius: $radius;
 }
-
 .content-box img {
-  width: 100%;
+  width: 1000px;
   height: auto;
-  max-width: 100%;
   display: block; /* 불필요한 공간 제거 */
 }
 

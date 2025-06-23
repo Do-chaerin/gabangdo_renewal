@@ -80,7 +80,7 @@ onUnmounted(() => {
 
 <template>
   <div class="wrap_total">
-    <div class="inner">
+    <div class="inner_total">
       <ProgressStepper
         v-show="showStepper"
         :steps="['요금안내', '결제/환불', '결제안내']"

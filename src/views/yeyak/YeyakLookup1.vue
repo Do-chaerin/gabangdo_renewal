@@ -30,7 +30,7 @@ function goToLookup() {
 
 <template>
   <div class="wrap_total">
-    <div class="inner">
+    <div class="inner_total">
       <div class="title_txt">
         <h1>예약조회</h1>
       </div>

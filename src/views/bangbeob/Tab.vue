@@ -4,17 +4,17 @@ import { ref } from "vue";
 const activeTab = ref("subway");
 
 // 제목
-const tabsTitle = [
+const sTitle = [
   "대구지하철 1호선",
   "대구지하철 2호선",
   "대구 기차역",
   "대구 국제공항",
 ];
 // 소제목
-const tabsSubTitle = ["장소", "위치", "보관함 수"];
+const sSubTitle = ["장소", "위치", "보관함 수"];
 // 내용들
 // 지하철1호선 1번째
-const storageData = ref([
+const storageData1 = ref([
   { station: "반월당역", location: "1호선출구 14-2번", count: 38 },
   { station: "중앙로역 A", location: "1번 출구 방향 지하1층", count: 14 },
   { station: "중앙로역 B", location: "대한프라임빌딩 계단 밑", count: 14 },
@@ -33,7 +33,7 @@ const storageData2 = ref([
   { station: "동대구역쇼룸 B", location: "1번출구방향", count: 26 },
   { station: "중구청역", location: "쓰리야삼겹 옆 2,3번출구", count: 36 },
   { station: "이월드역", location: "육삼냉면 1,4번 출구", count: 38 },
-  { station: "반고역", location: "육삼냉면 2,3번 출구", count: 38 },
+  { station: "반고개역", location: "육삼냉면 2,3번 출구", count: 38 },
   { station: "한성미술학원", location: "1,2번 출구 방향", count: 38 },
 ]);
 // 지하철2호선 1번째
@@ -88,11 +88,10 @@ import "swiper/css/pagination";
 </script>
 
 <template>
-  <div class="StoreTable">
-    <!-- tab키 -->
-    <div class="StoreTabs">
+  <div class="slideTable">
+    <!-- 탭키 -->
+    <div class="Stores">
       <div class="buttonBorder">
-        <!-- 버튼3개 -->
         <!-- 지하철버튼 -->
         <button
           @click="activeTab = 'subway'"
@@ -117,9 +116,9 @@ import "swiper/css/pagination";
       </div>
     </div>
     <!-- 테이블 내용 -->
-    <!-- tab1 -->
     <div class="StoreContents">
-      <div class="StoreContent1" v-if="activeTab === `subway`">
+      <!-- 탭1 / 자하철 -->
+      <div class="subwayContent" v-if="activeTab === `subway`">
         <Swiper
           :modules="[Pagination]"
           :pagination="{ clickable: true }"
@@ -127,23 +126,26 @@ import "swiper/css/pagination";
           :space-between="30"
           class="mySwiper"
         >
-          <!-- 슬라이드 1 -->
+          <!-- 슬라이드1 / 지하철1호선 -->
           <SwiperSlide>
-            <div class="slide1">
-              <h1 class="tabTitle">{{ tabsTitle[0] }}</h1>
-
-              <table class="tabContent1">
-                <thead class="tabSubtitle">
+            <div class="slide">
+              <h1 class="tabTitle1">{{ sTitle[0] }}</h1>
+              <table class="tabContent">
+                <thead class="subtitle">
                   <tr>
-                    <th>장소</th>
-                    <th>위치</th>
-                    <th>보관함 수</th>
+                    <th
+                      v-for="(subtitle, idx) in sSubTitle"
+                      :key="idx"
+                      class="contentTitle"
+                    >
+                      {{ subtitle }}
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr
                     class="contentS"
-                    v-for="(item, i) in storageData"
+                    v-for="(item, i) in storageData1"
                     :key="i"
                   >
                     <td>
@@ -160,18 +162,20 @@ import "swiper/css/pagination";
               </table>
             </div>
           </SwiperSlide>
-
-          <!-- 슬라이드 2 -->
+          <!-- 슬라이드2 / 지하철1호선 -->
           <SwiperSlide>
-            <div class="slide1">
-              <h1 class="tabTitle">{{ tabsTitle[0] }}</h1>
-
-              <table class="tabContent1">
-                <thead class="tabSubtitle">
+            <div class="slide">
+              <h1 class="tabTitle1">{{ sTitle[0] }}</h1>
+              <table class="tabContent">
+                <thead class="subtitle">
                   <tr>
-                    <th>장소</th>
-                    <th>위치</th>
-                    <th>보관함 수</th>
+                    <th
+                      v-for="(subtitle, idx) in sSubTitle"
+                      :key="idx"
+                      class="contentTitle"
+                    >
+                      {{ subtitle }}
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -194,18 +198,20 @@ import "swiper/css/pagination";
               </table>
             </div>
           </SwiperSlide>
-
-          <!-- 슬라이드 3 -->
+          <!-- 슬라이드3 / 지하철2호선 -->
           <SwiperSlide>
-            <div class="slide1">
-              <h1 class="tabTitle2">{{ tabsTitle[1] }}</h1>
-
-              <table class="tabContent1">
-                <thead class="tabSubtitle">
+            <div class="slide">
+              <h1 class="tabTitle2">{{ sTitle[1] }}</h1>
+              <table class="tabContent">
+                <thead class="subtitle">
                   <tr>
-                    <th>장소</th>
-                    <th>위치</th>
-                    <th>보관함 수</th>
+                    <th
+                      v-for="(subtitle, idx) in sSubTitle"
+                      :key="idx"
+                      class="contentTitle"
+                    >
+                      {{ subtitle }}
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -228,18 +234,20 @@ import "swiper/css/pagination";
               </table>
             </div>
           </SwiperSlide>
-
-          <!-- 슬라이드 4-->
+          <!-- 슬라이드4 / 지하철2호선 -->
           <SwiperSlide>
-            <div class="slide1">
-              <h1 class="tabTitle2">{{ tabsTitle[1] }}</h1>
-
-              <table class="tabContent1">
-                <thead class="tabSubtitle">
+            <div class="slide">
+              <h1 class="tabTitle2">{{ sTitle[1] }}</h1>
+              <table class="tabContent">
+                <thead class="subtitle">
                   <tr>
-                    <th>장소</th>
-                    <th>위치</th>
-                    <th>보관함 수</th>
+                    <th
+                      v-for="(subtitle, idx) in sSubTitle"
+                      :key="idx"
+                      class="contentTitle"
+                    >
+                      {{ subtitle }}
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -262,18 +270,31 @@ import "swiper/css/pagination";
               </table>
             </div>
           </SwiperSlide>
-
-          <!-- 슬라이드 5-->
+        </Swiper>
+      </div>
+      <!-- 탭2 / 기차 -->
+      <div class="trainContent" v-if="activeTab === `train`">
+        <Swiper
+          :modules="[Pagination]"
+          :pagination="{ clickable: true }"
+          :slides-per-view="1"
+          :space-between="30"
+          class="mySwiper"
+        >
+          <!-- 슬라이드1 / 기차-->
           <SwiperSlide>
-            <div class="slide1">
-              <h1 class="tabTitle2">{{ tabsTitle[1] }}</h1>
-
-              <table class="tabContent1">
-                <thead class="tabSubtitle">
+            <div class="slide">
+              <h1 class="tabTitle3">{{ sTitle[2] }}</h1>
+              <table class="tabContent">
+                <thead class="subtitle">
                   <tr>
-                    <th>장소</th>
-                    <th>위치</th>
-                    <th>보관함 수</th>
+                    <th
+                      v-for="(subtitle, idx) in sSubTitle"
+                      :key="idx"
+                      class="contentTitle"
+                    >
+                      {{ subtitle }}
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -298,8 +319,8 @@ import "swiper/css/pagination";
           </SwiperSlide>
         </Swiper>
       </div>
-      <!-- tab2 -->
-      <div class="trainContent2" v-if="activeTab === `train`">
+      <!-- 탭3 / 공항 -->
+      <div class="trainContent" v-if="activeTab === `airport`">
         <Swiper
           :modules="[Pagination]"
           :pagination="{ clickable: true }"
@@ -307,61 +328,20 @@ import "swiper/css/pagination";
           :space-between="30"
           class="mySwiper"
         >
-          <!-- 슬라이드 4-->
+          <!-- 슬라이드1 / 공항-->
           <SwiperSlide>
-            <div class="slide1">
-              <h1 class="tabTitle3">{{ tabsTitle[2] }}</h1>
-
-              <table class="tabContent1">
-                <thead class="tabSubtitle">
+            <div class="slide">
+              <h1 class="tabTitle4">{{ sTitle[3] }}</h1>
+              <table class="tabContent">
+                <thead class="subtitle">
                   <tr>
-                    <th>장소</th>
-                    <th>위치</th>
-                    <th>보관함 수</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr
-                    class="contentS"
-                    v-for="(item, i) in storageData5"
-                    :key="i"
-                  >
-                    <td>
-                      <div class="cell">{{ item.station }}</div>
-                    </td>
-                    <td>
-                      <div class="cell">{{ item.location }}</div>
-                    </td>
-                    <td>
-                      <div class="cell">{{ item.count }}</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </SwiperSlide>
-        </Swiper>
-      </div>
-      <!-- tab3 -->
-      <div class="trainContent3" v-if="activeTab === `airport`">
-        <Swiper
-          :modules="[Pagination]"
-          :pagination="{ clickable: true }"
-          :slides-per-view="1"
-          :space-between="30"
-          class="mySwiper"
-        >
-          <!-- 슬라이드 4-->
-          <SwiperSlide>
-            <div class="slide1">
-              <h1 class="tabTitle4">{{ tabsTitle[3] }}</h1>
-
-              <table class="tabContent1">
-                <thead class="tabSubtitle">
-                  <tr>
-                    <th>장소</th>
-                    <th>위치</th>
-                    <th>보관함 수</th>
+                    <th
+                      v-for="(subtitle, idx) in sSubTitle"
+                      :key="idx"
+                      class="contentTitle"
+                    >
+                      {{ subtitle }}
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -396,219 +376,103 @@ import "swiper/css/pagination";
 @use "/src/assets/Variables.scss" as *;
 
 // 테이블
-.StoreTable {
-  position: relative;
+.slideTable {
   width: 1000px;
-  //   height: 70%;
+  position: relative;
   background-color: #fff;
   border: $border-line;
   border-radius: $radius;
   overflow: hidden;
-
-  // 탭키
-  .StoreTabs {
-    position: relative;
-    width: 100%;
-    // height: 12%;
-    background-color: $main-color;
-    border-radius: $radius;
-    padding: 2% 0;
+}
+// 탭키
+.Stores {
+  position: relative;
+  width: 100%;
+  background-color: $main-color;
+  border-radius: $radius 0 0;
+  padding: 15px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  .buttonBorder {
+    background-color: #fff;
+    height: auto;
+    width: 30%;
+    padding: 5px;
+    border-radius: 50px;
     display: flex;
-    text-align: center;
-    justify-content: center;
-    line-height: 30px;
-    padding-left: 30%;
     justify-content: space-between;
-    .buttonBorder {
+    align-items: center;
+    button {
       background-color: #fff;
-      height: 60px;
-      width: 65%;
-      border-radius: $radius;
-      display: flex; // 중요!
-      justify-content: space-between; // 버튼들 좌우 벌리기
-      align-items: center; // 세로 가운데 정렬
-
-      padding: 0 10px; // 양옆 공간 주기
-      button {
-        background-color: #fff;
-        color: #000000;
-        border-radius: $radius;
-        line-height: 30px;
-        text-align: center;
-        border: none;
-        padding: 2% 10% 2% 10%;
-        margin-top: 2%;
-        margin-bottom: 2%;
-        cursor: pointer;
-        font-size: 20px;
-        font-weight: bold;
-      }
-      button.active {
-        background-color: $main-color;
-        color: #fff;
-      }
+      color: #000000;
+      border-radius: 25px;
+      text-align: center;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: bold;
     }
-  }
-  // 테이블내용
-  .StoreContents {
-    width: 100%;
-    height: 35vw;
-
-    // background-color: red;
-    .StoreContent1 {
-      width: 100%;
-      height: 100%;
-
-      .slide1 {
-        width: 100%;
-        padding-top: 5%;
-        padding-left: 10%;
-        padding-right: 10%;
-
-        .tabTitle {
-          font-size: 26px;
-          color: #ff5c00;
-          font-weight: bold;
-          padding-bottom: 2%;
-        }
-        .tabTitle2 {
-          font-size: 26px;
-          color: #159817;
-          font-weight: bold;
-          padding-bottom: 2%;
-        }
-
-        .tabContent1 {
-          width: 100%;
-          border-collapse: separate;
-          border-spacing: 0 20px; // 이게 핵심!
-          .tabSubtitle {
-            tr {
-              th {
-                font-size: 20px;
-                font-weight: bold;
-                padding-bottom: 3%;
-                text-align: left;
-              }
-            }
-            .contentS {
-              .cell {
-                padding-bottom: 100px;
-                background-color: rgba(255, 0, 0, 0.2);
-              }
-            }
-          }
-        }
-      }
+    button.active {
+      background-color: $main-color;
+      color: #fff;
     }
-    .trainContent2 {
-      width: 100%;
-      height: 100%;
-      .slide1 {
-        width: 100%;
-        padding-top: 5%;
-        padding-left: 10%;
-        padding-right: 10%;
-        .tabTitle {
-          font-size: 26px;
-          color: #ff5c00;
-          font-weight: bold;
-          padding-bottom: 2%;
-        }
-        .tabTitle2 {
-          font-size: 26px;
-          color: #159817;
-          font-weight: bold;
-          padding-bottom: 2%;
-        }
-        .tabTitle3 {
-          font-size: 26px;
-          color: #0066b3;
-          font-weight: bold;
-          padding-bottom: 2%;
-        }
-
-        .tabContent1 {
-          width: 100%;
-          border-collapse: separate;
-          border-spacing: 0 20px; // 이게 핵심!
-          .tabSubtitle {
-            tr {
-              th {
-                font-size: 20px;
-                font-weight: bold;
-                padding-bottom: 3%;
-                text-align: left;
-              }
-            }
-            .contentS {
-              .cell {
-                padding-bottom: 100px;
-                background-color: rgba(255, 0, 0, 0.2);
-              }
-            }
-          }
-        }
-      }
-    }
-    .trainContent3 {
-      width: 100%;
-      height: 100%;
-      .slide1 {
-        width: 100%;
-        padding-top: 5%;
-        padding-left: 10%;
-        padding-right: 10%;
-        .tabTitle {
-          font-size: 26px;
-          color: #ff5c00;
-          font-weight: bold;
-          padding-bottom: 2%;
-        }
-        .tabTitle2 {
-          font-size: 26px;
-          color: #159817;
-          font-weight: bold;
-          padding-bottom: 2%;
-        }
-        .tabTitle3 {
-          font-size: 26px;
-          color: #0066b3;
-          font-weight: bold;
-          padding-bottom: 2%;
-        }
-        .tabTitle4 {
-          font-size: 26px;
-          color: #2aaae2;
-          font-weight: bold;
-          padding-bottom: 2%;
-        }
-        .tabContent1 {
-          width: 100%;
-          border-collapse: separate;
-          border-spacing: 0 20px; // 이게 핵심!
-          .tabSubtitle {
-            tr {
-              th {
-                font-size: 20px;
-                font-weight: bold;
-                padding-bottom: 3%;
-                text-align: left;
-              }
-            }
-            .contentS {
-              .cell {
-                padding-bottom: 100px;
-                background-color: rgba(255, 0, 0, 0.2);
-              }
-            }
-          }
-        }
-      }
+    button.hover {
+      background-color: $main-color;
+      color: #fff;
     }
   }
 }
-
+// 슬라이드 내용
+.slide {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 25px 20px;
+  // 슬라이드 타이틀
+  .tabTitle1 {
+    font-size: 26px;
+    color: #ff5c00;
+    font-weight: bold;
+  }
+  .tabTitle2 {
+    font-size: 26px;
+    color: #159817;
+    font-weight: bold;
+  }
+  .tabTitle3 {
+    font-size: 26px;
+    color: #0066b3;
+    font-weight: bold;
+  }
+  .tabTitle4 {
+    font-size: 26px;
+    color: #2aaae2;
+    font-weight: bold;
+  }
+  // 슬라이드 컨텐츠
+  .tabContent {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+    .contentTitle {
+      font-size: 20px;
+      font-weight: bold;
+      padding: 10px 0;
+    }
+    // 3등분
+    td {
+      width: 33.33%;
+    }
+    th {
+      width: 33.33%;
+    }
+  }
+}
 // 스와이퍼css
 #app {
   height: 100%;
@@ -618,7 +482,6 @@ body {
   position: relative;
   height: 100%;
 }
-
 body {
   background: #eee;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -627,17 +490,14 @@ body {
   margin: 0;
   padding: 0;
 }
-
 .swiper {
   width: 100%;
   height: 100%;
 }
-
 .swiper-slide {
   font-size: 18px;
   background: #fff;
 }
-
 .swiper-slide img {
   display: block;
   width: 100%;

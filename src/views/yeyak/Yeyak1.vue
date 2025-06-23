@@ -390,7 +390,7 @@ watch(selectedDate, (val) => {
   <!-- 전체 -->
   <div class="wrap_total">
     <!-- 이너 -->
-    <div class="inner">
+    <div class="inner_total">
       <!-- 타이틀 -->
       <div class="title_txt">
         <h1>예약하기</h1>

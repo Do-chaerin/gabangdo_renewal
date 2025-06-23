@@ -135,7 +135,6 @@ export default {
 .yh_wrap {
   width: 1000px;
 }
-
 h4 {
   margin: 10px 0;
   font-family: $font-ownglyph;
@@ -150,12 +149,10 @@ h4 {
   align-items: center;
   a {
     width: 100%;
-    max-width: 800px;
+    max-width: 1000px;
     height: 100%;
   }
   img {
-    width: 100%;
-
     height: auto;
     object-fit: cover; // 또는 contain
     border-radius: $radius;
@@ -176,7 +173,6 @@ h4 {
   color: #ee2b2b;
   left: var(--swiper-navigation-sides-offset, 180px);
 }
-
 :deep(.swiper-button-prev::after) {
   font-size: 25px;
 }
@@ -187,7 +183,15 @@ h4 {
 :deep(.swiper-button-next::after) {
   font-size: 25px;
 }
+:deep(.swiper-scrollbar) {
+  width: 50% !important;
+  margin: 0 auto !important;
+  position: relative;
+  box-sizing: content-box;
+}
 :deep(.swiper-scrollbar-drag) {
   background-color: #ee2b2b !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
 }
 </style>

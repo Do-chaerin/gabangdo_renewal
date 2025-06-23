@@ -226,9 +226,9 @@ function goToNextPage() {
   <!-- 전체 -->
   <div class="wrap_total">
     <!-- 이너 -->
-    <div class="inner">
+    <div class="inner_total">
       <!-- 타이틀 -->
-      <div class="title_txt1"><h1>예약조회</h1></div>
+      <div class="title_txt"><h1>예약조회</h1></div>
       <!-- 본문 테두리 -->
       <div class="line">
         <!-- 본문 박스 -->
