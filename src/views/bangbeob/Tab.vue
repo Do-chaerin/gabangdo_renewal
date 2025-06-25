@@ -88,283 +88,285 @@ import "swiper/css/pagination";
 </script>
 
 <template>
-  <div class="slideTable">
-    <!-- 탭키 -->
-    <div class="Stores">
-      <div class="buttonBorder">
-        <!-- 지하철버튼 -->
-        <button
-          @click="activeTab = 'subway'"
-          :class="{ active: activeTab === 'subway' }"
-        >
-          지하철
-        </button>
-        <!-- 기차역버튼 -->
-        <button
-          @click="activeTab = 'train'"
-          :class="{ active: activeTab === 'train' }"
-        >
-          기차역
-        </button>
-        <!-- 공항버튼 -->
-        <button
-          @click="activeTab = 'airport'"
-          :class="{ active: activeTab === 'airport' }"
-        >
-          공항
-        </button>
+  <div class="tabwrap">
+    <div class="slideTable">
+      <!-- 탭키 -->
+      <div class="Stores">
+        <div class="buttonBorder">
+          <!-- 지하철버튼 -->
+          <button
+            @click="activeTab = 'subway'"
+            :class="{ active: activeTab === 'subway' }"
+          >
+            지하철
+          </button>
+          <!-- 기차역버튼 -->
+          <button
+            @click="activeTab = 'train'"
+            :class="{ active: activeTab === 'train' }"
+          >
+            기차역
+          </button>
+          <!-- 공항버튼 -->
+          <button
+            @click="activeTab = 'airport'"
+            :class="{ active: activeTab === 'airport' }"
+          >
+            공항
+          </button>
+        </div>
       </div>
-    </div>
-    <!-- 테이블 내용 -->
-    <div class="StoreContents">
-      <!-- 탭1 / 자하철 -->
-      <div class="subwayContent" v-if="activeTab === `subway`">
-        <Swiper
-          :modules="[Pagination]"
-          :pagination="{ clickable: true }"
-          :slides-per-view="1"
-          :space-between="30"
-          class="mySwiper"
-        >
-          <!-- 슬라이드1 / 지하철1호선 -->
-          <SwiperSlide>
-            <div class="slide">
-              <h1 class="tabTitle1">{{ sTitle[0] }}</h1>
-              <table class="tabContent">
-                <thead class="subtitle">
-                  <tr>
-                    <th
-                      v-for="(subtitle, idx) in sSubTitle"
-                      :key="idx"
-                      class="contentTitle"
+      <!-- 테이블 내용 -->
+      <div class="StoreContents">
+        <!-- 탭1 / 자하철 -->
+        <div class="subwayContent" v-if="activeTab === `subway`">
+          <Swiper
+            :modules="[Pagination]"
+            :pagination="{ clickable: true }"
+            :slides-per-view="1"
+            :space-between="30"
+            class="mySwiper"
+          >
+            <!-- 슬라이드1 / 지하철1호선 -->
+            <SwiperSlide>
+              <div class="slide">
+                <h1 class="tabTitle1">{{ sTitle[0] }}</h1>
+                <table class="tabContent">
+                  <thead class="subtitle">
+                    <tr>
+                      <th
+                        v-for="(subtitle, idx) in sSubTitle"
+                        :key="idx"
+                        class="contentTitle"
+                      >
+                        {{ subtitle }}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      class="contentS"
+                      v-for="(item, i) in storageData1"
+                      :key="i"
                     >
-                      {{ subtitle }}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr
-                    class="contentS"
-                    v-for="(item, i) in storageData1"
-                    :key="i"
-                  >
-                    <td>
-                      <div class="cell">{{ item.station }}</div>
-                    </td>
-                    <td>
-                      <div class="cell">{{ item.location }}</div>
-                    </td>
-                    <td>
-                      <div class="cell">{{ item.count }}</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </SwiperSlide>
-          <!-- 슬라이드2 / 지하철1호선 -->
-          <SwiperSlide>
-            <div class="slide">
-              <h1 class="tabTitle1">{{ sTitle[0] }}</h1>
-              <table class="tabContent">
-                <thead class="subtitle">
-                  <tr>
-                    <th
-                      v-for="(subtitle, idx) in sSubTitle"
-                      :key="idx"
-                      class="contentTitle"
+                      <td>
+                        <div class="cell">{{ item.station }}</div>
+                      </td>
+                      <td>
+                        <div class="cell">{{ item.location }}</div>
+                      </td>
+                      <td>
+                        <div class="cell">{{ item.count }}</div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </SwiperSlide>
+            <!-- 슬라이드2 / 지하철1호선 -->
+            <SwiperSlide>
+              <div class="slide">
+                <h1 class="tabTitle1">{{ sTitle[0] }}</h1>
+                <table class="tabContent">
+                  <thead class="subtitle">
+                    <tr>
+                      <th
+                        v-for="(subtitle, idx) in sSubTitle"
+                        :key="idx"
+                        class="contentTitle"
+                      >
+                        {{ subtitle }}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      class="contentS"
+                      v-for="(item, i) in storageData2"
+                      :key="i"
                     >
-                      {{ subtitle }}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr
-                    class="contentS"
-                    v-for="(item, i) in storageData2"
-                    :key="i"
-                  >
-                    <td>
-                      <div class="cell">{{ item.station }}</div>
-                    </td>
-                    <td>
-                      <div class="cell">{{ item.location }}</div>
-                    </td>
-                    <td>
-                      <div class="cell">{{ item.count }}</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </SwiperSlide>
-          <!-- 슬라이드3 / 지하철2호선 -->
-          <SwiperSlide>
-            <div class="slide">
-              <h1 class="tabTitle2">{{ sTitle[1] }}</h1>
-              <table class="tabContent">
-                <thead class="subtitle">
-                  <tr>
-                    <th
-                      v-for="(subtitle, idx) in sSubTitle"
-                      :key="idx"
-                      class="contentTitle"
+                      <td>
+                        <div class="cell">{{ item.station }}</div>
+                      </td>
+                      <td>
+                        <div class="cell">{{ item.location }}</div>
+                      </td>
+                      <td>
+                        <div class="cell">{{ item.count }}</div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </SwiperSlide>
+            <!-- 슬라이드3 / 지하철2호선 -->
+            <SwiperSlide>
+              <div class="slide">
+                <h1 class="tabTitle2">{{ sTitle[1] }}</h1>
+                <table class="tabContent">
+                  <thead class="subtitle">
+                    <tr>
+                      <th
+                        v-for="(subtitle, idx) in sSubTitle"
+                        :key="idx"
+                        class="contentTitle"
+                      >
+                        {{ subtitle }}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      class="contentS"
+                      v-for="(item, i) in storageData3"
+                      :key="i"
                     >
-                      {{ subtitle }}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr
-                    class="contentS"
-                    v-for="(item, i) in storageData3"
-                    :key="i"
-                  >
-                    <td>
-                      <div class="cell">{{ item.station }}</div>
-                    </td>
-                    <td>
-                      <div class="cell">{{ item.location }}</div>
-                    </td>
-                    <td>
-                      <div class="cell">{{ item.count }}</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </SwiperSlide>
-          <!-- 슬라이드4 / 지하철2호선 -->
-          <SwiperSlide>
-            <div class="slide">
-              <h1 class="tabTitle2">{{ sTitle[1] }}</h1>
-              <table class="tabContent">
-                <thead class="subtitle">
-                  <tr>
-                    <th
-                      v-for="(subtitle, idx) in sSubTitle"
-                      :key="idx"
-                      class="contentTitle"
+                      <td>
+                        <div class="cell">{{ item.station }}</div>
+                      </td>
+                      <td>
+                        <div class="cell">{{ item.location }}</div>
+                      </td>
+                      <td>
+                        <div class="cell">{{ item.count }}</div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </SwiperSlide>
+            <!-- 슬라이드4 / 지하철2호선 -->
+            <SwiperSlide>
+              <div class="slide">
+                <h1 class="tabTitle2">{{ sTitle[1] }}</h1>
+                <table class="tabContent">
+                  <thead class="subtitle">
+                    <tr>
+                      <th
+                        v-for="(subtitle, idx) in sSubTitle"
+                        :key="idx"
+                        class="contentTitle"
+                      >
+                        {{ subtitle }}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      class="contentS"
+                      v-for="(item, i) in storageData4"
+                      :key="i"
                     >
-                      {{ subtitle }}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr
-                    class="contentS"
-                    v-for="(item, i) in storageData4"
-                    :key="i"
-                  >
-                    <td>
-                      <div class="cell">{{ item.station }}</div>
-                    </td>
-                    <td>
-                      <div class="cell">{{ item.location }}</div>
-                    </td>
-                    <td>
-                      <div class="cell">{{ item.count }}</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </SwiperSlide>
-        </Swiper>
-      </div>
-      <!-- 탭2 / 기차 -->
-      <div class="trainContent" v-if="activeTab === `train`">
-        <Swiper
-          :modules="[Pagination]"
-          :pagination="{ clickable: true }"
-          :slides-per-view="1"
-          :space-between="30"
-          class="mySwiper"
-        >
-          <!-- 슬라이드1 / 기차-->
-          <SwiperSlide>
-            <div class="slide">
-              <h1 class="tabTitle3">{{ sTitle[2] }}</h1>
-              <table class="tabContent">
-                <thead class="subtitle">
-                  <tr>
-                    <th
-                      v-for="(subtitle, idx) in sSubTitle"
-                      :key="idx"
-                      class="contentTitle"
+                      <td>
+                        <div class="cell">{{ item.station }}</div>
+                      </td>
+                      <td>
+                        <div class="cell">{{ item.location }}</div>
+                      </td>
+                      <td>
+                        <div class="cell">{{ item.count }}</div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </SwiperSlide>
+          </Swiper>
+        </div>
+        <!-- 탭2 / 기차 -->
+        <div class="trainContent" v-if="activeTab === `train`">
+          <Swiper
+            :modules="[Pagination]"
+            :pagination="{ clickable: true }"
+            :slides-per-view="1"
+            :space-between="30"
+            class="mySwiper"
+          >
+            <!-- 슬라이드1 / 기차-->
+            <SwiperSlide>
+              <div class="slide">
+                <h1 class="tabTitle3">{{ sTitle[2] }}</h1>
+                <table class="tabContent">
+                  <thead class="subtitle">
+                    <tr>
+                      <th
+                        v-for="(subtitle, idx) in sSubTitle"
+                        :key="idx"
+                        class="contentTitle"
+                      >
+                        {{ subtitle }}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      class="contentS"
+                      v-for="(item, i) in storageData5"
+                      :key="i"
                     >
-                      {{ subtitle }}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr
-                    class="contentS"
-                    v-for="(item, i) in storageData5"
-                    :key="i"
-                  >
-                    <td>
-                      <div class="cell">{{ item.station }}</div>
-                    </td>
-                    <td>
-                      <div class="cell">{{ item.location }}</div>
-                    </td>
-                    <td>
-                      <div class="cell">{{ item.count }}</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </SwiperSlide>
-        </Swiper>
-      </div>
-      <!-- 탭3 / 공항 -->
-      <div class="trainContent" v-if="activeTab === `airport`">
-        <Swiper
-          :modules="[Pagination]"
-          :pagination="{ clickable: true }"
-          :slides-per-view="1"
-          :space-between="30"
-          class="mySwiper"
-        >
-          <!-- 슬라이드1 / 공항-->
-          <SwiperSlide>
-            <div class="slide">
-              <h1 class="tabTitle4">{{ sTitle[3] }}</h1>
-              <table class="tabContent">
-                <thead class="subtitle">
-                  <tr>
-                    <th
-                      v-for="(subtitle, idx) in sSubTitle"
-                      :key="idx"
-                      class="contentTitle"
+                      <td>
+                        <div class="cell">{{ item.station }}</div>
+                      </td>
+                      <td>
+                        <div class="cell">{{ item.location }}</div>
+                      </td>
+                      <td>
+                        <div class="cell">{{ item.count }}</div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </SwiperSlide>
+          </Swiper>
+        </div>
+        <!-- 탭3 / 공항 -->
+        <div class="trainContent" v-if="activeTab === `airport`">
+          <Swiper
+            :modules="[Pagination]"
+            :pagination="{ clickable: true }"
+            :slides-per-view="1"
+            :space-between="30"
+            class="mySwiper"
+          >
+            <!-- 슬라이드1 / 공항-->
+            <SwiperSlide>
+              <div class="slide">
+                <h1 class="tabTitle4">{{ sTitle[3] }}</h1>
+                <table class="tabContent">
+                  <thead class="subtitle">
+                    <tr>
+                      <th
+                        v-for="(subtitle, idx) in sSubTitle"
+                        :key="idx"
+                        class="contentTitle"
+                      >
+                        {{ subtitle }}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      class="contentS"
+                      v-for="(item, i) in storageData6"
+                      :key="i"
                     >
-                      {{ subtitle }}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr
-                    class="contentS"
-                    v-for="(item, i) in storageData6"
-                    :key="i"
-                  >
-                    <td>
-                      <div class="cell">{{ item.station }}</div>
-                    </td>
-                    <td>
-                      <div class="cell">{{ item.location }}</div>
-                    </td>
-                    <td>
-                      <div class="cell">{{ item.count }}</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </SwiperSlide>
-        </Swiper>
+                      <td>
+                        <div class="cell">{{ item.station }}</div>
+                      </td>
+                      <td>
+                        <div class="cell">{{ item.location }}</div>
+                      </td>
+                      <td>
+                        <div class="cell">{{ item.count }}</div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </SwiperSlide>
+          </Swiper>
+        </div>
       </div>
     </div>
   </div>
@@ -375,9 +377,16 @@ import "swiper/css/pagination";
 @use "/src/assets/Main.scss" as *;
 @use "/src/assets/Variables.scss" as *;
 
+//전제
+.tabwrap {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
 // 테이블
 .slideTable {
-  width: 1000px;
   position: relative;
   background-color: #fff;
   border: $border-line;

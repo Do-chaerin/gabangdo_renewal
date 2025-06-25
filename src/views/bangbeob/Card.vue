@@ -50,16 +50,16 @@
 // 카드전체
 .cardWarp {
   display: flex;
-  justify-content: space-between;
-  width: 1000px;
+  justify-content: center;
+  gap: 15px;
 }
 // 카드테두리
 .card {
-  width: 300px;
+  width: 290px;
   background: white;
   border: $border-line;
   border-radius: $radius;
-  padding: 20px;
+  padding: 15px;
   text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
@@ -88,7 +88,7 @@
   padding: 0;
   margin-bottom: 20px;
   text-align: left;
-  padding-left: 50px;
+  padding-left: 25px;
 }
 
 .step-list li {
