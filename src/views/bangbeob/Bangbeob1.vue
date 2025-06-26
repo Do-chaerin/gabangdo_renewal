@@ -3,6 +3,7 @@ import { ref, onMounted, onUnmounted } from "vue";
 
 import Tab from "./Tab.vue";
 import Card from "./Card.vue";
+import Price from "./Price.vue";
 import ProgressStepper from "../yeyak/ProgressStepper.vue";
 const showStepper = ref(true);
 const stepIndex = ref(1);
