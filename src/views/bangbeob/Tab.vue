@@ -1,8 +1,10 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watch, nextTick } from "vue";
 // 탭키 내용
 const activeTab = ref("subway");
-
+const swiperSubway = ref(null);
+const swiperTrain = ref(null);
+const swiperAirport = ref(null);
 // 제목
 const sTitle = [
   "대구지하철 1호선",
@@ -73,7 +75,7 @@ const storageData6 = ref([
   {
     station: "대구 국제공항",
     location: `대구국제공항 입국장
-근처 사물함 (도착층)`,
+근처 사물함<br/>(도착층)`,
     count: 60,
   },
 ]);
@@ -85,6 +87,17 @@ import { Pagination } from "swiper/modules";
 // Swiper 스타일
 import "swiper/css";
 import "swiper/css/pagination";
+// 탭 전환 시 해당 Swiper만 업데이트 & 맨 앞으로
+watch(activeTab, () => {
+  nextTick(() => {
+    let inst;
+    if (activeTab.value === "subway") inst = swiperSubway.value?.swiper;
+    if (activeTab.value === "train") inst = swiperTrain.value?.swiper;
+    if (activeTab.value === "airport") inst = swiperAirport.value?.swiper;
+    inst?.update();
+    inst?.slideTo(0);
+  });
+});
 </script>
 
 <template>
@@ -119,8 +132,9 @@ import "swiper/css/pagination";
       <!-- 테이블 내용 -->
       <div class="StoreContents">
         <!-- 탭1 / 자하철 -->
-        <div class="subwayContent" v-if="activeTab === `subway`">
+        <div class="subwayContent" v-show="activeTab === `subway`">
           <Swiper
+            ref="swiperSubway"
             :modules="[Pagination]"
             :pagination="{ clickable: true }"
             :slides-per-view="1"
@@ -274,8 +288,9 @@ import "swiper/css/pagination";
           </Swiper>
         </div>
         <!-- 탭2 / 기차 -->
-        <div class="trainContent" v-if="activeTab === `train`">
+        <div class="trainContent" v-show="activeTab === `train`">
           <Swiper
+            ref="swiperTrain"
             :modules="[Pagination]"
             :pagination="{ clickable: true }"
             :slides-per-view="1"
@@ -321,8 +336,9 @@ import "swiper/css/pagination";
           </Swiper>
         </div>
         <!-- 탭3 / 공항 -->
-        <div class="trainContent" v-if="activeTab === `airport`">
+        <div class="trainContent" v-show="activeTab === `airport`">
           <Swiper
+            ref="swiperAirport"
             :modules="[Pagination]"
             :pagination="{ clickable: true }"
             :slides-per-view="1"
@@ -355,7 +371,7 @@ import "swiper/css/pagination";
                         <div class="cell">{{ item.station }}</div>
                       </td>
                       <td>
-                        <div class="cell">{{ item.location }}</div>
+                        <div class="cell" v-html="item.location"></div>
                       </td>
                       <td>
                         <div class="cell">{{ item.count }}</div>
@@ -385,6 +401,9 @@ import "swiper/css/pagination";
   max-width: 1000px;
   margin: 0 auto;
 }
+.StoreContents {
+  width: 100% !important; // 내부 컨텐츠 영역도 100%
+}
 // 테이블
 .slideTable {
   position: relative;
@@ -392,6 +411,7 @@ import "swiper/css/pagination";
   border: $border-line;
   border-radius: $radius;
   overflow: hidden;
+  width: 100%;
 }
 // 탭키
 .Stores {
@@ -482,6 +502,7 @@ import "swiper/css/pagination";
     }
   }
 }
+
 // 스와이퍼css
 #app {
   height: 100%;
@@ -512,5 +533,13 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.mySwiper {
+  .swiper-wrapper {
+    width: 100% !important;
+    .swiper-slide {
+      width: 100% !important;
+    }
+  }
 }
 </style>
