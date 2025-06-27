@@ -488,6 +488,7 @@ watch(activeTab, () => {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0 15px;
+    table-layout: fixed;
     .contentTitle {
       font-size: 20px;
       font-weight: bold;
