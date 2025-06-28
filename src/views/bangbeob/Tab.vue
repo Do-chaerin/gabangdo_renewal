@@ -393,7 +393,7 @@ watch(activeTab, () => {
 @use "/src/assets/Main.scss" as *;
 @use "/src/assets/Variables.scss" as *;
 
-//전제
+// 전체
 .tabwrap {
   display: flex;
   justify-content: center;

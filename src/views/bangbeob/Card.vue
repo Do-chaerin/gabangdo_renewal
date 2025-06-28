@@ -1,6 +1,4 @@
-<script setup>
-// 별도 로직 없음
-</script>
+<script setup></script>
 
 <template>
   <div class="cardWarp">
@@ -69,20 +67,17 @@
   color: #6b7280;
   margin-bottom: 4px;
 }
-
 .title {
   font-size: 25px;
   font-weight: bold;
   margin-bottom: 16px;
 }
-
 .plane-img {
   width: 150px;
   height: 150px;
   object-fit: contain;
   margin: 0 auto 16px;
 }
-
 .step-list {
   list-style: none;
   padding: 0;
@@ -90,7 +85,6 @@
   text-align: left;
   padding-left: 25px;
 }
-
 .step-list li {
   display: flex;
   align-items: center;
@@ -99,7 +93,6 @@
   font-size: 18px;
   font-weight: 450;
 }
-
 .step-num {
   width: 24px;
   height: 24px;
@@ -113,7 +106,6 @@
   margin-right: 10px;
   color: #ffffff;
 }
-
 .location-btn {
   padding: 8px 16px;
   border-radius: $radius;
@@ -125,7 +117,6 @@
   cursor: pointer;
   margin-top: 5px;
 }
-
 .location-btn:hover {
   background-color: #279bf4;
 }

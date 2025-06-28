@@ -78,7 +78,7 @@
         </div>
         <div class="luggageb">W 45cm X D 56cm X H 30cm</div>
       </div>
-      <!-- 수화물 m -->
+      <!-- 수화물 M -->
       <div class="luggage">
         <div class="luggaget">중형</div>
         <div class="luggagem">화물용 캐리어, 등산가방 등</div>

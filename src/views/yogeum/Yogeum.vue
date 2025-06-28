@@ -181,6 +181,7 @@ onUnmounted(() => {
 @use "@/assets/Main.scss" as *;
 @use "@/assets/_Variables.scss" as *;
 @use "/src/assets/Home.scss" as *;
+
 // 스텝퍼
 :deep(.stepper) {
   display: flex;
