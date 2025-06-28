@@ -179,7 +179,7 @@ onUnmounted(() => {
 <style lang="scss" scoped>
 @use "sass:color";
 @use "@/assets/Main.scss" as *;
-@use "@/assets/_Variables.scss" as *;
+@use "@/assets/Variables.scss" as *;
 @use "/src/assets/Home.scss" as *;
 
 // 스텝퍼
