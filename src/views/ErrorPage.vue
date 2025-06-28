@@ -4,9 +4,7 @@
     <div class="bb_404Letter">
       <h1>4</h1>
       <div class="bb_errorPic">
-        <img
-          src="/images/yr/loginpage/404Character.png"
-          alt="용달눈물" />
+        <img src="/images/yr/loginpage/404Character.png" alt="용달눈물" />
       </div>
       <h1>4</h1>
     </div>
@@ -39,12 +37,12 @@ const toMain = () => {
   router.push("/");
 };
 const toPrevious = () => {
-router.go(-1);
+  router.go(-1);
 };
 </script>
 
 <style lang="scss" scoped>
-@use "/src/assets/_Variables.scss" as *;
+@use "/src/assets/Variables.scss" as *;
 .bb_404Container {
   display: flex;
   flex-direction: column;
@@ -107,5 +105,4 @@ router.go(-1);
     }
   }
 }
-
 </style>
