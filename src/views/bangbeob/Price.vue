@@ -113,7 +113,7 @@
 
 <style lang="scss" scoped>
 @use "sass:color";
-@use "/src/assets/main.scss" as *;
+@use "/src/assets/Main.scss" as *;
 @use "/src/assets/Variables.scss" as *;
 
 // 전체

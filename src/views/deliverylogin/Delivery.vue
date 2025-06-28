@@ -1,3 +1,33 @@
+<script setup>
+import { ref } from "vue";
+
+// 포맷 함수: YYYY.MM.DD HH:mm
+function formatDate(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0"); // 0~11이니까 +1
+  const day = String(date.getDate()).padStart(2, "0");
+  const hour = String(date.getHours()).padStart(2, "0"); // 24시간제
+  const minute = String(date.getMinutes()).padStart(2, "0");
+
+  return `${year}.${month}.${day} ${hour}:${minute}`;
+}
+
+const now = new Date();
+
+// 현재 시간
+const currentTime = ref(formatDate(now));
+
+// 1시간 전
+const oneHourAgo = new Date(now);
+oneHourAgo.setHours(now.getHours() - 1);
+const timeOneHourAgo = ref(formatDate(oneHourAgo));
+
+// 하루 전
+const oneDayAgo = new Date(now);
+oneDayAgo.setDate(now.getDate() - 1);
+const timeOneDayAgo = ref(formatDate(oneDayAgo));
+</script>
+
 <template>
   <div class="wrap_total">
     <div class="bb_tracking-container">
@@ -103,36 +133,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { ref } from "vue";
-
-// 포맷 함수: YYYY.MM.DD HH:mm
-function formatDate(date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0"); // 0~11이니까 +1
-  const day = String(date.getDate()).padStart(2, "0");
-  const hour = String(date.getHours()).padStart(2, "0"); // 24시간제
-  const minute = String(date.getMinutes()).padStart(2, "0");
-
-  return `${year}.${month}.${day} ${hour}:${minute}`;
-}
-
-const now = new Date();
-
-// 현재 시간
-const currentTime = ref(formatDate(now));
-
-// 1시간 전
-const oneHourAgo = new Date(now);
-oneHourAgo.setHours(now.getHours() - 1);
-const timeOneHourAgo = ref(formatDate(oneHourAgo));
-
-// 하루 전
-const oneDayAgo = new Date(now);
-oneDayAgo.setDate(now.getDate() - 1);
-const timeOneDayAgo = ref(formatDate(oneDayAgo));
-</script>
 
 <style lang="scss" scoped>
 @use "sass:color";
