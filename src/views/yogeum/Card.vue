@@ -97,6 +97,21 @@
       </div>
     </div>
   </div>
+  <div class="infoWrapper">
+    <!-- 알림 왼쪽(할인) -->
+    <div class="leftInfo">
+      <p>2개 이상 예약시부터 1,000원씩 추가할인 무한적용</p>
+      <p>(3개 예약시 2,000원 / 4개 예약시 3,000원 할인)</p>
+    </div>
+    <!-- 알림 오른쪽(주의사항) -->
+    <div class="rightInfocaution">
+      <a href="#">추가요금 발생지역 > </a>
+      <p>
+        <img src="/images/geen/caution_icon.png" alt="주의표시" />수하물
+        개당요금
+      </p>
+    </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -316,6 +331,43 @@
   }
   .ma_sudal3img {
     width: 110%;
+  }
+}
+.infoWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+}
+.leftInfo {
+  line-height: 25px;
+  color: #5a5a5a;
+}
+.rightInfocaution {
+  width: 45%;
+  text-align: right;
+  a {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #5a5a5a;
+    text-decoration: underline;
+    font-weight: normal;
+  }
+  p {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: #ff6b6b; // 글씨 빨강
+    font-size: 14px;
+    img {
+      width: 18px;
+      height: 18px;
+      margin-right: 6px;
+      filter: brightness(0) saturate(100%) invert(16%) sepia(96%)
+        saturate(7484%) hue-rotate(357deg) brightness(93%) contrast(118%);
+      // 빨강 필터 효과
+    }
   }
 }
 </style>

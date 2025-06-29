@@ -1,6 +1,6 @@
-@use "/src/assets/Reset.scss" as reset;
+@use "/src/assets/Reset.scss" as *;
 @use "/src/assets/Variables" as *;
-@use "/src/assets/Scroll.scss" as scroll;
+@use "/src/assets/Scroll.scss" as *;
 
 // 폰트
 body {

@@ -23,7 +23,6 @@ function scrollToSection(idx) {
 function updateActiveOnScroll() {
   const scrollY = window.scrollY + headerHeight + offset + 1;
   let current = 1;
-
   for (let i = 0; i < selectors.length; i++) {
     const el = document.querySelector(selectors[i]);
     if (!el) continue;
@@ -35,46 +34,20 @@ function updateActiveOnScroll() {
       break;
     }
   }
-
   // 맨 아래에 도달하면 마지막
   if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 5) {
     current = selectors.length;
   }
-
   stepIndex.value = current;
 }
-
 onMounted(() => {
   // 초기값 세팅
   updateActiveOnScroll();
   // 스크롤 리스너 등록
   window.addEventListener("scroll", updateActiveOnScroll, { passive: true });
 });
-
 onUnmounted(() => {
   window.removeEventListener("scroll", updateActiveOnScroll);
-});
-//  반응형 관련 상태
-// - isMobile: 현재 화면이 모바일인지 여부 (true: 모바일 화면)
-// - isMenuOpen: 현재 메뉴가 열려 있는지 여부 (여기선 모바일에서 true)
-const isMobile = ref(window.innerWidth < 635);
-//  창 크기 변경 시 실행되는 함수
-const handleResize = () => {
-  const width = window.innerWidth;
-
-  // 화면 너비에 따라 모바일 여부와 메뉴 오픈 여부 업데이트
-  isMobile.value = width < 635;
-};
-
-//  컴포넌트가 마운트될 때: 이벤트 등록 + 최초 한 번 실행
-onMounted(() => {
-  window.addEventListener("resize", handleResize);
-  handleResize(); // 초기 실행
-});
-
-//  컴포넌트가 언마운트될 때: 이벤트 제거 (메모리 누수 방지)
-onUnmounted(() => {
-  window.removeEventListener("resize", handleResize);
 });
 </script>
 
@@ -96,23 +69,8 @@ onUnmounted(() => {
           <div class="title_txt">
             <h1>요금안내</h1>
           </div>
-          <Card v-if="!isMobile" />
+          <Card />
           <!-- 요금 안내 후 알림사항 -->
-          <div class="infoWrapper">
-            <!-- 알림 왼쪽(할인) -->
-            <div class="leftInfo">
-              <p>2개 이상 예약시부터 1,000원씩 추가할인 무한적용</p>
-              <p>(3개 예약시 2,000원 / 4개 예약시 3,000원 할인)</p>
-            </div>
-            <!-- 알림 오른쪽(주의사항) -->
-            <div class="rightInfocaution">
-              <a href="#">추가요금 발생지역 > </a>
-              <p>
-                <img src="/images/geen/caution_icon.png" alt="주의표시" />수하물
-                개당요금
-              </p>
-            </div>
-          </div>
         </div>
         <!-- 구분선 -->
         <div class="divider"></div>
@@ -231,54 +189,6 @@ onUnmounted(() => {
     }
   }
 }
-//    요금안내
-:deep(.macontent1_wrap) {
-  background-color: transparent !important;
-}
-:deep(.masize, .masize1) {
-  border: $border-line !important;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
-// 요금 안내 후 알림사항
-// 알림 왼쪽(할인)
-.infoWrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: left;
-}
-.leftInfo {
-  line-height: 25px;
-  color: #5a5a5a;
-}
-.rightInfocaution {
-  width: 45%;
-  text-align: right;
-  a {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 6px;
-    color: #5a5a5a;
-    text-decoration: underline;
-    font-weight: normal;
-  }
-  p {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    color: #ff6b6b; // 글씨 빨강
-    font-size: 14px;
-    img {
-      width: 18px;
-      height: 18px;
-      margin-right: 6px;
-      filter: brightness(0) saturate(100%) invert(16%) sepia(96%)
-        saturate(7484%) hue-rotate(357deg) brightness(93%) contrast(118%);
-      // 빨강 필터 효과
-    }
-  }
-}
-// 결제 및 환불
 
 // 환불 절차
 .refundProcess {
