@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div class="cardWarp">
+  <div class="cardwarp">
     <!-- 카드1 -->
     <div class="card">
       <p class="sub-title">출발지가</p>
@@ -46,7 +46,10 @@
 @use "/src/assets/Variables.scss" as *;
 
 // 카드전체
-.cardWarp {
+.cardwarp {
+  max-width: 1000px;
+  width: 90%;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   gap: 15px;
