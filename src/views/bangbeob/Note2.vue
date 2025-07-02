@@ -46,10 +46,11 @@
   padding: 50px;
   p {
     font-weight: bold;
-    font-size: 17px;
+    font-size: 20px;
     padding-bottom: 10px;
   }
   span {
+    font-size: 17px;
     padding-bottom: 20px;
   }
   span:last-child {

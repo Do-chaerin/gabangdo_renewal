@@ -87,8 +87,7 @@
       </div>
       <!-- 알림 오른쪽(주의사항) -->
       <div class="rightinfo">
-        <a href="#">추가요금 발생지역 > </a>
-        <p><img src="/images/geen/caution_icon.png" />수하물 개당요금</p>
+        <p>추가요금 발생지역 ></p>
       </div>
     </div>
   </div>
@@ -196,7 +195,8 @@
   .rightinfo {
     p {
       display: flex;
-      color: #ff0000;
+      color: #1e6dff;
+      font-weight: bolder;
     }
     img {
       width: 15%;
