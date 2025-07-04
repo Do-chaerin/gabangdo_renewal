@@ -281,69 +281,71 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="search-wrapper">
-    <input
-      v-model="searchQuery"
-      class="search"
-      type="text"
-      placeholder="검색어를 입력하세요"
-    />
-    <button class="search-btn" @click="onSearch">검색</button>
-  </div>
-  <!-- 카테고리버튼 -->
-  <div class="category-buttons">
-    <button
-      v-for="cat in categories"
-      :key="cat"
-      @click="setCategory(cat)"
-      :class="{ active: selectedCategory === cat }"
-      class="category-btn"
-    >
-      {{ cat }}
-    </button>
-  </div>
-  <!-- 공지사항 출력 -->
-  <table class="notice-table">
-    <tbody class="scrollable-body">
-      <template v-for="(notice, idx) in paginatedNotices" :key="idx">
-        <tr class="notice-row" @click="toggleNotice(idx)">
-          <td>
-            <div class="notice-row_title">
-              {{ notice.title }}
-              <img
-                class="toggle-icon"
-                :src="
-                  activeIndex === idx
-                    ? '/images/cr/up.png'
-                    : '/images/cr/down.png'
-                "
-                alt="토글 아이콘"
-              />
-            </div>
-          </td>
-        </tr>
-        <tr v-if="activeIndex === idx">
-          <td class="notice-row_content">
-            <div class="notice_content">
-              {{ notice.content }}
-            </div>
-          </td>
-        </tr>
-      </template>
-    </tbody>
-  </table>
-  <!-- 페이지네이션 -->
-  <div class="pagination">
-    <button @click="prevNoticePage" :disabled="noticeCurrentPage === 1">
-      이전
-    </button>
-    <span>{{ noticeCurrentPage }} / {{ noticeTotalPages }}</span>
-    <button
-      @click="nextNoticePage"
-      :disabled="noticeCurrentPage === noticeTotalPages"
-    >
-      다음
-    </button>
+  <div class="faqwrap">
+    <div class="search-wrapper">
+      <input
+        v-model="searchQuery"
+        class="search"
+        type="text"
+        placeholder="검색어를 입력하세요"
+      />
+      <button class="search-btn" @click="onSearch">검색</button>
+    </div>
+    <!-- 카테고리버튼 -->
+    <div class="category-buttons">
+      <button
+        v-for="cat in categories"
+        :key="cat"
+        @click="setCategory(cat)"
+        :class="{ active: selectedCategory === cat }"
+        class="category-btn"
+      >
+        {{ cat }}
+      </button>
+    </div>
+    <!-- 공지사항 출력 -->
+    <table class="notice-table">
+      <tbody class="scrollable-body">
+        <template v-for="(notice, idx) in paginatedNotices" :key="idx">
+          <tr class="notice-row" @click="toggleNotice(idx)">
+            <td>
+              <div class="notice-row_title">
+                {{ notice.title }}
+                <img
+                  class="toggle-icon"
+                  :src="
+                    activeIndex === idx
+                      ? '/images/cr/up.png'
+                      : '/images/cr/down.png'
+                  "
+                  alt="토글 아이콘"
+                />
+              </div>
+            </td>
+          </tr>
+          <tr v-if="activeIndex === idx">
+            <td class="notice-row_content">
+              <div class="notice_content">
+                {{ notice.content }}
+              </div>
+            </td>
+          </tr>
+        </template>
+      </tbody>
+    </table>
+    <!-- 페이지네이션 -->
+    <div class="pagination">
+      <button @click="prevNoticePage" :disabled="noticeCurrentPage === 1">
+        이전
+      </button>
+      <span>{{ noticeCurrentPage }} / {{ noticeTotalPages }}</span>
+      <button
+        @click="nextNoticePage"
+        :disabled="noticeCurrentPage === noticeTotalPages"
+      >
+        다음
+      </button>
+    </div>
   </div>
 </template>
 
@@ -353,19 +355,20 @@ onBeforeUnmount(() => {
 @use "/src/assets/Variables.scss" as *;
 
 // 공지사항섹션
-.notice {
+.faqwrap {
+  max-width: 1000px;
   width: 90%;
-  max-width: 100%;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
 }
 
 // 검색어
 .search-wrapper {
   width: 70%;
-  max-width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 10px;
   margin: 0 auto;
   margin-bottom: 15px;

@@ -200,7 +200,7 @@ const closeModal = () => {
 
 <template>
   <!-- 카드이용후기 -->
-  <div class="bottom">
+  <div class="reviewwrap">
     <div class="card-container">
       <div
         class="card"
@@ -281,6 +281,16 @@ const closeModal = () => {
 @use "sass:color";
 @use "/src/assets/Main.scss" as *;
 @use "/src/assets/Variables.scss" as *;
+
+.reviewwrap {
+  max-width: 1000px;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
 
 // 이용후기섹션
 .view {
