@@ -332,7 +332,13 @@ watch(activeTab, () => {
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
 
 .yh_wrap {
-  width: 1000px;
+  max-width: 1000px;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
 }
 
 header.main {

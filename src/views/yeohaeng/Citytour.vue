@@ -133,7 +133,13 @@ export default {
 @use "/src/assets/Variables.scss" as *;
 
 .yh_wrap {
-  width: 1000px;
+  max-width: 1000px;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
 }
 h4 {
   margin: 10px 0;

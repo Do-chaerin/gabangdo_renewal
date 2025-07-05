@@ -1,7 +1,8 @@
 <script setup>
-import Festival from "./Festival.vue";
-import Citytour from "./Citytour.vue";
 import { ref, onMounted, onBeforeUnmount } from "vue";
+import Festival from "./Festival.vue";
+import Bus from "./Bus.vue";
+import Citytour from "./Citytour.vue";
 import ProgressStepper from "../yeyak/ProgressStepper.vue";
 const showStepper = ref(true);
 const stepIndex = ref(1);
@@ -24,7 +25,6 @@ function scrollToSection(idx) {
 function updateActiveOnScroll() {
   const scrollY = window.scrollY + headerHeight + offset + 1;
   let current = 1;
-
   for (let i = 0; i < selectors.length; i++) {
     const el = document.querySelector(selectors[i]);
     if (!el) continue;
@@ -36,17 +36,23 @@ function updateActiveOnScroll() {
       break;
     }
   }
-
   // 맨 아래에 도달하면 마지막
   if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 5) {
     current = selectors.length;
   }
-
   stepIndex.value = current;
 }
-
-// 순환버스 이미지 크기
+onMounted(() => {
+  updateActiveOnScroll();
+  window.addEventListener("resize", updateImage);
+  window.addEventListener("scroll", updateActiveOnScroll, { passive: true });
+});
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", updateImage);
+  window.removeEventListener("scroll", updateActiveOnScroll);
+});
 const imgSrc = ref(null); // 이미지 경로 바인딩용
+
 const updateImage = () => {
   const width = window.innerWidth;
   if (width <= 390) {
@@ -59,18 +65,8 @@ const updateImage = () => {
     imgSrc.value = "/images/geen/1/cititour-round.jpg";
   }
 };
-
 onMounted(() => {
   updateImage();
-  updateActiveOnScroll();
-
-  window.addEventListener("resize", updateImage);
-  window.addEventListener("scroll", updateActiveOnScroll, { passive: true });
-});
-
-onBeforeUnmount(() => {
-  window.removeEventListener("resize", updateImage);
-  window.removeEventListener("scroll", updateActiveOnScroll);
 });
 </script>
 
@@ -86,7 +82,7 @@ onBeforeUnmount(() => {
         @go="scrollToSection"
         class="sticky-stepper hide-controls custom-stepper"
       />
-      <div class="festival">
+      <div class="container">
         <div ref="step1" id="step1" class="step-container">
           <transition name="fade">
             <!-- 대구축제  -->
@@ -97,27 +93,19 @@ onBeforeUnmount(() => {
       <!-- 구분선 -->
       <div class="divider"></div>
       <!-- 순환버스 -->
-      <div class="container2">
+      <div class="container">
         <div ref="step2" id="step2" class="step-container">
           <!-- 순환버스 제목 -->
           <div class="title_txt">
             <h1>순환버스</h1>
           </div>
-          <!-- 순환버스 이미지 -->
-          <div class="content-box">
-            <a
-              href="https://www.daegucitytour.com/bbs/page.php?hid=guide_1"
-              target="_blank"
-            >
-              <img v-if="imgSrc" :src="imgSrc" alt="순환버스지도" />
-            </a>
-          </div>
+          <Bus />
         </div>
       </div>
       <!-- 구분선 -->
       <div class="divider"></div>
       <!-- 테마버스 -->
-      <div class="themaBus">
+      <div class="container">
         <div ref="step3" id="step3" class="step-container">
           <!-- 테마버스 제목 -->
           <div class="title_txt">
@@ -135,6 +123,7 @@ onBeforeUnmount(() => {
 @use "sass:color";
 @use "/src/assets/Main.scss" as *;
 @use "/src/assets/Variables.scss" as *;
+
 // 스텝퍼
 :deep(.stepper) {
   display: flex;
@@ -183,64 +172,5 @@ onBeforeUnmount(() => {
       font-weight: bold;
     }
   }
-}
-// 대구축제 탭
-.tab-container {
-  width: 100%;
-  height: 100%;
-}
-.tab-container .inner {
-  padding: 20px;
-}
-.tab {
-  flex: 1;
-  text-align: center;
-  padding: 18px 0;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: 500;
-  background-color: #e0e0e0;
-  color: #333;
-  transition: background-color 0.3s, color 0.3s;
-  user-select: none;
-  &:hover {
-    background-color: #3399ff;
-    color: white;
-  }
-  &.active {
-    background-color: #007bff;
-    color: white;
-  }
-}
-.tab-bar {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
-  border-radius: $radius;
-  overflow: hidden;
-}
-// 순환버스
-.content-box {
-  border-radius: $radius;
-}
-.content-box img {
-  width: 1000px;
-  height: auto;
-  display: block; /* 불필요한 공간 제거 */
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-// 시티투어버스
-.themaBus {
-  margin: 0 auto;
-  margin-bottom: 50px;
 }
 </style>
