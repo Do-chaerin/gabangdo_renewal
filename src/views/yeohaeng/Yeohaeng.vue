@@ -82,10 +82,10 @@ onMounted(() => {
         @go="scrollToSection"
         class="sticky-stepper hide-controls custom-stepper"
       />
+      <!-- 대구축제  -->
       <div class="container">
         <div ref="step1" id="step1" class="step-container">
           <transition name="fade">
-            <!-- 대구축제  -->
             <Festival />
           </transition>
         </div>
@@ -95,7 +95,6 @@ onMounted(() => {
       <!-- 순환버스 -->
       <div class="container">
         <div ref="step2" id="step2" class="step-container">
-          <!-- 순환버스 제목 -->
           <div class="title_txt">
             <h1>순환버스</h1>
           </div>
@@ -107,11 +106,9 @@ onMounted(() => {
       <!-- 테마버스 -->
       <div class="container">
         <div ref="step3" id="step3" class="step-container">
-          <!-- 테마버스 제목 -->
           <div class="title_txt">
             <h1>테마버스</h1>
           </div>
-          <!-- 테마버스 이미지 -->
           <Citytour />
         </div>
       </div>

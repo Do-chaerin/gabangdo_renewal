@@ -20,4 +20,14 @@ const imgSrc = ref("/images/geen/city_roundmap_bg.jpg"); // 이미지 경로 바
 @use "sass:color";
 @use "/src/assets/Main.scss" as *;
 @use "/src/assets/Variables.scss" as *;
+
+.content-box {
+  max-width: 1000px;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
 </style>
