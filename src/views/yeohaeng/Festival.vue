@@ -1187,14 +1187,6 @@ header.main.fix .hd-gnb .hd-menu > li:after {
 :deep(.swiper-pagination-bullet-active) {
   background: $hover; /* 활성 도트 색 */
 }
-.swiper-button-prev,
-.swiper-rtl .swiper-button-next {
-  left: var(--swiper-navigation-sides-offset, 100px);
-}
-.swiper-button-next,
-.swiper-rtl .swiper-button-prev {
-  right: var(--swiper-navigation-sides-offset, 100px);
-}
 
 .swiper-button-next::after,
 .swiper-button-prev::after {

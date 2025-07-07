@@ -149,12 +149,12 @@ h4 {
 }
 .swiper-slide {
   width: 100% !important;
-  height: 90%;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   a {
-    width: 100%;
+    width: 90%;
     max-width: 1000px;
     height: 100%;
   }
@@ -177,14 +177,12 @@ h4 {
 }
 :deep(.swiper-button-prev) {
   color: #ee2b2b;
-  left: var(--swiper-navigation-sides-offset, 180px);
 }
 :deep(.swiper-button-prev::after) {
   font-size: 25px;
 }
 :deep(.swiper-button-next) {
   color: #ee2b2b;
-  right: var(--swiper-navigation-sides-offset, 190px);
 }
 :deep(.swiper-button-next::after) {
   font-size: 25px;
