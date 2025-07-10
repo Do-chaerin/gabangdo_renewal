@@ -340,6 +340,9 @@ watch(activeTab, () => {
   flex-direction: column;
   margin: 0 auto;
 }
+.yh_wrap :deep(.swiper) {
+  position: relative;
+}
 
 header.main {
   position: fixed;
@@ -579,6 +582,7 @@ header.main.fix .hd-gnb .hd-menu > li:after {
   display: flex;
   justify-content: center;
   margin-bottom: 50px;
+  cursor: pointer;
 }
 .festival-month a {
   width: 100%;
@@ -1188,13 +1192,36 @@ header.main.fix .hd-gnb .hd-menu > li:after {
   background: $hover; /* 활성 도트 색 */
 }
 
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  display: inline-flex; /* 가로/세로 중앙정렬용 */
+.swiper-button-next,
+.swiper-button-prev {
+  font-size: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
-  font-size: 25px;
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+  border-radius: 50%;
+  transform: none;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 10;
+}
+:deep(.swiper-button-next)::after,
+:deep(.swiper-button-prev)::after {
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.swiper-button-next {
+  right: 50px;
+}
+.swiper-button-prev {
+  left: 50px;
 }
 
 .swiper-pagination-bullet-active {

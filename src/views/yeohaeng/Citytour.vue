@@ -11,6 +11,8 @@ import "swiper/css/navigation";
 // import required modules
 import { Autoplay, Pagination, Navigation, Scrollbar } from "swiper/modules";
 
+const modules = [Autoplay, Pagination, Navigation, Scrollbar];
+
 export default {
   components: {
     Swiper,
@@ -36,10 +38,11 @@ export default {
 <template>
   <div class="yh_wrap">
     <swiper
+      :loop="true"
       :scrollbar="{
         hide: true,
       }"
-      :slidesPerView="1"
+      :slides-Per-View="'auto'"
       :spaceBetween="10"
       :centeredSlides="true"
       :autoplay="{
@@ -166,6 +169,13 @@ h4 {
     margin-bottom: 20px;
   }
 }
+:deep(.swiper-slide) {
+  width: auto !important;
+}
+:deep(.swiper),
+:deep(.swiper-wrapper) {
+  overflow: visible !important;
+}
 .autoplay-progress {
   display: none;
 }
@@ -186,6 +196,26 @@ h4 {
 }
 :deep(.swiper-button-next::after) {
   font-size: 25px;
+}
+:deep(.swiper-button-next),
+:deep(.swiper-button-prev) {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+:deep(.swiper-button-next) {
+  right: 50px;
+}
+:deep(.swiper-button-prev) {
+  left: 50px;
 }
 :deep(.swiper-scrollbar) {
   width: 50% !important;
