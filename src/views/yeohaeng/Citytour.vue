@@ -29,7 +29,7 @@ export default {
       onAutoplayTimeLeft,
       progressCircle,
       progressContent,
-      modules: [Autoplay, Pagination, Navigation, Scrollbar],
+      modules,
     };
   },
 };
@@ -38,15 +38,15 @@ export default {
 <template>
   <div class="yh_wrap">
     <swiper
-      :loop="true"
+      loop
+      slides-per-view="1"
       :scrollbar="{
         hide: true,
       }"
-      :slides-Per-View="'auto'"
       :spaceBetween="10"
-      :centeredSlides="true"
+      centered-slides
       :autoplay="{
-        delay: 5000,
+        delay: 3000,
         disableOnInteraction: false,
       }"
       :pagination="{
@@ -170,12 +170,17 @@ h4 {
   }
 }
 :deep(.swiper-slide) {
-  width: auto !important;
+  width: 100% !important;
 }
-:deep(.swiper),
-:deep(.swiper-wrapper) {
-  overflow: visible !important;
+:deep(.swiper) {
+  overflow: hidden !important;
 }
+:deep(.swiper-slide img) {
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
 .autoplay-progress {
   display: none;
 }
