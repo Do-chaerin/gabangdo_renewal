@@ -39,14 +39,15 @@ export default {
   <div class="yh_wrap">
     <swiper
       loop
+      :looped-slides="7"
       slides-per-view="1"
       :scrollbar="{
         hide: true,
       }"
       :spaceBetween="10"
-      centered-slides
+      :centeredSlides="true"
       :autoplay="{
-        delay: 3000,
+        delay: 5000,
         disableOnInteraction: false,
       }"
       :pagination="{
@@ -168,17 +169,6 @@ h4 {
     margin-top: 20px;
     margin-bottom: 20px;
   }
-}
-:deep(.swiper-slide) {
-  width: 100% !important;
-}
-:deep(.swiper) {
-  overflow: hidden !important;
-}
-:deep(.swiper-slide img) {
-  width: 100% !important;
-  height: auto !important;
-  display: block;
 }
 
 .autoplay-progress {
