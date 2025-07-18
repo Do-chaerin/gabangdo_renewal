@@ -28,21 +28,6 @@ const handleLogin = () => {
       u.password === formData.value.password &&
       u.role === formData.value.role
   );
-  // 3.로그인 성공 // 실패 처리
-  // if (user) {
-  //   // 3-1.로그인 성공시
-  //   authStore.login({
-  //     email: user.email, // 사용자 이메일
-  //     name: user.name, // 사용자 이름
-  //     phone: user.phone,
-  //     address: user.address,
-  //     detailAddress: user.detailAddress,
-  //     createdAt: user.createdAt,
-  //   });
-  //   router.push("/");
-  // } else {
-  //   alert("이메일 또는 비밀번호가 일치하기 않습니다.");
-  // }
   if (user) {
     authStore.login(user);
     if (user.role === "worker") {
@@ -63,32 +48,8 @@ const handleLogin = () => {
         <div class="loginImg">
           <img src="/images/yr/loginpage/newLogo.png" alt="" />
         </div>
-
-        <!-- 유형 선택 아이콘 -->
-        <div class="form-group">
-          <!-- <label>유형</label> -->
-          <div class="role-options">
-            <!-- <p>여행의 시작은 가방도와 함께</p> -->
-            <button
-              type="button"
-              :class="{ active: formData.role === 'customer' }"
-              @click="formData.role = 'customer'">
-              <img src="/images/yr/loginpage/owner.png" alt="고객" />
-              <!-- <span>고객</span>  -->
-            </button>
-
-            <button
-              type="button"
-              :class="{ active: formData.role === 'worker' }"
-              @click="formData.role = 'worker'">
-              <img src="/images/yr/loginpage/deliveryman.png" alt="기사" />
-              <!-- <span>기사</span> -->
-            </button>
-          </div>
-        </div>
         <form @submit.prevent="handleLogin" class="login-form">
           <div class="form-group">
-            <!-- <label for="email">이메일</label> -->
             <input
               type="email"
               id="email"
@@ -96,11 +57,10 @@ const handleLogin = () => {
               v-model="formData.email"
               placeholder="이메일을 입력하세요"
               autocomplete="username"
-              required />
+              required
+            />
           </div>
-
           <div class="form-group">
-            <!-- <label for="password">비밀번호</label> -->
             <div class="password-input">
               <input
                 id="password"
@@ -109,11 +69,13 @@ const handleLogin = () => {
                 v-model="formData.password"
                 placeholder="비밀번호를 입력하세요"
                 autocomplete="current-password"
-                required />
+                required
+              />
               <button
                 @click="togglePassword"
                 type="button"
-                class="toggle-password">
+                class="toggle-password"
+              >
                 <img
                   :src="
                     showPassword
@@ -121,30 +83,11 @@ const handleLogin = () => {
                       : '/images/yr/loginpage/eye.png'
                   "
                   alt="비밀번호 보기 토글"
-                  class="eye-icon" />
+                  class="eye-icon"
+                />
               </button>
             </div>
           </div>
-
-          <!-- 유형추가 고객 / 기사
-        <div class="form-group">
-          <label for="role">유형</label>
-          <select id="role" v-model="formData.role" required>
-            <option value="customer">고객</option>
-            <option value="worker">기사</option>
-          </select>
-        </div> -->
-
-          <!-- <div class="form-options">
-          <label class="remember-me">
-            <input type="checkbox" />
-            <span>로그인 상태 유지</span>
-          </label>
-          <router-link to="/find-password" class="find-password">
-            비밀번호 찾기
-          </router-link>
-        </div> -->
-
           <button type="submit" class="login-btn">로그인</button>
         </form>
 
@@ -190,8 +133,7 @@ const handleLogin = () => {
 
 .login-container {
   background: white;
-  border-radius: 8px;
-  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: $radius;
   width: 100%;
   max-width: 400px;
   text-align: center;
