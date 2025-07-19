@@ -43,78 +43,80 @@ const handleLogin = () => {
 
 <template>
   <div class="wrap_total">
-    <div class="login-container">
-      <div class="login-box">
-        <div class="loginImg">
-          <img src="/images/yr/loginpage/newLogo.png" alt="" />
-        </div>
-        <form @submit.prevent="handleLogin" class="login-form">
-          <div class="form-group">
-            <input
-              type="email"
-              id="email"
-              name="email"
-              v-model="formData.email"
-              placeholder="이메일을 입력하세요"
-              autocomplete="username"
-              required
-            />
+    <div class="inner_total">
+      <div class="login-container">
+        <div class="login-box">
+          <div class="loginImg">
+            <img src="/images/yr/loginpage/newLogo.png" alt="" />
           </div>
-          <div class="form-group">
-            <div class="password-input">
+          <form @submit.prevent="handleLogin" class="login-form">
+            <div class="form-group">
               <input
-                id="password"
-                name="password"
-                :type="showPassword ? 'text' : 'password'"
-                v-model="formData.password"
-                placeholder="비밀번호를 입력하세요"
-                autocomplete="current-password"
+                type="email"
+                id="email"
+                name="email"
+                v-model="formData.email"
+                placeholder="이메일을 입력하세요"
+                autocomplete="username"
                 required
               />
-              <button
-                @click="togglePassword"
-                type="button"
-                class="toggle-password"
-              >
-                <img
-                  :src="
-                    showPassword
-                      ? '/images/yr/loginpage/eye-off.png'
-                      : '/images/yr/loginpage/eye.png'
-                  "
-                  alt="비밀번호 보기 토글"
-                  class="eye-icon"
-                />
-              </button>
             </div>
+            <div class="form-group">
+              <div class="password-input">
+                <input
+                  id="password"
+                  name="password"
+                  :type="showPassword ? 'text' : 'password'"
+                  v-model="formData.password"
+                  placeholder="비밀번호를 입력하세요"
+                  autocomplete="current-password"
+                  required
+                />
+                <button
+                  @click="togglePassword"
+                  type="button"
+                  class="toggle-password"
+                >
+                  <img
+                    :src="
+                      showPassword
+                        ? '/images/yr/loginpage/eye-off.png'
+                        : '/images/yr/loginpage/eye.png'
+                    "
+                    alt="비밀번호 보기 토글"
+                    class="eye-icon"
+                  />
+                </button>
+              </div>
+            </div>
+            <button type="submit" class="login-btn">로그인</button>
+          </form>
+
+          <div class="signup-link">
+            아직 회원이 아니신가요?
+            <router-link to="/signup">회원가입</router-link>
           </div>
-          <button type="submit" class="login-btn">로그인</button>
-        </form>
-
-        <div class="signup-link">
-          아직 회원이 아니신가요?
-          <router-link to="/signup">회원가입</router-link>
         </div>
-      </div>
-      <div class="bb_sns-login">
-        <div class="bb_grayline"></div>
-        <p>간편 로그인</p>
-        <div class="bb_grayline"></div>
-      </div>
-      <div class="bb_sns-icons">
-        <a
-          href="https://accounts.kakao.com/login/?continue=https%3A%2F%2Faccounts.kakao.com%2Fweblogin%2Faccount#login"
-          ><img src="/images/yr/loginpage/loginKT.png" alt="깨톡"
-        /></a>
-        <a
-          href="https://nid.naver.com/nidlogin.login?mode=form&url=https://www.naver.com/"
-          ><img src="/images/yr/loginpage/loginN.png" alt="네이버"
-        /></a>
+        <div class="bb_sns-login">
+          <div class="bb_grayline"></div>
+          <p>간편 로그인</p>
+          <div class="bb_grayline"></div>
+        </div>
+        <div class="bb_sns-icons">
+          <a
+            href="https://accounts.kakao.com/login/?continue=https%3A%2F%2Faccounts.kakao.com%2Fweblogin%2Faccount#login"
+            ><img src="/images/yr/loginpage/loginKT.png" alt="카카오톡"
+          /></a>
+          <a
+            href="https://nid.naver.com/nidlogin.login?mode=form&url=https://www.naver.com/"
+            ><img src="/images/yr/loginpage/loginN.png" alt="네이버"
+          /></a>
 
-        <a
-          href="https://accounts.google.com/InteractiveLogin/signinchooser?continue=https%3A%2F%2Ftakeout.google.com%2F%3Fhl%3Dko&followup=https%3A%2F%2Ftakeout.google.com%2F%3Fhl%3Dko&hl=ko&osid=1&passive=1209600&ifkv=AXH0vVudToPB1oXfNyrRstCJ2S8_6MGsxrjKMEimiqpbXowYURSOX1dz9tFsLIFhTsRW8skj6ngVQw&ddm=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin"
-          ><img src="/images/yr/loginpage/loginG.png" alt="구글"
-        /></a>
+          <a
+            href="https://accounts.google.com/InteractiveLogin/signinchooser?continue=https%3A%2F%2Ftakeout.google.com%2F%3Fhl%3Dko&followup=https%3A%2F%2Ftakeout.google.com%2F%3Fhl%3Dko&hl=ko&osid=1&passive=1209600&ifkv=AXH0vVudToPB1oXfNyrRstCJ2S8_6MGsxrjKMEimiqpbXowYURSOX1dz9tFsLIFhTsRW8skj6ngVQw&ddm=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin"
+            ><img src="/images/yr/loginpage/loginG.png" alt="구글"
+          /></a>
+        </div>
       </div>
     </div>
   </div>
@@ -140,7 +142,7 @@ const handleLogin = () => {
   .loginImg {
     img {
       width: 30%;
-      margin-bottom: 10px;
+      margin-bottom: 30px;
     }
   }
   p {
@@ -256,10 +258,6 @@ select {
   transition: background-color 0.3s;
   margin-bottom: 1.5rem;
 }
-
-// .login-btn:hover {
-//   background: #45a049;
-// }
 
 .social-login {
   text-align: center;
@@ -404,16 +402,6 @@ select {
   width: 20px;
   height: 20px;
   margin-bottom: 5px;
-}
-
-@media (max-width: 480px) {
-  .login {
-    padding: 1rem;
-  }
-
-  .login-container {
-    padding: 1.5rem;
-  }
 }
 
 .social-icon {
