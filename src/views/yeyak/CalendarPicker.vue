@@ -205,7 +205,8 @@ onBeforeUnmount(() => {
         readonly
         :value="display"
         class="datetime-input"
-        placeholder="날짜를 선택해주세요" />
+        placeholder="날짜를 선택해주세요."
+      />
     </div>
     <!-- 달력 팝업 -->
     <teleport to="body">
@@ -213,7 +214,8 @@ onBeforeUnmount(() => {
         v-if="showCalendar"
         class="calendar-popup"
         :style="popupStyle"
-        @click.stop>
+        @click.stop
+      >
         <div class="calendar-nav">
           <button @click="prevMonth">&lt;</button>
           <span>{{ year }}년 {{ month + 1 }}월</span>
@@ -239,7 +241,8 @@ onBeforeUnmount(() => {
               },
             ]"
             :disabled="isPast(day)"
-            @click="selectDay(day)">
+            @click="selectDay(day)"
+          >
             {{ day }}
           </button>
         </div>

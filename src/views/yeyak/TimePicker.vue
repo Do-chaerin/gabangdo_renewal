@@ -178,9 +178,10 @@ function scrollToCurrentTime() {
       <input
         type="text"
         :value="selected"
-        placeholder="시간을 선택해주세요"
+        placeholder="시간을 선택해주세요."
         readonly
-        class="datetime-input" />
+        class="datetime-input"
+      />
     </div>
     <!-- 시간 팝업 -->
     <teleport to="body">
@@ -189,12 +190,14 @@ function scrollToCurrentTime() {
           <div class="period-list">
             <button
               :class="{ active: selectedPeriod === 'AM' }"
-              @click="selectedPeriod = 'AM'">
+              @click="selectedPeriod = 'AM'"
+            >
               오전
             </button>
             <button
               :class="{ active: selectedPeriod === 'PM' }"
-              @click="selectedPeriod = 'PM'">
+              @click="selectedPeriod = 'PM'"
+            >
               오후
             </button>
           </div>
@@ -206,7 +209,8 @@ function scrollToCurrentTime() {
                   : afternoonTimes"
                 :key="t"
                 :class="{ disabled: isTimeDisabled(t) }"
-                @click="!isTimeDisabled(t) && selectTime(t)">
+                @click="!isTimeDisabled(t) && selectTime(t)"
+              >
                 {{ t }}
               </li>
             </ul>

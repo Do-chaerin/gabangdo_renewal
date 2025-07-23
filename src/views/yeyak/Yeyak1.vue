@@ -613,7 +613,7 @@ watch(selectedDate, (val) => {
             <div class="agree">
               <label class="toggle">
                 <input type="checkbox" v-model="agreeAll" />
-                <span class="slider"></span>전체 이용약관에 동의합니다.
+                <span class="slider"></span>&nbsp;전체 이용약관에 동의합니다.
               </label>
               <!-- ▶ 아이콘을 눌러 내용 열기/닫기 -->
               <button
@@ -680,7 +680,8 @@ watch(selectedDate, (val) => {
               <label class="toggle">
                 <input type="checkbox" v-model="agreePrivacy" />
                 <span class="slider"></span
-                ><span class="txt">[필수]</span> 개인정보 수집에 동의합니다.
+                ><span class="txt">[필수]</span>&nbsp;개인정보 수집에
+                동의합니다.
               </label>
               <!-- ▶ 아이콘을 눌러 내용 열기/닫기 -->
               <button
@@ -722,7 +723,7 @@ watch(selectedDate, (val) => {
               <label class="toggle">
                 <input type="checkbox" v-model="agreeTerms" />
                 <span class="slider"></span
-                ><span class="txt">[필수]</span> 이용약관에 동의합니다.
+                ><span class="txt">[필수]</span>&nbsp;이용약관에 동의합니다.
               </label>
               <!-- ▶ 아이콘을 눌러 내용 열기/닫기 -->
               <button
@@ -794,10 +795,10 @@ watch(selectedDate, (val) => {
     <div class="modal-content">
       <p class="modal-title">당일예약으로 진행됩니다.</p>
       <div class="modal-body">
-        <p>• S사이즈:<span class="modal_price"> 12,000원</span></p>
-        <p>• M사이즈:<span class="modal_price"> 16,000원</span></p>
-        <p>• L사이즈:<span class="modal_price"> 18,000원</span></p>
-        <p>• 기타사이즈:<span class="modal_price"> 가격문의</span></p>
+        <p>•&nbsp;S사이즈:<span class="modal_price"> 12,000원</span></p>
+        <p>•&nbsp;M사이즈:<span class="modal_price"> 16,000원</span></p>
+        <p>•&nbsp;L사이즈:<span class="modal_price"> 18,000원</span></p>
+        <p>•&nbsp;기타사이즈:<span class="modal_price"> 가격문의</span></p>
       </div>
       <button class="modal-button" @click="closeModal">확인</button>
     </div>
@@ -807,10 +808,10 @@ watch(selectedDate, (val) => {
     <div class="modal-content">
       <p class="modal-title">사전예약으로 진행됩니다.</p>
       <div class="modal-body">
-        <p>• S사이즈:<span class="modal_price">10,000원</span></p>
-        <p>• M사이즈:<span class="modal_price">14,000원</span></p>
-        <p>• L사이즈:<span class="modal_price">16,000원</span></p>
-        <p>• 기타사이즈:<span class="modal_price">가격문의</span></p>
+        <p>•&nbsp;S사이즈:<span class="modal_price">10,000원</span></p>
+        <p>•&nbsp;M사이즈:<span class="modal_price">14,000원</span></p>
+        <p>•&nbsp;L사이즈:<span class="modal_price">16,000원</span></p>
+        <p>•&nbsp;기타사이즈:<span class="modal_price">가격문의</span></p>
       </div>
       <button class="modal-button" @click="closeModal">확인</button>
     </div>
@@ -1078,7 +1079,7 @@ select {
 
 .custom-start.confirmed,
 .custom-stop.confirmed {
-  background-color: #71d575; /* 입력완료 시 색상 */
+  background-color: #71d575;
   color: #fff;
 }
 
@@ -1162,7 +1163,7 @@ select {
 
 .custom-start.confirmed,
 .custom-stop.confirmed {
-  background-color: #71d575; /* 입력완료 시 색상 */
+  background-color: #71d575;
   color: #fff;
 }
 
@@ -1176,7 +1177,7 @@ select {
 
 .bag-item {
   display: grid;
-  grid-template-columns: 1fr auto; // 정보 / 컨트롤+가격
+  grid-template-columns: 1fr auto;
   align-items: center;
   gap: 10px;
   padding: 10px;
@@ -1294,8 +1295,8 @@ select {
 }
 .agree {
   display: flex;
-  align-items: center; // 컨테이너 안 아이템들 세로 중앙
-  justify-content: space-between; // 왼쪽/오른쪽 끝 배치
+  align-items: center;
+  justify-content: space-between;
   gap: 10px;
   margin: 5px;
 }
@@ -1304,7 +1305,7 @@ select {
 }
 .toggle {
   display: flex;
-  align-items: center; // 토글 안 체크박스·텍스트 세로 중앙
+  align-items: center;
   font-size: 14px;
   color: #000;
 }
@@ -1312,14 +1313,14 @@ select {
 .toggle input[type="checkbox"] {
   width: 14px;
   height: 14px;
-  margin: 0 4px 0 0; // 체크박스 오른쪽만 여백
-  align-self: center; // flex 아이템 세로 중앙
-  vertical-align: middle; // 인라인 정렬 보조
+  margin: 0 4px 0 0;
+  align-self: center;
+  vertical-align: middle;
 }
 
 .toggle .slider {
-  align-self: center; // 슬라이더도 세로 중앙
-  margin-right: 6px; // 슬라이더와 텍스트 사이 간격
+  align-self: center;
+  margin-right: 6px;
 }
 
 .expand-btn {
@@ -1329,9 +1330,9 @@ select {
   cursor: pointer;
   font-size: 12px;
   padding: 4px 8px;
-  align-self: center; // flex 아이템 세로 중앙
-  margin: 0; // 버튼 기본 마진 제거
-  line-height: 1; // 텍스트 높이 딱 맞추기
+  align-self: center;
+  margin: 0;
+  line-height: 1;
 }
 .toggle-content {
   background: #fafafa;
@@ -1354,7 +1355,7 @@ select {
 .fade-enter-to,
 .fade-leave-from {
   opacity: 1;
-  max-height: 200px; /* 충분히 큰 값 */
+  max-height: 200px;
 }
 //토글박스 스크롤
 .terms-box {

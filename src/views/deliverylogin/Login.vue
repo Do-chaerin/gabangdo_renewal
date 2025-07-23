@@ -93,16 +93,16 @@ const handleLogin = () => {
           </form>
 
           <div class="signup-link">
-            아직 회원이 아니신가요?
+            아직 회원이 아니신가요?&nbsp;
             <router-link to="/signup">회원가입</router-link>
           </div>
         </div>
-        <div class="bb_sns-login">
-          <div class="bb_grayline"></div>
+        <div class="sns-login">
+          <div class="grayline"></div>
           <p>간편 로그인</p>
-          <div class="bb_grayline"></div>
+          <div class="grayline"></div>
         </div>
-        <div class="bb_sns-icons">
+        <div class="sns-icons">
           <a
             href="https://accounts.kakao.com/login/?continue=https%3A%2F%2Faccounts.kakao.com%2Fweblogin%2Faccount#login"
             ><img src="/images/yr/loginpage/loginKT.png" alt="카카오톡"
@@ -127,12 +127,7 @@ const handleLogin = () => {
 @use "/src/assets/Main.scss" as *;
 @use "/src/assets/Variables.scss" as *;
 
-.login {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+// 로그인 박스
 .login-container {
   background: white;
   border-radius: $radius;
@@ -148,23 +143,14 @@ const handleLogin = () => {
   p {
     color: #a5a5a5;
     font-weight: bold;
-    margin-bottom: 20px;
   }
 }
-
+// 입력 그룹
 .form-group {
   margin-bottom: 12px;
 }
-
-label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #279bf3;
-  font-weight: 500;
-}
-
-input,
-select {
+// 공통 입력 스타일
+input {
   width: 100%;
   height: 40px;
   padding: 10px;
@@ -178,23 +164,9 @@ select {
     outline-offset: -2px;
   }
 }
-
+// 비밀번호 입력 + 토글 버튼
 .password-input {
   position: relative;
-  input {
-    width: 100%;
-    height: 40px;
-    padding: 10px;
-    font-size: 15px;
-    border: 1px solid $border-gray;
-    border-radius: $radius;
-    box-sizing: border-box;
-    color: $dark-gray;
-    &:focus {
-      outline: 3px solid $blue-sky;
-      outline-offset: -2px;
-    }
-  }
   .toggle-password {
     position: absolute;
     right: 16px;
@@ -202,7 +174,6 @@ select {
     transform: translateY(-50%);
     background: none;
     border: none;
-    color: #888888;
     cursor: pointer;
     font-size: 20px;
   }
@@ -216,155 +187,62 @@ select {
     }
   }
 }
-
-.form-options {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.remember-me {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-}
-
-.remember-me input[type="checkbox"] {
-  width: auto;
-}
-
-.find-password {
-  color: #666;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-
-.find-password:hover {
-  color: #333;
-}
-
+// 로그인 버튼
 .login-btn {
   width: 100%;
-  padding: 10px;
-  background: #279bf3;
-  color: white;
+  height: 40px;
+  background-color: color.adjust($main-color, $lightness: 30%);
+  color: #fff;
+  font-size: 16px;
+  border-radius: $radius;
+  cursor: pointer;
   border: none;
-  border-radius: 4px;
-  font-size: 1.1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-bottom: 1.5rem;
+  transition: background 0.3s;
+  display: block;
+  margin: 15px 0 30px 0;
+  &:hover {
+    background-color: color.adjust($sub-color, $lightness: 20%) !important;
+  }
 }
-
-.social-login {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.social-login p {
-  color: #666;
-  margin-bottom: 1rem;
-  position: relative;
-}
-
-.social-login p::before,
-.social-login p::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 30%;
-  height: 1px;
-  background: #ddd;
-}
-
-.social-login p::before {
-  left: 0;
-}
-
-.social-login p::after {
-  right: 0;
-}
-
-.social-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.social-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background: white;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.social-btn img {
-  width: 20px;
-  height: 20px;
-}
-
-.social-btn.google:hover {
-  background: #f5f5f5;
-}
-
-.social-btn.kakao {
-  background: #fee500;
-  border-color: #fee500;
-}
-
-.social-btn.kakao:hover {
-  background: #ffe812;
-}
-
+// 회원가입 링크
 .signup-link {
   text-align: center;
   color: #666;
+  margin-bottom: 30px;
+  a {
+    color: #279bf3;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      font-weight: bold;
+      color: color.adjust($sub-color, $lightness: 20%) !important;
+    }
+  }
 }
-
-.signup-link a {
-  color: #279bf3;
-  text-decoration: none;
-  font-weight: 500;
-  margin-left: 0.5rem;
-}
-
-.signup-link a:hover {
-  text-decoration: underline;
-}
-.bb_sns-login {
+// 간편 로그인 구분선
+.sns-login {
   display: flex;
   align-items: center;
-  gap: 10px; // 선과 텍스트 사이 간격
-  margin: 8% 0;
-
-  .bb_grayline {
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  .grayline {
     flex: 1;
     height: 1px;
-    background-color: #ccc; // 연한 회색
+    background-color: #ccc;
   }
-
   p {
-    white-space: nowrap; // 텍스트 줄바꿈 방지
     color: #279bf3;
     font-size: 14px;
     font-weight: bold;
   }
 }
-.bb_sns-icons {
+// SNS 아이콘 영역
+.sns-icons {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20%;
-
   a {
     width: 13%;
     height: 13%;
@@ -373,39 +251,5 @@ select {
       height: 100%;
     }
   }
-}
-
-.role-options {
-  display: flex;
-  justify-content: flex-end;
-  gap: 7px;
-}
-
-.role-options button {
-  background: none;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 7px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.2s ease;
-}
-
-.role-options button.active {
-  border-color: #007bff;
-  background-color: #eef6ff;
-}
-
-.role-options img {
-  width: 20px;
-  height: 20px;
-  margin-bottom: 5px;
-}
-
-.social-icon {
-  font-weight: bold;
-  font-size: 1.2rem;
 }
 </style>
