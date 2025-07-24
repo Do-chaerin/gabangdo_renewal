@@ -56,7 +56,7 @@ const handleLogin = () => {
                 id="email"
                 name="email"
                 v-model="formData.email"
-                placeholder="이메일을 입력하세요"
+                placeholder="이메일을 입력하세요."
                 autocomplete="username"
                 required
               />
@@ -68,7 +68,7 @@ const handleLogin = () => {
                   name="password"
                   :type="showPassword ? 'text' : 'password'"
                   v-model="formData.password"
-                  placeholder="비밀번호를 입력하세요"
+                  placeholder="비밀번호를 입력하세요."
                   autocomplete="current-password"
                   required
                 />
